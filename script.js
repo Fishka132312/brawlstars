@@ -117,32 +117,60 @@ let selectedEnemies = [null, null, null];
 let currentSlot = null;
 
 // 2. Открыть окно выбора бойца
+// Открыть окно выбора с поиском
 function openPicker(slotIndex) {
     currentSlot = slotIndex;
     const modal = document.getElementById('picker-modal');
     const grid = document.getElementById('picker-grid');
     
-    if (!modal || !grid) return; // Защита, если элементов нет в HTML
+    if (!modal || !grid) return;
 
     modal.classList.remove('hidden');
-    grid.innerHTML = "";
+    
+    // Очищаем модалку и добавляем поле поиска в самый верх
+    modal.innerHTML = `
+        <div style="position: sticky; top: 0; background: rgba(0,0,0,0.95); padding: 20px; z-index: 1001; display: flex; gap: 10px; align-items: center; justify-content: center;">
+            <input type="text" id="brawler-search" placeholder="Поиск бойца..." 
+                style="padding: 12px; width: 250px; border-radius: 8px; border: none; font-size: 16px;">
+            <button onclick="closePicker()" style="padding: 12px 20px; background: #f44336; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">ЗАКРЫТЬ</button>
+        </div>
+        <div id="picker-grid" class="grid-container" style="margin-top: 20px;"></div>
+    `;
 
-    // Сортируем бойцов по алфавиту для удобства выбора
-    const sortedBrawlers = [...brawlers].sort((a, b) => a.name.localeCompare(b.name));
+    // Функция для отрисовки списка (внутренняя)
+    const renderFilteredBrawlers = (filterText = "") => {
+        const grid = document.getElementById('picker-grid');
+        grid.innerHTML = "";
+        
+        const filtered = brawlers
+            .filter(b => b.name.toLowerCase().includes(filterText.toLowerCase()))
+            .sort((a, b) => a.name.localeCompare(b.name));
 
-    sortedBrawlers.forEach(b => {
-        const item = document.createElement('div');
-        item.className = "card";
-        item.style.width = "100px";
-        item.style.padding = "5px";
-        item.style.cursor = "pointer";
-        item.innerHTML = `
-            <img src="${b.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-            <p style="font-size: 12px; margin: 5px 0 0; color: white;">${b.name}</p>
-        `;
-        item.onclick = () => selectBrawlerForSlot(b.id);
-        grid.appendChild(item);
+        filtered.forEach(b => {
+            const item = document.createElement('div');
+            item.className = "card";
+            item.style.width = "100px";
+            item.style.padding = "5px";
+            item.style.cursor = "pointer";
+            item.innerHTML = `
+                <img src="${b.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                <p style="font-size: 12px; margin: 5px 0 0; color: white;">${b.name}</p>
+            `;
+            item.onclick = () => selectBrawlerForSlot(b.id);
+            grid.appendChild(item);
+        });
+    };
+
+    // Инициализация списка
+    renderFilteredBrawlers();
+
+    // Слушатель событий для поиска
+    document.getElementById('brawler-search').addEventListener('input', (e) => {
+        renderFilteredBrawlers(e.target.value);
     });
+
+    // Автофокус на поле поиска
+    setTimeout(() => document.getElementById('brawler-search').focus(), 100);
 }
 
 // 3. Закрыть окно выбора
