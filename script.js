@@ -1,528 +1,4 @@
-// 1. Данные
-const brawlers = [
-    { id: 1, name: "Shelly", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000000.webp", color: "#77d4fe" },
-    { id: 2, name: "Colt", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000001.webp", color: "#5aea2e" },
-    { id: 3, name: "Bull", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000002.webp", color: "#5aea2e" },
-    { id: 4, name: "Brock", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000003.webp", color: "#5aea2e" },
-    { id: 5, name: "Barley", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000006.webp", color: "#5aea2e" },
-    { id: 7, name: "Nita", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000008.webp", color: "#5aea2e" },
-    { id: 8, name: "El Primo", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000010.webp", color: "#5aea2e" },
-    { id: 9, name: "Poco", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000013.webp", color: "#5aea2e" },
-    { id: 10, name: "Rosa", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000024.webp", color: "#5aea2e" },
-    { id: 11, name: "Rico", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000004.webp", color: "#1f6ce0" },
-    { id: 12, name: "Jessie", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000007.webp", color: "#1f6ce0" },
-    { id: 13, name: "Dynomike", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000009.webp", color: "#1f6ce0" },
-    { id: 14, name: "Darryl", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000018.webp", color: "#1f6ce0" },
-    { id: 15, name: "Penny", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000019.webp", color: "#1f6ce0" },
-    { id: 16, name: "Tick", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000022.webp", color: "#1f6ce0" },
-    { id: 17, name: "Carl", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000025.webp", color: "#1f6ce0" },
-    { id: 18, name: "8-BIT", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000027.webp", color: "#1f6ce0" },
-    { id: 19, name: "Jacky", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000034.webp", color: "#1f6ce0" },
-    { id: 20, name: "Gus", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000061.webp", color: "#8a22dd" },
-    { id: 21, name: "Bo", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000014.webp", color: "#8a22dd" },
-    { id: 22, name: "Piper", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000015.webp", color: "#8a22dd" },
-    { id: 23, name: "Pam", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000016.webp", color: "#8a22dd" },
-    { id: 24, name: "Frank", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000020.webp", color: "#8a22dd" },
-    { id: 25, name: "Bibi", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000026.webp", color: "#8a22dd" },
-    { id: 26, name: "Bea", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000029.webp", color: "#8a22dd" },
-    { id: 27, name: "Emz", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000030.webp", color: "#8a22dd" },
-    { id: 28, name: "Gale", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000035.webp", color: "#8a22dd" },
-    { id: 29, name: "Nani", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000036.webp", color: "#8a22dd" },
-    { id: 30, name: "Collete", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000039.webp", color: "#8a22dd" },
-    { id: 31, name: "Edgar", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000043.webp", color: "#8a22dd" },
-    { id: 32, name: "Stu", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000045.webp", color: "#8a22dd" },
-    { id: 33, name: "Belle", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000046.webp", color: "#8a22dd" },
-    { id: 34, name: "Grom", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000048.webp", color: "#8a22dd" },
-    { id: 35, name: "Griff", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000050.webp", color: "#8a22dd" },
-    { id: 36, name: "Ash", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000051.webp", color: "#8a22dd" },
-    { id: 37, name: "Lola", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000053.webp", color: "#8a22dd" },
-    { id: 38, name: "Bonnie", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000058.webp", color: "#8a22dd" },
-    { id: 39, name: "Sam", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000060.webp", color: "#8a22dd" },
-    { id: 40, name: "Mandy", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000065.webp", color: "#8a22dd" },
-    { id: 41, name: "Maisie", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000068.webp", color: "#8a22dd" },
-    { id: 42, name: "Hank", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000069.webp", color: "#8a22dd" },
-    { id: 43, name: "Pearl", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000072.webp", color: "#8a22dd" },
-    { id: 44, name: "Larry lorry", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000077.webp", color: "#8a22dd" },
-    { id: 45, name: "Angelo", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000079.webp", color: "#8a22dd" },
-    { id: 46, name: "Berry", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000082.webp", color: "#8a22dd" },
-    { id: 47, name: "Shade", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000086.webp", color: "#8a22dd" },
-    { id: 48, name: "Meeple", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000089.webp", color: "#8a22dd" },
-    { id: 49, name: "Trunk", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000096.webp", color: "#8a22dd" },
-    { id: 50, name: "Mortis", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000011.webp", color: "#e81116" },
-    { id: 51, name: "Tara", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000017.webp", color: "#e81116" },
-    { id: 52, name: "Gene", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000021.webp", color: "#e81116" },
-    { id: 53, name: "Mr.P", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000031.webp", color: "#e81116" },
-    { id: 54, name: "Max", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000032.webp", color: "#e81116" },
-    { id: 55, name: "Sprout", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000037.webp", color: "#e81116" },
-    { id: 56, name: "Lou", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000041.webp", color: "#e81116" },
-    { id: 57, name: "Byron", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000042.webp", color: "#e81116" },
-    { id: 58, name: "Ruffs", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000044.webp", color: "#e81116" },
-    { id: 59, name: "Squeak", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000047.webp", color: "#e81116" },
-    { id: 60, name: "Buzz", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000049.webp", color: "#e81116" },
-    { id: 61, name: "Fang", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000054.webp", color: "#e81116" },
-    { id: 62, name: "Eve", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000056.webp", color: "#e81116" },
-    { id: 63, name: "Janet", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000057.webp", color: "#e81116" },
-    { id: 64, name: "Otis", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000059.webp", color: "#e81116" },
-    { id: 65, name: "Buster", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000062.webp", color: "#e81116" },
-    { id: 66, name: "Gray", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000064.webp", color: "#e81116" },
-    { id: 67, name: "R-T", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000066.webp", color: "#e81116" },
-    { id: 68, name: "Willow", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000067.webp", color: "#e81116" },
-    { id: 69, name: "Doug", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000071.webp", color: "#e81116" },
-    { id: 70, name: "Chuck", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000073.webp", color: "#e81116" },
-    { id: 71, name: "Charlie", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000074.webp", color: "#e81116" },
-    { id: 72, name: "Mico", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000075.webp", color: "#e81116" },
-    { id: 73, name: "Melodie", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000078.webp", color: "#e81116" },
-    { id: 74, name: "Lily", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000081.webp", color: "#e81116" },
-    { id: 75, name: "Clancy", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000083.webp", color: "#e81116" },
-    { id: 76, name: "Moe", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000084.webp", color: "#e81116" },
-    { id: 77, name: "Juju", class: "Artillery", image: "https://brawlify.com/images/brawlers/160/16000087.webp", color: "#e81116" },
-    { id: 78, name: "Ollie", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000090.webp", color: "#e81116" },
-    { id: 79, name: "Lumi", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000091.webp", color: "#e81116" },
-    { id: 80, name: "Finx", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000092.webp", color: "#e81116" },
-    { id: 81, name: "Jae-Yong", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000093.webp", color: "#e81116" },
-    { id: 82, name: "Alli", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000095.webp", color: "#e81116" },
-    { id: 83, name: "Mina", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000097.webp", color: "#e81116" },
-    { id: 84, name: "Ziggy", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000098.webp", color: "#e81116" },
-    { id: 85, name: "Gigi", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000100.webp", color: "#e81116" },
-    { id: 86, name: "Glowy", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000101.webp", color: "#e81116" },
-    { id: 87, name: "Najia", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/16000103.png", color: "#fbea0e" },
-    { id: 88, name: "Spike", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000005.webp", color: "#fbea0e" },
-    { id: 89, name: "Crow", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000012.webp", color: "#fbea0e" },
-    { id: 90, name: "Leon", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000023.webp", color: "#fbea0e" },
-    { id: 91, name: "Sandy", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000028.webp", color: "#fbea0e" },
-    { id: 92, name: "Surge", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000038.webp", color: "#fbea0e" },
-    { id: 93, name: "Amber", class: "Controller", image: "https://brawlify.com/images/brawlers/160/16000040.webp", color: "#fbea0e" },
-    { id: 94, name: "Meg", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000052.webp", color: "#fbea0e" },
-    { id: 95, name: "Chester", class: "Damage Dealer", image: "https://brawlify.com/images/brawlers/160/16000063.webp", color: "#fbea0e" },
-    { id: 96, name: "Cordelius", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000070.webp", color: "#fbea0e" },
-    { id: 97, name: "Kit", class: "Support", image: "https://brawlify.com/images/brawlers/160/16000076.webp", color: "#fbea0e" },
-    { id: 98, name: "Draco", class: "Tank", image: "https://brawlify.com/images/brawlers/160/16000080.webp", color: "#fbea0e" },
-    { id: 99, name: "Kenji", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000085.webp", color: "#fbea0e" },
-    { id: 100, name: "Pierce", class: "Marksman", image: "https://brawlify.com/images/brawlers/160/16000099.webp", color: "#fbea0e" },
-    { id: 101, name: "Kaze", class: "Assassin", image: "https://brawlify.com/images/brawlers/160/16000094.webp", color: "rainbow" },
-    { id: 102, name: "Sirius", class: "Controller", image: "https://brawlify.com/images/brawlers/16000102.png", color: "rainbow" },
-];
-
-const metaData = {
-    "S": [89, 88, 90, 100, 50, 95, 3, 2, 11],
-    "A": [64, 21, 102, 25, 57, 27, 75, 87, 4], 
-    "B": [48, 20, 83, 58, 96, 17, 74, 84, 101, 33, 82, 93, 71, 45],
-    "C": [9, 47, 15, 26, 52, 97, 40, 59, 77, 22, 69, 29, 72, 67, 73, 51, 32, 99, 24, 76, 7],
-    "D": [35, 34, 31, 1, 13, 65, 14, 70, 55, 92, 61, 60, 53, 86, 42, 63, 41, 38, 80, 91, 16, 37, 98, 94, 5, 49, 68, 85, 12, 56],
-    "F": [28, 43, 81, 54, 79, 46, 10, 36, 8, 78, 18, 39, 30, 62, 23, 19]
-};
-
-const hardCounters = {
-    //------------------------------Tank-------------------------------
-    3: [ // Bull
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 2, weight: 20, tip: "Long distance, worse on closed maps"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 25, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 26, weight: 25, tip: "Long distance, veryyyy bad on closed maps" },
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-    ],
-    25: [ // Bibi
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 10, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 1, weight: 25, tip: "Very good for closed maps"},
-        { id: 26, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-
-    ],
-    24: [ // Frank
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 10, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 1, weight: 25, tip: "Very good for closed maps"},
-        { id: 26, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-    ],
-    19: [ // Jacky
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 10, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 1, weight: 25, tip: "Very good for closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-    ],
-
-    99: [ // Kenji
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 10, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 1, weight: 25, tip: "Very good for closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-    ],
-
-    101: [ // Kaze
-        { id: 100, weight: 252, tip: "Long distance, worse on closed maps"},
-        { id: 75, weight: 80, tip: "The best anti tank rn, pick everywhere"},
-        { id: 88, weight: 25, tip: "Top 2 anti tank, good pick if Clancy banned"},
-        { id: 35, weight: 25, tip: "Top 3 anti tank, good pick if Clancy banned"},
-        { id: 30, weight: 5, tip: "Mid distance, good for Heist"},
-        { id: 64, weight: 20, tip: "Long distance, i dont like otis"},
-        { id: 27, weight: 10, tip: "Mid distance, good for control, worse on closed maps, "},
-        { id: 87, weight: 25, tip: "Long distance, veryyyy bad on closed maps"},
-        { id: 1, weight: 25, tip: "Very good for closed maps"},
-        { id: 102, weight: 25, tip: "Mid distance and closed maps"}
-    ],
-
-    //------------------------------Anti Heal-------------------------------
-    57: [ // Byron
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    9: [ // Poco
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    23: [ // Pam
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    69: [ // Pam
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    81: [ // Jae young
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    46: [ // Berry
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    86: [ // Glowy
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    52: [ // Gene
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    50: [ // Mortis
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    99: [ // Kenji
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-    25: [ // Bibi
-        { id: 89, weight: 35, tip: "Use first star power to reduce heal"}
-    ],
-
-
-    //------------------------------Metateli-------------------------------
-    5: [ // Barley
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    13: [ // Dyno
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    16: [ // Tick
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    34: [ // Tick
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    44: [ // Larry
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    55: [ // Sprout
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    77: [ // Juju
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    68: [ // Willow
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-    84: [ // Willow
-        { id: 3, weight: 20, tip: "Not recomended on open maps"},
-        { id: 25, weight: 20, tip: "Not recomended on open maps"},
-        { id: 19, weight: 20, tip: "Not recomended on open maps"},
-        { id: 50, weight: 20, tip: "Good or most maps"},
-        { id: 72, weight: 20, tip: "Not recomended on open maps"},
-        { id: 74, weight: 10, tip: "Good"},
-        { id: 82, weight: 10, tip: "Good for closed maps, need bushes"},
-        { id: 31, weight: 10, tip: "Ok rn, with new buffies will be the best"},
-        { id: 90, weight: 20, tip: "Good for closed maps, need bushes"},
-        { id: 97, weight: 20, tip: "Long distance, closed distance"},
-        { id: 31, weight: 20, tip: "Open map with ur ult, not op rn"},
-        { id: 47, weight: 20, tip: "Kill through walls"},
-        { id: 96, weight: 20, tip: "Jump with first gadget"},
-        { id: 99, weight: 20, tip: "Based on map"},
-        { id: 33, weight: 20, tip: "Based on map, long distance bounce"},
-        { id: 29, weight: 20, tip: "Based on map, long distance"},
-    ],
-
-    //------------------------------Anti Chuck-------------------------------
-    70: [ // Chuck
-        { id: 96, weight: 20, tip: "Good conter (Heist)"},
-        { id: 72, weight: 20, tip: "Good conter (Heist)"},
-        { id: 3, weight: 20, tip: "Good tank conter"},
-        { id: 35, weight: 20, tip: "Good conter (Heist)"}
-    ],
-
-    //------------------------------Anti Dalniki-------------------------------
-    22: [ // Piper
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    26: [ // Bea
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    33: [ // Belle
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    40: [ // Mandy
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    38: [ // Bonnie
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    45: [ // Angelo
-        { id: 3, weight: 20, tip: "Good for closed maps"},
-        { id: 25, weight: 20, tip: "Good for closed maps"},
-        { id: 19, weight: 20, tip: "Good for closed maps"},
-        { id: 100, weight: 20, tip: "Long distance, and closed maps"},
-        { id: 84, weight: 5, tip: "Good for closed maps"},
-        { id: 31, weight: 10, tip: "Good for closed maps"},
-        { id: 82, weight: 15, tip: "Good for closed maps with bushes"},
-        { id: 85, weight: 10, tip: "For long distance maps, not for skill issue"},
-        { id: 90, weight: 25, tip: "Long distance, closed maps"},
-        { id: 101, weight: 20, tip: "Good for closed maps"},
-        { id: 50, weight: 10, tip: "Long distance, closed maps"},
-        { id: 74, weight: 20, tip: "Good for closed maps with bushes"},
-        { id: 97, weight: 20, tip: "Not for skill issue"}
-    ],
-    //------------------------------Anti Sirius-------------------------------
-    102: [ // Sirius
-        { id: 15, weight: 30, tip: "The best for anti Sirius"},
-    ],
-    //------------------------------Anti Najia-------------------------------
-    87: [ // Sirius
-        { id: 58, weight: 30, tip: "Spawn things with first gadget"},
-        { id: 74, weight: 15, tip: "Good"},
-        { id: 50, weight: 15, tip: "Use gadget for bat"},
-        { id: 90, weight: 15, tip: "Use gadget for reduce potion effects"},
-        { id: 25, weight: 15, tip: "Good tank"},
-        { id: 62, weight: 15, tip: "Use only with hypercharge"},
-    ],
-};
-
-// 1. Хранилище для выбранных врагов
-let selectedEnemies = [null, null, null]; 
-let currentSlot = null;
-
-// 2. Открыть окно выбора бойца
-// Открыть окно выбора с поиском
-function openPicker(slotIndex) {
-    currentSlot = slotIndex;
-    const modal = document.getElementById('picker-modal');
-    
-    if (!modal) return;
-
-    modal.classList.remove('hidden');
-    
-    // Создаем структуру окна
-    modal.innerHTML = `
+let _0x0d9bbe;const brawlers=[{"id":1,"name":"\u0053\u0068\u0065\u006C\u006C\u0079",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0030\u002E\u0077\u0065\u0062\u0070","color":"#77d4fe"},{'\u0069\u0064':2,'\u006E\u0061\u006D\u0065':"\u0043\u006F\u006C\u0074",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0035\u0061\u0065\u0061\u0032\u0065"},{'\u0069\u0064':3,"name":"\u0042\u0075\u006C\u006C","class":"\u0054\u0061\u006E\u006B",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000002.webp",'\u0063\u006F\u006C\u006F\u0072':"#5aea2e"},{'\u0069\u0064':4,'\u006E\u0061\u006D\u0065':"Brock",'\u0063\u006C\u0061\u0073\u0073':"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0033\u002E\u0077\u0065\u0062\u0070","color":"#5aea2e"},{'\u0069\u0064':5,'\u006E\u0061\u006D\u0065':"Barley","class":"\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0036\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0035\u0061\u0065\u0061\u0032\u0065"},{'\u0069\u0064':7,'\u006E\u0061\u006D\u0065':"Nita","class":"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000008.webp","color":"#5aea2e"},{'\u0069\u0064':8,"name":"\u0045\u006C\u0020\u0050\u0072\u0069\u006D\u006F","class":"\u0054\u0061\u006E\u006B",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000010.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0035\u0061\u0065\u0061\u0032\u0065"},{"id":9,'\u006E\u0061\u006D\u0065':"Poco",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0033\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#5aea2e"},{'\u0069\u0064':10,'\u006E\u0061\u006D\u0065':"\u0052\u006F\u0073\u0061",'\u0063\u006C\u0061\u0073\u0073':"Tank",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#5aea2e"},{'\u0069\u0064':11,"name":"Rico",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#1f6ce0"},{"id":12,'\u006E\u0061\u006D\u0065':"\u004A\u0065\u0073\u0073\u0069\u0065",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000007.webp","color":"#1f6ce0"},{'\u0069\u0064':13,"name":"Dynomike","class":"\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079","image":"https://brawlify.com/images/brawlers/160/16000009.webp","color":"#1f6ce0"},{"id":14,"name":"\u0044\u0061\u0072\u0072\u0079\u006C",'\u0063\u006C\u0061\u0073\u0073':"\u0054\u0061\u006E\u006B","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0038\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0031\u0066\u0036\u0063\u0065\u0030"},{'\u0069\u0064':15,"name":"\u0050\u0065\u006E\u006E\u0079",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0039\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#1f6ce0"},{'\u0069\u0064':16,'\u006E\u0061\u006D\u0065':"\u0054\u0069\u0063\u006B",'\u0063\u006C\u0061\u0073\u0073':"Artillery",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000022.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0031\u0066\u0036\u0063\u0065\u0030"},{"id":17,"name":"Carl",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0035\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0031\u0066\u0036\u0063\u0065\u0030"},{'\u0069\u0064':18,"name":"8-BIT",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000027.webp","color":"#1f6ce0"},{'\u0069\u0064':19,'\u006E\u0061\u006D\u0065':"Jacky",'\u0063\u006C\u0061\u0073\u0073':"\u0054\u0061\u006E\u006B",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000034.webp",'\u0063\u006F\u006C\u006F\u0072':"#1f6ce0"},{'\u0069\u0064':20,'\u006E\u0061\u006D\u0065':"\u0047\u0075\u0073","class":"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":21,'\u006E\u0061\u006D\u0065':"Bo",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{'\u0069\u0064':22,'\u006E\u0061\u006D\u0065':"\u0050\u0069\u0070\u0065\u0072",'\u0063\u006C\u0061\u0073\u0073':"Marksman",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{'\u0069\u0064':23,'\u006E\u0061\u006D\u0065':"Pam",'\u0063\u006C\u0061\u0073\u0073':"Support",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0036\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":24,"name":"Frank","class":"\u0054\u0061\u006E\u006B",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0030\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":25,"name":"Bibi","class":"\u0054\u0061\u006E\u006B","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0036\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{'\u0069\u0064':26,"name":"\u0042\u0065\u0061","class":"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0039\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":27,"name":"Emz",'\u0063\u006C\u0061\u0073\u0073':"Controller","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0033\u0030\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":28,"name":"Gale","class":"Controller","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0033\u0035\u002E\u0077\u0065\u0062\u0070","color":"#8a22dd"},{'\u0069\u0064':29,'\u006E\u0061\u006D\u0065':"\u004E\u0061\u006E\u0069","class":"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0033\u0036\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":30,'\u006E\u0061\u006D\u0065':"\u0043\u006F\u006C\u006C\u0065\u0074\u0065","class":"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000039.webp",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{'\u0069\u0064':31,'\u006E\u0061\u006D\u0065':"\u0045\u0064\u0067\u0061\u0072","class":"Assassin",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0034\u0033\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':32,"name":"\u0053\u0074\u0075",'\u0063\u006C\u0061\u0073\u0073':"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0034\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{"id":33,'\u006E\u0061\u006D\u0065':"Belle",'\u0063\u006C\u0061\u0073\u0073':"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000046.webp","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':34,'\u006E\u0061\u006D\u0065':"Grom","class":"Artillery","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0034\u0038\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':35,'\u006E\u0061\u006D\u0065':"\u0047\u0072\u0069\u0066\u0066",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000050.webp","color":"#8a22dd"},{'\u0069\u0064':36,'\u006E\u0061\u006D\u0065':"Ash","class":"\u0054\u0061\u006E\u006B","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{"id":37,"name":"\u004C\u006F\u006C\u0061","class":"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0033\u002E\u0077\u0065\u0062\u0070","color":"#8a22dd"},{'\u0069\u0064':38,"name":"Bonnie",'\u0063\u006C\u0061\u0073\u0073':"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0038\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':39,"name":"Sam","class":"Assassin",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000060.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':40,'\u006E\u0061\u006D\u0065':"\u004D\u0061\u006E\u0064\u0079","class":"Marksman",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":41,"name":"Maisie","class":"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0038\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{"id":42,'\u006E\u0061\u006D\u0065':"\u0048\u0061\u006E\u006B",'\u0063\u006C\u0061\u0073\u0073':"Tank",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0039\u002E\u0077\u0065\u0062\u0070","color":"#8a22dd"},{'\u0069\u0064':43,'\u006E\u0061\u006D\u0065':"Pearl",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000072.webp","color":"#8a22dd"},{"id":44,'\u006E\u0061\u006D\u0065':"Larry lorry","class":"\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000077.webp","color":"#8a22dd"},{'\u0069\u0064':45,"name":"\u0041\u006E\u0067\u0065\u006C\u006F","class":"Marksman","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0039\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':46,'\u006E\u0061\u006D\u0065':"Berry",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0038\u0032\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':47,"name":"\u0053\u0068\u0061\u0064\u0065",'\u0063\u006C\u0061\u0073\u0073':"Assassin",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0038\u0036\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0038\u0061\u0032\u0032\u0064\u0064"},{'\u0069\u0064':48,"name":"Meeple",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0038\u0039\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#8a22dd"},{'\u0069\u0064':49,'\u006E\u0061\u006D\u0065':"\u0054\u0072\u0075\u006E\u006B",'\u0063\u006C\u0061\u0073\u0073':"\u0054\u0061\u006E\u006B",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0039\u0036\u002E\u0077\u0065\u0062\u0070","color":"#8a22dd"},{'\u0069\u0064':50,'\u006E\u0061\u006D\u0065':"Mortis",'\u0063\u006C\u0061\u0073\u0073':"Assassin",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000011.webp",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{"id":51,'\u006E\u0061\u006D\u0065':"Tara","class":"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0031\u0037\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":52,'\u006E\u0061\u006D\u0065':"Gene","class":"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0031\u002E\u0077\u0065\u0062\u0070","color":"#e81116"},{"id":53,'\u006E\u0061\u006D\u0065':"\u004D\u0072\u002E\u0050","class":"Controller",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0033\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':54,'\u006E\u0061\u006D\u0065':"\u004D\u0061\u0078","class":"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0033\u0032\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':55,"name":"\u0053\u0070\u0072\u006F\u0075\u0074",'\u0063\u006C\u0061\u0073\u0073':"Artillery",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000037.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":56,"name":"Lou","class":"Controller",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0034\u0031\u002E\u0077\u0065\u0062\u0070","color":"#e81116"},{'\u0069\u0064':57,"name":"\u0042\u0079\u0072\u006F\u006E",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000042.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':58,'\u006E\u0061\u006D\u0065':"\u0052\u0075\u0066\u0066\u0073","class":"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000044.webp",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':59,"name":"\u0053\u0071\u0075\u0065\u0061\u006B",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000047.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":60,"name":"Buzz","class":"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0034\u0039\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':61,'\u006E\u0061\u006D\u0065':"Fang",'\u0063\u006C\u0061\u0073\u0073':"Assassin","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':62,"name":"\u0045\u0076\u0065",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0036\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":63,'\u006E\u0061\u006D\u0065':"\u004A\u0061\u006E\u0065\u0074","class":"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0037\u002E\u0077\u0065\u0062\u0070","color":"#e81116"},{'\u0069\u0064':64,"name":"\u004F\u0074\u0069\u0073",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0039\u002E\u0077\u0065\u0062\u0070","color":"#e81116"},{'\u0069\u0064':65,'\u006E\u0061\u006D\u0065':"\u0042\u0075\u0073\u0074\u0065\u0072","class":"Tank",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0032\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':66,'\u006E\u0061\u006D\u0065':"\u0047\u0072\u0061\u0079",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000064.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':67,"name":"\u0052\u002D\u0054",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0036\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':68,'\u006E\u0061\u006D\u0065':"\u0057\u0069\u006C\u006C\u006F\u0077",'\u0063\u006C\u0061\u0073\u0073':"Controller",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0037\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":69,'\u006E\u0061\u006D\u0065':"Doug",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':70,'\u006E\u0061\u006D\u0065':"Chuck",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0033\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':71,'\u006E\u0061\u006D\u0065':"\u0043\u0068\u0061\u0072\u006C\u0069\u0065","class":"Controller",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{"id":72,'\u006E\u0061\u006D\u0065':"\u004D\u0069\u0063\u006F",'\u0063\u006C\u0061\u0073\u0073':"Assassin","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':73,'\u006E\u0061\u006D\u0065':"\u004D\u0065\u006C\u006F\u0064\u0069\u0065","class":"Assassin",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000078.webp",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':74,"name":"Lily",'\u0063\u006C\u0061\u0073\u0073':"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000081.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':75,'\u006E\u0061\u006D\u0065':"\u0043\u006C\u0061\u006E\u0063\u0079",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000083.webp","color":"#e81116"},{'\u0069\u0064':76,"name":"\u004D\u006F\u0065",'\u0063\u006C\u0061\u0073\u0073':"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0038\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':77,'\u006E\u0061\u006D\u0065':"\u004A\u0075\u006A\u0075",'\u0063\u006C\u0061\u0073\u0073':"Artillery","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0038\u0037\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":78,"name":"Ollie",'\u0063\u006C\u0061\u0073\u0073':"\u0054\u0061\u006E\u006B","image":"https://brawlify.com/images/brawlers/160/16000090.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":79,'\u006E\u0061\u006D\u0065':"\u004C\u0075\u006D\u0069","class":"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000091.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':80,'\u006E\u0061\u006D\u0065':"Finx",'\u0063\u006C\u0061\u0073\u0073':"Controller",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000092.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':81,'\u006E\u0061\u006D\u0065':"\u004A\u0061\u0065\u002D\u0059\u006F\u006E\u0067",'\u0063\u006C\u0061\u0073\u0073':"Support","image":"https://brawlify.com/images/brawlers/160/16000093.webp","color":"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':82,'\u006E\u0061\u006D\u0065':"Alli","class":"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0039\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':83,'\u006E\u0061\u006D\u0065':"Mina","class":"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0039\u0037\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':84,'\u006E\u0061\u006D\u0065':"\u005A\u0069\u0067\u0067\u0079",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072","image":"https://brawlify.com/images/brawlers/160/16000098.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{"id":85,'\u006E\u0061\u006D\u0065':"\u0047\u0069\u0067\u0069","class":"Assassin",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000100.webp",'\u0063\u006F\u006C\u006F\u0072':"#e81116"},{'\u0069\u0064':86,'\u006E\u0061\u006D\u0065':"\u0047\u006C\u006F\u0077\u0079",'\u0063\u006C\u0061\u0073\u0073':"Support",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0031\u0030\u0031\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0065\u0038\u0031\u0031\u0031\u0036"},{'\u0069\u0064':87,'\u006E\u0061\u006D\u0065':"Najia",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/16000103.png",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{'\u0069\u0064':88,"name":"\u0053\u0070\u0069\u006B\u0065",'\u0063\u006C\u0061\u0073\u0073':"Damage Dealer",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0030\u0035\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{'\u0069\u0064':89,'\u006E\u0061\u006D\u0065':"\u0043\u0072\u006F\u0077",'\u0063\u006C\u0061\u0073\u0073':"Assassin",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000012.webp",'\u0063\u006F\u006C\u006F\u0072':"#fbea0e"},{"id":90,'\u006E\u0061\u006D\u0065':"Leon",'\u0063\u006C\u0061\u0073\u0073':"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0033\u002E\u0077\u0065\u0062\u0070","color":"#fbea0e"},{'\u0069\u0064':91,'\u006E\u0061\u006D\u0065':"Sandy",'\u0063\u006C\u0061\u0073\u0073':"Controller",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0032\u0038\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#fbea0e"},{"id":92,'\u006E\u0061\u006D\u0065':"\u0053\u0075\u0072\u0067\u0065","class":"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"https://brawlify.com/images/brawlers/160/16000038.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{'\u0069\u0064':93,"name":"Amber","class":"Controller",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/brawlers/160/16000040.webp","color":"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{"id":94,'\u006E\u0061\u006D\u0065':"Meg","class":"Tank",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0035\u0032\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#fbea0e"},{'\u0069\u0064':95,'\u006E\u0061\u006D\u0065':"\u0043\u0068\u0065\u0073\u0074\u0065\u0072","class":"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0036\u0033\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{"id":96,'\u006E\u0061\u006D\u0065':"\u0043\u006F\u0072\u0064\u0065\u006C\u0069\u0075\u0073",'\u0063\u006C\u0061\u0073\u0073':"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0030\u002E\u0077\u0065\u0062\u0070","color":"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{"id":97,"name":"\u004B\u0069\u0074",'\u0063\u006C\u0061\u0073\u0073':"\u0053\u0075\u0070\u0070\u006F\u0072\u0074","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0037\u0036\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#fbea0e"},{'\u0069\u0064':98,'\u006E\u0061\u006D\u0065':"\u0044\u0072\u0061\u0063\u006F","class":"\u0054\u0061\u006E\u006B","image":"https://brawlify.com/images/brawlers/160/16000080.webp",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{'\u0069\u0064':99,"name":"\u004B\u0065\u006E\u006A\u0069",'\u0063\u006C\u0061\u0073\u0073':"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","image":"https://brawlify.com/images/brawlers/160/16000085.webp","color":"\u0023\u0066\u0062\u0065\u0061\u0030\u0065"},{"id":100,'\u006E\u0061\u006D\u0065':"\u0050\u0069\u0065\u0072\u0063\u0065","class":"Marksman",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0039\u0039\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"#fbea0e"},{'\u0069\u0064':101,"name":"Kaze","class":"Assassin",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u002F\u0031\u0036\u0030\u0030\u0030\u0030\u0039\u0034\u002E\u0077\u0065\u0062\u0070",'\u0063\u006F\u006C\u006F\u0072':"\u0072\u0061\u0069\u006E\u0062\u006F\u0077"},{'\u0069\u0064':102,'\u006E\u0061\u006D\u0065':"\u0053\u0069\u0072\u0069\u0075\u0073",'\u0063\u006C\u0061\u0073\u0073':"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002F\u0031\u0036\u0030\u0030\u0030\u0031\u0030\u0032\u002E\u0070\u006E\u0067",'\u0063\u006F\u006C\u006F\u0072':"rainbow"}];_0x0d9bbe="hjmpck".split("").reverse().join("");const metaData={"\u0053":[719857^719784,479860^479788,468173^468119,969093^969185,740028^739982,361814^361737,698564^698567,461486^461484,958194^958201],"\u0041":[298665^298729,276699^276686,104617^104655,698741^698732,838535^838590,512664^512643,786079^786132,590507^590588,102436^102432],"\u0042":[544770^544818,788529^788517,387217^387266,879047^879101,154668^154700,666884^666901,340368^340442,697051^696975,900970^900879,359914^359883,975349^975271,286836^286761,907274^907341,254074^254039],"\u0043":[591082^591075,736736^736719,178843^178836,727505^727499,141814^141762,606234^606331,965832^965856,801137^801098,697757^697808,507922^507908,725854^725787,632320^632349,415561^415489,700455^700516,654797^654724,209243^209256,796496^796528,624828^624863,116910^116918,884973^884897,696045^696042],"\u0044":[292214^292181,319420^319390,132457^132470,145123^145122,214361^214356,549712^549649,885336^885334,480319^480377,928852^928867,120740^120824,699343^699378,748450^748446,610307^610358,319335^319281,831243^831265,814080^814143,943116^943141,647630^647656,429348^429428,663801^663714,385247^385231,549025^548996,458291^458321,756118^756168,836573^836568,594759^594806,733423^733355,484530^484583,729592^729588,674222^674198],"\u0046":[841195^841207,969640^969603,468114^468163,159210^159196,699783^699848,642097^642079,921393^921403,310300^310328,686778^686770,539478^539416,333897^333915,658452^658483,701433^701415,347445^347403,524331^524348,135253^135238]};const hardCounters={3:[{'\u0069\u0064':100,"weight":252,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':75,'\u0077\u0065\u0069\u0067\u0068\u0074':80,'\u0074\u0069\u0070':"\u0054\u0068\u0065\u0020\u0062\u0065\u0073\u0074\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u0020\u0072\u006E\u002C\u0020\u0070\u0069\u0063\u006B\u0020\u0065\u0076\u0065\u0072\u0079\u0077\u0068\u0065\u0072\u0065"},{'\u0069\u0064':88,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Top 2 anti tank, good pick if Clancy banned"},{"id":35,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"Top 3 anti tank, good pick if Clancy banned"},{'\u0069\u0064':2,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':30,"weight":5,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0048\u0065\u0069\u0073\u0074"},{'\u0069\u0064':64,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{'\u0069\u0064':27,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020"},{"id":26,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Long distance, veryyyy bad on closed maps"},{'\u0069\u0064':87,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0076\u0065\u0072\u0079\u0079\u0079\u0079\u0020\u0062\u0061\u0064\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':102,"weight":25,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"}],25:[{"id":100,'\u0077\u0065\u0069\u0067\u0068\u0074':252,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":75,'\u0077\u0065\u0069\u0067\u0068\u0074':80,'\u0074\u0069\u0070':"The best anti tank rn, pick everywhere"},{'\u0069\u0064':88,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Top 2 anti tank, good pick if Clancy banned"},{'\u0069\u0064':35,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0033\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':30,"weight":5,"tip":"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0048\u0065\u0069\u0073\u0074"},{"id":64,"weight":20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{"id":27,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020"},{"id":87,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Long distance, veryyyy bad on closed maps"},{'\u0069\u0064':1,"weight":25,"tip":"\u0056\u0065\u0072\u0079\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":26,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Long distance, veryyyy bad on closed maps"},{"id":102,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"Mid distance and closed maps"}],24:[{'\u0069\u0064':100,"weight":252,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':75,'\u0077\u0065\u0069\u0067\u0068\u0074':80,"tip":"The best anti tank rn, pick everywhere"},{"id":88,"weight":25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0032\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{"id":35,"weight":25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0033\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':30,'\u0077\u0065\u0069\u0067\u0068\u0074':5,"tip":"Mid distance, good for Heist"},{"id":64,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{'\u0069\u0064':27,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Mid distance, good for control, worse on closed maps, "},{'\u0069\u0064':87,"weight":25,'\u0074\u0069\u0070':"Long distance, veryyyy bad on closed maps"},{"id":1,"weight":25,'\u0074\u0069\u0070':"\u0056\u0065\u0072\u0079\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":26,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0076\u0065\u0072\u0079\u0079\u0079\u0079\u0020\u0062\u0061\u0064\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":102,"weight":25,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"}],19:[{'\u0069\u0064':100,"weight":252,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':75,'\u0077\u0065\u0069\u0067\u0068\u0074':80,"tip":"\u0054\u0068\u0065\u0020\u0062\u0065\u0073\u0074\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u0020\u0072\u006E\u002C\u0020\u0070\u0069\u0063\u006B\u0020\u0065\u0076\u0065\u0072\u0079\u0077\u0068\u0065\u0072\u0065"},{"id":88,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"\u0054\u006F\u0070\u0020\u0032\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':35,"weight":25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0033\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':30,'\u0077\u0065\u0069\u0067\u0068\u0074':5,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0048\u0065\u0069\u0073\u0074"},{'\u0069\u0064':64,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{'\u0069\u0064':27,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Mid distance, good for control, worse on closed maps, "},{'\u0069\u0064':87,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0076\u0065\u0072\u0079\u0079\u0079\u0079\u0020\u0062\u0061\u0064\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":1,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"\u0056\u0065\u0072\u0079\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':102,"weight":25,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"}],99:[{"id":100,"weight":252,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':75,'\u0077\u0065\u0069\u0067\u0068\u0074':80,'\u0074\u0069\u0070':"\u0054\u0068\u0065\u0020\u0062\u0065\u0073\u0074\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u0020\u0072\u006E\u002C\u0020\u0070\u0069\u0063\u006B\u0020\u0065\u0076\u0065\u0072\u0079\u0077\u0068\u0065\u0072\u0065"},{"id":88,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0032\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':35,"weight":25,'\u0074\u0069\u0070':"\u0054\u006F\u0070\u0020\u0033\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0070\u0069\u0063\u006B\u0020\u0069\u0066\u0020\u0043\u006C\u0061\u006E\u0063\u0079\u0020\u0062\u0061\u006E\u006E\u0065\u0064"},{'\u0069\u0064':30,'\u0077\u0065\u0069\u0067\u0068\u0074':5,"tip":"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0048\u0065\u0069\u0073\u0074"},{"id":64,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{'\u0069\u0064':27,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020"},{"id":87,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0076\u0065\u0072\u0079\u0079\u0079\u0079\u0020\u0062\u0061\u0064\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':1,"weight":25,'\u0074\u0069\u0070':"Very good for closed maps"},{'\u0069\u0064':102,"weight":25,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"}],101:[{'\u0069\u0064':100,"weight":252,'\u0074\u0069\u0070':"Long distance, worse on closed maps"},{'\u0069\u0064':75,"weight":80,'\u0074\u0069\u0070':"\u0054\u0068\u0065\u0020\u0062\u0065\u0073\u0074\u0020\u0061\u006E\u0074\u0069\u0020\u0074\u0061\u006E\u006B\u0020\u0072\u006E\u002C\u0020\u0070\u0069\u0063\u006B\u0020\u0065\u0076\u0065\u0072\u0079\u0077\u0068\u0065\u0072\u0065"},{'\u0069\u0064':88,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Top 2 anti tank, good pick if Clancy banned"},{"id":35,"weight":25,'\u0074\u0069\u0070':"Top 3 anti tank, good pick if Clancy banned"},{'\u0069\u0064':30,"weight":5,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0048\u0065\u0069\u0073\u0074"},{'\u0069\u0064':64,"weight":20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0069\u0020\u0064\u006F\u006E\u0074\u0020\u006C\u0069\u006B\u0065\u0020\u006F\u0074\u0069\u0073"},{'\u0069\u0064':27,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004D\u0069\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0067\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006F\u006E\u0074\u0072\u006F\u006C\u002C\u0020\u0077\u006F\u0072\u0073\u0065\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020"},{"id":87,"weight":25,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0076\u0065\u0072\u0079\u0079\u0079\u0079\u0020\u0062\u0061\u0064\u0020\u006F\u006E\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':1,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"Very good for closed maps"},{'\u0069\u0064':102,"weight":25,"tip":"Mid distance and closed maps"}],57:[{'\u0069\u0064':89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,"tip":"Use first star power to reduce heal"}],9:[{'\u0069\u0064':89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"Use first star power to reduce heal"}],23:[{"id":89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],69:[{'\u0069\u0064':89,"weight":35,"tip":"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],81:[{'\u0069\u0064':89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],46:[{"id":89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"Use first star power to reduce heal"}],86:[{"id":89,"weight":35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],52:[{'\u0069\u0064':89,"weight":35,"tip":"Use first star power to reduce heal"}],50:[{'\u0069\u0064':89,"weight":35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],99:[{"id":89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],25:[{'\u0069\u0064':89,'\u0077\u0065\u0069\u0067\u0068\u0074':35,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0073\u0074\u0061\u0072\u0020\u0070\u006F\u0077\u0065\u0072\u0020\u0074\u006F\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0068\u0065\u0061\u006C"}],5:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":25,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good or most maps"},{"id":72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u0047\u006F\u006F\u0064"},{'\u0069\u0064':82,"weight":10,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':31,"weight":10,"tip":"\u004F\u006B\u0020\u0072\u006E\u002C\u0020\u0077\u0069\u0074\u0068\u0020\u006E\u0065\u0077\u0020\u0062\u0075\u0066\u0066\u0069\u0065\u0073\u0020\u0077\u0069\u006C\u006C\u0020\u0062\u0065\u0020\u0074\u0068\u0065\u0020\u0062\u0065\u0073\u0074"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps, need bushes"},{'\u0069\u0064':97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Long distance, closed distance"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0075\u0072\u0020\u0075\u006C\u0074\u002C\u0020\u006E\u006F\u0074\u0020\u006F\u0070\u0020\u0072\u006E"},{"id":47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{'\u0069\u0064':96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{'\u0069\u0064':99,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070"},{'\u0069\u0064':33,"weight":20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{'\u0069\u0064':29,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],13:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{"id":50,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good or most maps"},{'\u0069\u0064':72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{"id":74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064"},{"id":82,"weight":10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{'\u0069\u0064':97,"weight":20,"tip":"Long distance, closed distance"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Open map with ur ult, not op rn"},{'\u0069\u0064':47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{"id":96,"weight":20,'\u0074\u0069\u0070':"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{"id":99,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070"},{"id":33,"weight":20,'\u0074\u0069\u0070':"Based on map, long distance bounce"},{"id":29,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],16:[{'\u0069\u0064':3,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':25,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":19,"weight":20,"tip":"Not recomended on open maps"},{'\u0069\u0064':50,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Not recomended on open maps"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Good"},{"id":82,"weight":10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,"weight":20,"tip":"Long distance, closed distance"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Open map with ur ult, not op rn"},{'\u0069\u0064':47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{"id":96,"weight":20,"tip":"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{'\u0069\u0064':99,"weight":20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{'\u0069\u0064':29,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],34:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':25,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':19,"weight":20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{"id":72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Good"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{'\u0069\u0064':31,"weight":10,"tip":"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,"weight":20,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{"id":97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Long distance, closed distance"},{'\u0069\u0064':31,"weight":20,"tip":"Open map with ur ult, not op rn"},{'\u0069\u0064':47,"weight":20,'\u0074\u0069\u0070':"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{"id":96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{'\u0069\u0064':99,"weight":20,"tip":"Based on map"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Based on map, long distance bounce"},{'\u0069\u0064':29,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],44:[{'\u0069\u0064':3,"weight":20,'\u0074\u0069\u0070':"Not recomended on open maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':19,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":50,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{"id":72,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u0047\u006F\u006F\u0064"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Good for closed maps, need bushes"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,"weight":20,'\u0074\u0069\u0070':"Long distance, closed distance"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0075\u0072\u0020\u0075\u006C\u0074\u002C\u0020\u006E\u006F\u0074\u0020\u006F\u0070\u0020\u0072\u006E"},{'\u0069\u0064':47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Kill through walls"},{'\u0069\u0064':96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{"id":99,"weight":20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{'\u0069\u0064':29,"weight":20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],55:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Not recomended on open maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{"id":19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":50,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{"id":72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{"id":74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Good"},{'\u0069\u0064':82,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{"id":31,"weight":10,"tip":"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{'\u0069\u0064':97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Open map with ur ult, not op rn"},{"id":47,"weight":20,'\u0074\u0069\u0070':"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{'\u0069\u0064':96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{"id":99,"weight":20,"tip":"Based on map"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{'\u0069\u0064':29,"weight":20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],77:[{"id":3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{'\u0069\u0064':25,"weight":20,"tip":"Not recomended on open maps"},{'\u0069\u0064':19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':72,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u004F\u006B\u0020\u0072\u006E\u002C\u0020\u0077\u0069\u0074\u0068\u0020\u006E\u0065\u0077\u0020\u0062\u0075\u0066\u0066\u0069\u0065\u0073\u0020\u0077\u0069\u006C\u006C\u0020\u0062\u0065\u0020\u0074\u0068\u0065\u0020\u0062\u0065\u0073\u0074"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Open map with ur ult, not op rn"},{'\u0069\u0064':47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004B\u0069\u006C\u006C\u0020\u0074\u0068\u0072\u006F\u0075\u0067\u0068\u0020\u0077\u0061\u006C\u006C\u0073"},{"id":96,"weight":20,'\u0074\u0069\u0070':"Jump with first gadget"},{'\u0069\u0064':99,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{"id":29,"weight":20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],68:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not recomended on open maps"},{'\u0069\u0064':19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,"weight":20,'\u0074\u0069\u0070':"Good or most maps"},{'\u0069\u0064':72,"weight":20,"tip":"Not recomended on open maps"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064"},{'\u0069\u0064':82,"weight":10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{"id":31,"weight":10,'\u0074\u0069\u0070':"Ok rn, with new buffies will be the best"},{'\u0069\u0064':90,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,"weight":20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0075\u0072\u0020\u0075\u006C\u0074\u002C\u0020\u006E\u006F\u0074\u0020\u006F\u0070\u0020\u0072\u006E"},{"id":47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Kill through walls"},{'\u0069\u0064':96,"weight":20,"tip":"\u004A\u0075\u006D\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{'\u0069\u0064':99,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Based on map"},{'\u0069\u0064':33,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{"id":29,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],84:[{"id":3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':25,"weight":20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{"id":19,"weight":20,"tip":"\u004E\u006F\u0074\u0020\u0072\u0065\u0063\u006F\u006D\u0065\u006E\u0064\u0065\u0064\u0020\u006F\u006E\u0020\u006F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u006F\u0072\u0020\u006D\u006F\u0073\u0074\u0020\u006D\u0061\u0070\u0073"},{"id":72,"weight":20,'\u0074\u0069\u0070':"Not recomended on open maps"},{'\u0069\u0064':74,"weight":10,'\u0074\u0069\u0070':"Good"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u0065\u0065\u0064\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004F\u006B\u0020\u0072\u006E\u002C\u0020\u0077\u0069\u0074\u0068\u0020\u006E\u0065\u0077\u0020\u0062\u0075\u0066\u0066\u0069\u0065\u0073\u0020\u0077\u0069\u006C\u006C\u0020\u0062\u0065\u0020\u0074\u0068\u0065\u0020\u0062\u0065\u0073\u0074"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps, need bushes"},{"id":97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Long distance, closed distance"},{"id":31,"weight":20,'\u0074\u0069\u0070':"\u004F\u0070\u0065\u006E\u0020\u006D\u0061\u0070\u0020\u0077\u0069\u0074\u0068\u0020\u0075\u0072\u0020\u0075\u006C\u0074\u002C\u0020\u006E\u006F\u0074\u0020\u006F\u0070\u0020\u0072\u006E"},{'\u0069\u0064':47,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Kill through walls"},{'\u0069\u0064':96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Jump with first gadget"},{"id":99,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Based on map"},{'\u0069\u0064':33,"weight":20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u0062\u006F\u0075\u006E\u0063\u0065"},{"id":29,"weight":20,'\u0074\u0069\u0070':"\u0042\u0061\u0073\u0065\u0064\u0020\u006F\u006E\u0020\u006D\u0061\u0070\u002C\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065"}],70:[{'\u0069\u0064':96,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0063\u006F\u006E\u0074\u0065\u0072\u0020\u0028\u0048\u0065\u0069\u0073\u0074\u0029"},{"id":72,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0063\u006F\u006E\u0074\u0065\u0072\u0020\u0028\u0048\u0065\u0069\u0073\u0074\u0029"},{"id":3,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0074\u0061\u006E\u006B\u0020\u0063\u006F\u006E\u0074\u0065\u0072"},{"id":35,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0063\u006F\u006E\u0074\u0065\u0072\u0020\u0028\u0048\u0065\u0069\u0073\u0074\u0029"}],22:[{'\u0069\u0064':3,"weight":20,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':19,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":100,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':84,'\u0077\u0065\u0069\u0067\u0068\u0074':5,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':31,"weight":10,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':82,'\u0077\u0065\u0069\u0067\u0068\u0074':15,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{"id":85,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u0046\u006F\u0072\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"},{"id":90,"weight":25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":101,"weight":20,"tip":"Good for closed maps"},{'\u0069\u0064':50,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps with bushes"},{'\u0069\u0064':97,"weight":20,"tip":"\u004E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"}],26:[{"id":3,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':25,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':19,"weight":20,'\u0074\u0069\u0070':"Good for closed maps"},{"id":100,"weight":20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":84,'\u0077\u0065\u0069\u0067\u0068\u0074':5,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':31,"weight":10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':15,"tip":"Good for closed maps with bushes"},{"id":85,"weight":10,'\u0074\u0069\u0070':"For long distance maps, not for skill issue"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":101,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps"},{'\u0069\u0064':50,"weight":10,'\u0074\u0069\u0070':"Long distance, closed maps"},{"id":74,"weight":20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"}],33:[{'\u0069\u0064':3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps"},{"id":19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps"},{"id":100,"weight":20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':84,"weight":5,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':82,"weight":15,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{"id":85,"weight":10,'\u0074\u0069\u0070':"\u0046\u006F\u0072\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':25,'\u0074\u0069\u0070':"Long distance, closed maps"},{"id":101,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,"weight":10,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':74,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"Good for closed maps with bushes"},{'\u0069\u0064':97,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"}],40:[{'\u0069\u0064':3,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':25,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":19,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":100,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':84,"weight":5,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":31,"weight":10,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':82,'\u0077\u0065\u0069\u0067\u0068\u0074':15,'\u0074\u0069\u0070':"Good for closed maps with bushes"},{"id":85,"weight":10,"tip":"\u0046\u006F\u0072\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"},{'\u0069\u0064':90,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"Long distance, closed maps"},{'\u0069\u0064':101,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"Long distance, closed maps"},{'\u0069\u0064':74,"weight":20,'\u0074\u0069\u0070':"Good for closed maps with bushes"},{'\u0069\u0064':97,"weight":20,'\u0074\u0069\u0070':"\u004E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"}],38:[{"id":3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":25,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':100,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0061\u006E\u0064\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':84,'\u0077\u0065\u0069\u0067\u0068\u0074':5,"tip":"Good for closed maps"},{"id":31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"Good for closed maps"},{"id":82,'\u0077\u0065\u0069\u0067\u0068\u0074':15,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':85,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"For long distance maps, not for skill issue"},{"id":90,'\u0077\u0065\u0069\u0067\u0068\u0074':25,"tip":"Long distance, closed maps"},{'\u0069\u0064':101,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':50,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':74,"weight":20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0062\u0075\u0073\u0068\u0065\u0073"},{'\u0069\u0064':97,"weight":20,'\u0074\u0069\u0070':"Not for skill issue"}],45:[{"id":3,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':25,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':19,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps"},{'\u0069\u0064':100,"weight":20,'\u0074\u0069\u0070':"Long distance, and closed maps"},{'\u0069\u0064':84,"weight":5,"tip":"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':31,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u0047\u006F\u006F\u0064\u0020\u0066\u006F\u0072\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{'\u0069\u0064':82,"weight":15,'\u0074\u0069\u0070':"Good for closed maps with bushes"},{"id":85,'\u0077\u0065\u0069\u0067\u0068\u0074':10,"tip":"\u0046\u006F\u0072\u0020\u006C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u0020\u006D\u0061\u0070\u0073\u002C\u0020\u006E\u006F\u0074\u0020\u0066\u006F\u0072\u0020\u0073\u006B\u0069\u006C\u006C\u0020\u0069\u0073\u0073\u0075\u0065"},{'\u0069\u0064':90,"weight":25,"tip":"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":101,"weight":20,"tip":"Good for closed maps"},{"id":50,'\u0077\u0065\u0069\u0067\u0068\u0074':10,'\u0074\u0069\u0070':"\u004C\u006F\u006E\u0067\u0020\u0064\u0069\u0073\u0074\u0061\u006E\u0063\u0065\u002C\u0020\u0063\u006C\u006F\u0073\u0065\u0064\u0020\u006D\u0061\u0070\u0073"},{"id":74,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Good for closed maps with bushes"},{'\u0069\u0064':97,'\u0077\u0065\u0069\u0067\u0068\u0074':20,'\u0074\u0069\u0070':"Not for skill issue"}],102:[{'\u0069\u0064':15,'\u0077\u0065\u0069\u0067\u0068\u0074':30,'\u0074\u0069\u0070':"\u0054\u0068\u0065\u0020\u0062\u0065\u0073\u0074\u0020\u0066\u006F\u0072\u0020\u0061\u006E\u0074\u0069\u0020\u0053\u0069\u0072\u0069\u0075\u0073"}],87:[{"id":58,"weight":30,'\u0074\u0069\u0070':"\u0053\u0070\u0061\u0077\u006E\u0020\u0074\u0068\u0069\u006E\u0067\u0073\u0020\u0077\u0069\u0074\u0068\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0067\u0061\u0064\u0067\u0065\u0074"},{"id":74,"weight":15,"tip":"Good"},{"id":50,"weight":15,'\u0074\u0069\u0070':"\u0055\u0073\u0065\u0020\u0067\u0061\u0064\u0067\u0065\u0074\u0020\u0066\u006F\u0072\u0020\u0062\u0061\u0074"},{'\u0069\u0064':90,"weight":15,"tip":"\u0055\u0073\u0065\u0020\u0067\u0061\u0064\u0067\u0065\u0074\u0020\u0066\u006F\u0072\u0020\u0072\u0065\u0064\u0075\u0063\u0065\u0020\u0070\u006F\u0074\u0069\u006F\u006E\u0020\u0065\u0066\u0066\u0065\u0063\u0074\u0073"},{'\u0069\u0064':25,"weight":15,"tip":"\u0047\u006F\u006F\u0064\u0020\u0074\u0061\u006E\u006B"},{'\u0069\u0064':62,"weight":15,"tip":"\u0055\u0073\u0065\u0020\u006F\u006E\u006C\u0079\u0020\u0077\u0069\u0074\u0068\u0020\u0068\u0079\u0070\u0065\u0072\u0063\u0068\u0061\u0072\u0067\u0065"}]};let selectedEnemies=[null,null,null];let currentSlot=null;function openPicker(slotIndex,_0x11db){currentSlot=slotIndex;var _0x777cc=(292105^292106)+(777693^777688);const _0xb0b=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0069\u0063\u006B\u0065\u0072\u002D\u006D\u006F\u0064\u0061\u006C");_0x777cc=(826694^826690)+(800015^800013);if(!_0xb0b)return;_0xb0b['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0068\u0069\u0064\u0064\u0065\u006E");_0xb0b['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
         <div class="modal-content">
             <div class="modal-header">
                 <input type="text" id="brawler-search" placeholder="Search brawler..." 
@@ -534,461 +10,34 @@ function openPicker(slotIndex) {
             </div>
             <div id="picker-grid"></div>
         </div>
-    `;
-
-    // Функция для отрисовки списка (внутренняя)
-    const renderFilteredBrawlers = (filterText = "") => {
-        const grid = document.getElementById('picker-grid');
-        if (!grid) return;
-        grid.innerHTML = "";
-        
-        // Фильтруем и сортируем по ID
-        const filtered = brawlers
-            .filter(b => b.name.toLowerCase().includes(filterText.toLowerCase()))
-            .sort((a, b) => a.id - b.id);
-
-        filtered.forEach(b => {
-            const item = document.createElement('div');
-            item.className = "card picker-card"; // Добавили спец класс picker-card
-
-            let videoHTML = "";
-            if (b.color === "rainbow") {
-                item.classList.add("rainbow-card");
-                videoHTML = `<video class="bg-video" autoplay loop muted playsinline>
+    `;var _0x71826a=(723594^723587)+(611385^611387);const _0xe2bcfa=(filterText="")=>{const _0x79a3e=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0069\u0063\u006B\u0065\u0072\u002D\u0067\u0072\u0069\u0064");if(!_0x79a3e)return;_0x79a3e['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";const _0x8ee=brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](b=>b['\u006E\u0061\u006D\u0065']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']()['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](filterText['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']()))['\u0073\u006F\u0072\u0074']((a,b)=>a['\u0069\u0064']-b['\u0069\u0064']);_0x8ee['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](b=>{let _0x13e;const _0x7fe=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x13e=(850926^850925)+(302467^302470);_0x7fe['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="drac-rekcip drac".split("").reverse().join("");let _0xg4b61b;let _0xdd6gf="";_0xg4b61b=(451517^451515)+(880259^880266);if(b['\u0063\u006F\u006C\u006F\u0072']==="\u0072\u0061\u0069\u006E\u0062\u006F\u0077"){_0x7fe['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0072\u0061\u0069\u006E\u0062\u006F\u0077\u002D\u0063\u0061\u0072\u0064");_0xdd6gf=`<video class="bg-video" autoplay loop muted playsinline>
                                 <source src="https://preview.redd.it/srdmhkerhaxe1.gif?width=640&format=mp4&s=9e8614e4b3bdafd81aaf0f6f36b4af8f13540253" type="video/mp4">
-                             </video>`;
-            } else {
-                item.style.background = b.color || '#1a1a1a';
-            }
-
-            // !!! УБРАЛИ УЖАСНЫЕ ПОЗИЦИОНИРОВАНИЯ И ПЛЮЩИЛКИ !!!
-            // Стилизуем карточку только через CSS-классы
-            item.innerHTML = `
-                ${videoHTML}
-                <img src="${b.image}" alt="${b.name}">
-                <p>${b.name}</p>
-            `;
-            
-            item.onclick = () => selectBrawlerForSlot(b);
-            grid.appendChild(item);
-        });
-    };
-
-    // Запускаем отрисовку
-    renderFilteredBrawlers();
-
-    // Слушатель поиска
-    const searchInput = document.getElementById('brawler-search');
-    searchInput.addEventListener('input', (e) => {
-        renderFilteredBrawlers(e.target.value);
-    });
-
-    // Фокус на инпут
-    setTimeout(() => searchInput.focus(), 100);
-}
-
-// 3. Закрыть окно выбора
-function closePicker() {
-    const modal = document.getElementById('picker-modal');
-    if (modal) modal.classList.add('hidden');
-}
-
-// 4. Логика выбора бойца в ячейку (с проверкой на дубликаты)
-function selectBrawlerForSlot(brawler) {
-    if (!brawler) return;
-
-    const isDuplicate = selectedEnemies.some(e => e && e.id === brawler.id);
-    if (isDuplicate) {
-        alert("This Brawler has already been selected!");
-        return;
-    }
-
-    selectedEnemies[currentSlot - 1] = brawler;
-    
-    const slotDiv = document.getElementById(`slot-${currentSlot}`);
-    if (slotDiv) {
-        slotDiv.innerHTML = `<img src="${brawler.image}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">`;
-        slotDiv.style.background = brawler.color || "#000";
-        slotDiv.style.border = "4px solid white";
-    }
-    
-    closePicker();
-}
-
-// 5. Сброс всех слотов
-function resetSlots() {
-    selectedEnemies = [null, null, null];
-    for (let i = 1; i <= 3; i++) {
-        const slot = document.getElementById(`slot-${i}`);
-        if (slot) {
-            slot.innerHTML = "+";
-            slot.style.border = "3px dashed #ccc";
-            slot.style.background = "#1a1a1a";
-        }
-    }
-    const resDiv = document.getElementById('pick-result');
-    if (resDiv) resDiv.innerHTML = "";
-}
-
-// 6. ГЛАВНАЯ ФУНКЦИЯ: Расчет лучшего контр-пика
-function calculateBestPick() {
-    const enemies = selectedEnemies.filter(e => e !== null);
-
-    if (enemies.length === 0) {
-        alert("Выберите хотя бы одного врага для анализа!");
-        return;
-    }
-
-    const tierPoints = { "S": 2.5, "A": 1.5, "B": 1.0, "C": 0.5, "D": 0, "F": -1 };
-
-    // Получаем ID врагов (чтобы исключить их)
-    const enemyIds = enemies.map(e => e.id);
-
-    // Функция получения тира
-    const getTier = (id) => {
-        for (let tier in metaData) {
-            if (metaData[tier].includes(id)) return tier;
-        }
-        return "Z";
-    };
-
-    let finalScores = [];
-
-    brawlers.forEach(myBrawler => {
-
-        // ❌ 1. НЕ берем бойцов, которые уже выбраны как враги
-        if (enemyIds.includes(myBrawler.id)) return;
-
-        let score = 0;
-        const myClass = myBrawler.class;
-        const myMatchup = matchups[myClass];
-
-        // ❌ 2. Если нет матчапа — небольшой штраф
-        if (!myMatchup) {
-            score -= 3;
-        } else {
-            enemies.forEach(enemy => {
-
-                // защита от undefined
-                if (!enemy.class) return;
-
-                // ✅ сильный против
-                if (myMatchup.strong.includes(enemy.class)) {
-                    score += 3;
-                }
-
-                // ❌ слабый против
-                if (myMatchup.weak.includes(enemy.class)) {
-                    score -= 3;
-                }
-
-                // ⚖️ маленький бонус за нейтрал (необязательно, но делает стабильнее)
-                if (
-                    !myMatchup.strong.includes(enemy.class) &&
-                    !myMatchup.weak.includes(enemy.class)
-                ) {
-                    score += 0.5;
-                }
-            });
-        }
-
-        // ✅ 3. Добавляем мету
-        const tier = getTier(myBrawler.id);
-        score += (tierPoints[tier] ?? -0.5);
-
-        finalScores.push({
-            id: myBrawler.id,
-            total: score
-        });
-    });
-
-    // ✅ 4. Сортировка (если равны — выше тот, кто выше по мете)
-    finalScores.sort((a, b) => {
-        if (b.total !== a.total) return b.total - a.total;
-
-        const tierOrder = ["S", "A", "B", "C", "D", "F", "Z"];
-        const tierA = getTier(a.id);
-        const tierB = getTier(b.id);
-
-        return tierOrder.indexOf(tierA) - tierOrder.indexOf(tierB);
-    });
-
-    // ✅ 5. Берем топ-5
-    const winners = finalScores.slice(0, 5).map(item => item.id);
-
-    renderResults(winners);
-}
-
-// 7. Отрисовка результатов
-function renderResults(ids) {
-    const resDiv = document.getElementById('pick-result');
-    if (!resDiv) return;
-
-    resDiv.innerHTML = "<h2 style='margin-bottom:20px;'>The best counter-peaks:</h2>";
-    const grid = document.createElement('div');
-    grid.className = "grid-container";
-    grid.style.justifyContent = "center";
-
-    ids.forEach(id => {
-        const b = brawlers.find(x => x.id == id);
-        if (b) {
-            const card = document.createElement('div');
-            card.className = "card";
-            
-            let videoHTML = "";
-            if (b.color === "rainbow") {
-                card.classList.add("rainbow-card");
-                videoHTML = `<video class="bg-video" autoplay loop muted playsinline>
+                             </video>`;}else{_0x7fe['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=b['\u0063\u006F\u006C\u006F\u0072']||"\u0023\u0031\u0061\u0031\u0061\u0031\u0061";}_0x7fe['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                ${_0xdd6gf}
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" alt="${b['\u006E\u0061\u006D\u0065']}">
+                <p>${b['\u006E\u0061\u006D\u0065']}</p>
+            `;_0x7fe['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>selectBrawlerForSlot(b);_0x79a3e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x7fe);});};_0x71826a=(444843^444834)+(249414^249415);_0xe2bcfa();const _0x9g31bd=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u002D\u0073\u0065\u0061\u0072\u0063\u0068");_0x11db=(725855^725853)+(997225^997216);_0x9g31bd['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("tupni".split("").reverse().join(""),e=>{_0xe2bcfa(e['\u0074\u0061\u0072\u0067\u0065\u0074']['\u0076\u0061\u006C\u0075\u0065']);});setTimeout(()=>_0x9g31bd['\u0066\u006F\u0063\u0075\u0073'](),844178^844278);}function closePicker(){const _0xa46bbd=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ladom-rekcip".split("").reverse().join(""));if(_0xa46bbd)_0xa46bbd['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0068\u0069\u0064\u0064\u0065\u006E");}function selectBrawlerForSlot(brawler,_0x31716b){if(!brawler)return;const _0xccf=selectedEnemies['\u0073\u006F\u006D\u0065'](e=>e&&e['\u0069\u0064']===brawler['\u0069\u0064']);if(_0xccf){alert("\u0054\u0068\u0069\u0073\u0020\u0042\u0072\u0061\u0077\u006C\u0065\u0072\u0020\u0068\u0061\u0073\u0020\u0061\u006C\u0072\u0065\u0061\u0064\u0079\u0020\u0062\u0065\u0065\u006E\u0020\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u0021");return;}selectedEnemies[currentSlot-(496938^496939)]=brawler;const _0x9f2=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`slot-${currentSlot}`);_0x31716b=538413^538415;if(_0x9f2){_0x9f2['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`<img src="${brawler['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">`;_0x9f2['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=brawler['\u0063\u006F\u006C\u006F\u0072']||"\u0023\u0030\u0030\u0030";_0x9f2['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0034\u0070\u0078\u0020\u0073\u006F\u006C\u0069\u0064\u0020\u0077\u0068\u0069\u0074\u0065";}closePicker();}function resetSlots(){selectedEnemies=[null,null,null];for(let i=150565^150564;i<=(852455^852452);i++){let _0x_0x91e;const _0x6_0xf7c=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`slot-${i}`);_0x_0x91e=515759^515755;if(_0x6_0xf7c){_0x6_0xf7c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="\u002B";_0x6_0xf7c['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0033\u0070\u0078\u0020\u0064\u0061\u0073\u0068\u0065\u0064\u0020\u0023\u0063\u0063\u0063";_0x6_0xf7c['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0023\u0031\u0061\u0031\u0061\u0031\u0061";}}var _0xc7fe=(575188^575184)+(980857^980859);const _0x4f912b=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0069\u0063\u006B\u002D\u0072\u0065\u0073\u0075\u006C\u0074");_0xc7fe=862540^862533;if(_0x4f912b)_0x4f912b['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";}function calculateBestPick(_0x9ebd,_0x29812b,_0xe9b,_0xgdfa8g){const _0xfbcd=selectedEnemies['\u0066\u0069\u006C\u0074\u0065\u0072'](e=>e!==null);_0x9ebd=(347031^347027)+(333958^333966);if(_0xfbcd['\u006C\u0065\u006E\u0067\u0074\u0068']===(862499^862499)){alert("!\u0430\u0437\u0438\u043B\u0430\u043D\u0430 \u044F\u043B\u0434 \u0430\u0433\u0430\u0440\u0432 \u043E\u0433\u043E\u043D\u0434\u043E \u044B\u0431 \u044F\u0442\u043E\u0445 \u0435\u0442\u0438\u0440\u0435\u0431\u044B\u0412".split("").reverse().join(""));return;}var _0x0f908a=(511285^511293)+(988623^988618);const _0x99ec={"\u0053":2.5,"\u0041":1.5,"\u0042":1.0,"\u0043":0.5,"\u0044":0,"\u0046":-(924879^924878)};_0x0f908a=(287024^287024)+(280998^280993);const _0xfff=_0xfbcd['\u006D\u0061\u0070'](e=>e['\u0069\u0064']);_0x29812b=(952857^952849)+(874768^874768);const _0xea864e=id=>{for(let tier in metaData){if(metaData[tier]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](id))return tier;}return"\u005A";};_0xe9b=248717^248712;let _0x7a_0x76b=[];brawlers['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](myBrawler=>{if(_0xfff['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](myBrawler['\u0069\u0064']))return;let _0xg127b;let _0x7dffd=343124^343124;_0xg127b=544341^544340;const _0x3e2=myBrawler['\u0063\u006C\u0061\u0073\u0073'];const _0xfd_0x3ge=matchups[_0x3e2];if(!_0xfd_0x3ge){_0x7dffd-=431088^431091;}else{_0xfbcd['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](enemy=>{if(!enemy['\u0063\u006C\u0061\u0073\u0073'])return;if(_0xfd_0x3ge['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0x7dffd+=194115^194112;}if(_0xfd_0x3ge['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0x7dffd-=139977^139978;}if(!_0xfd_0x3ge['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])&&!_0xfd_0x3ge['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0x7dffd+=0.5;}});}var _0xgfcg3e=(939733^939734)+(585615^585615);const tier=_0xea864e(myBrawler['\u0069\u0064']);_0xgfcg3e=(671138^671142)+(496320^496328);_0x7dffd+=_0x99ec[tier]??-0.5;_0x7a_0x76b['\u0070\u0075\u0073\u0068']({"id":myBrawler['\u0069\u0064'],'\u0074\u006F\u0074\u0061\u006C':_0x7dffd});});_0x7a_0x76b['\u0073\u006F\u0072\u0074']((a,b)=>{if(b['\u0074\u006F\u0074\u0061\u006C']!==a['\u0074\u006F\u0074\u0061\u006C'])return b['\u0074\u006F\u0074\u0061\u006C']-a['\u0074\u006F\u0074\u0061\u006C'];var _0x6348ed=(423265^423268)+(141245^141246);const _0x9ff=["\u0053","\u0041","\u0042","\u0043","\u0044","\u0046","\u005A"];_0x6348ed=(953281^953287)+(964308^964316);let _0x8578b;const _0xa68eg=_0xea864e(a['\u0069\u0064']);_0x8578b=752468^752464;var _0x6e32b=(284638^284631)+(956284^956283);const _0x34155d=_0xea864e(b['\u0069\u0064']);_0x6e32b=(575436^575432)+(888247^888255);return _0x9ff['\u0069\u006E\u0064\u0065\u0078\u004F\u0066'](_0xa68eg)-_0x9ff['\u0069\u006E\u0064\u0065\u0078\u004F\u0066'](_0x34155d);});const _0xeb61d=_0x7a_0x76b['\u0073\u006C\u0069\u0063\u0065'](444272^444272,490832^490837)['\u006D\u0061\u0070'](item=>item['\u0069\u0064']);_0xgdfa8g=(989890^989889)+(334503^334500);renderResults(_0xeb61d);}function renderResults(ids){const _0x2ead=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tluser-kcip".split("").reverse().join(""));if(!_0x2ead)return;_0x2ead['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=">2h/<:skaep-retnuoc tseb ehT>';xp02:mottob-nigram'=elyts 2h<".split("").reverse().join("");const _0x2f24e=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x2f24e['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0067\u0072\u0069\u0064\u002D\u0063\u006F\u006E\u0074\u0061\u0069\u006E\u0065\u0072";_0x2f24e['\u0073\u0074\u0079\u006C\u0065']['\u006A\u0075\u0073\u0074\u0069\u0066\u0079\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0063\u0065\u006E\u0074\u0065\u0072";ids['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](id=>{const b=brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==id);if(b){const _0x50be=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x50be['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="drac".split("").reverse().join("");var _0x5f533f=(620707^620704)+(194081^194081);let _0xaffba="";_0x5f533f=(659012^659014)+(357904^357911);if(b['\u0063\u006F\u006C\u006F\u0072']==="\u0072\u0061\u0069\u006E\u0062\u006F\u0077"){_0x50be['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0072\u0061\u0069\u006E\u0062\u006F\u0077\u002D\u0063\u0061\u0072\u0064");_0xaffba=`<video class="bg-video" autoplay loop muted playsinline>
                                 <source src="https://preview.redd.it/srdmhkerhaxe1.gif?width=640&format=mp4&s=9e8614e4b3bdafd81aaf0f6f36b4af8f13540253" type="video/mp4">
-                             </video>`;
-            } else {
-                card.style.background = b.color || "#2e7d32"; 
-            }
-
-            card.style.border = "3px solid #fff";
-            card.innerHTML = `
-                ${videoHTML}
-                <img src="${b.image}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
-                <h3 style="margin: 10px 0 5px;">${b.name}</h3>
-                <p style="font-size: 12px; opacity: 0.9;">${b.class}</p>
-            `;
-            card.onclick = () => showBrawlerDetails(b.id);
-            grid.appendChild(card);
-        }
-    });
-    resDiv.appendChild(grid);
-}
-
-const maps = [
-    { id: 1, name: "Out in the Open", mode: "Knockout", link: "https://brawlify.com/maps/15000548", image: "https://media.brawltime.ninja/maps/15000548.webp?size=512", best: [22, 40, 4, 2, 90, 89, 57, 88, 52, 20, 45, 33, 29, 87, 48, 26, 100, 34, 72, 50, 20, 97, 43, 48, 33, 62], firstPick: [22, 40, 90, 88, 52, 20, 45, 87, 100], lastPick: [50, 34, 16, 97, 86, 74, 101, 72], worst: [1, 60, 54, 92, 24, 73, 35, 9, 69, 95, 36, 19, 23, 10, 91, 44, 7, 5, 46, 47, 98, 42, 51, 39, 68, 96, 73, 70, 56, 49, 80, 12], mapType: 1},
-    { id: 2, name: "Opening Move", mode: "Knockout", link: "https://brawlify.com/maps/15001210", image: "https://media.brawltime.ninja/maps/15001210.webp?size=512" },
-    { id: 3, name: "Healthy Middle Ground", mode: "Knockout", link: "https://brawlify.com/maps/15000581", image: "https://media.brawltime.ninja/maps/15000581.webp?size=512" },
-    { id: 4, name: "New Perspective", mode: "Knockout", link: "https://brawlify.com/maps/15000528", image: "https://media.brawltime.ninja/maps/15000528.webp?size=512" },
-    { id: 5, name: "Flowing Springs", mode: "Knockout", link: "https://brawlify.com/maps/15000502", image: "https://media.brawltime.ninja/maps/15000502.webp?size=512" },
-    { id: 6, name: "Belle's Rock", mode: "Knockout", link: "https://brawlify.com/maps/15000368", image: "https://media.brawltime.ninja/maps/15000368.webp?size=512", best: [90, 100, 11, 20, 52, 66, 4, 57, 87, 34, 72, 50, 16, 97, 40, 53, 33, 88, 2, 26], firstPick: [90, 100, 11, 4, 87, 33], lastPick: [50, 72, 16, 97, 31, 84, 55], worst: [1, 60, 69, 8, 92, 35, 24, 34, 36, 23, 10, 19, 62, 56, 91, 7, 94, 39, 8, 1, 37, 70, 79, 12], mapType: 1},
-    { id: 7, name: "Flaring Phoenix", mode: "Knockout", link: "https://brawlify.com/maps/15000440", image: "https://media.brawltime.ninja/maps/15000440.webp?size=512", best: [4, 90, 52, 100, 66, 57, 50, 88, 40, 59, 74, 34, 89, 87, 72, 16, 84, 102, 97, 63, 48, 77, 22, 66, 52], firstPick: [4, 90, 52, 100, 87], lastPick: [50, 74, 34, 72, 16, 84, 31, 97, 69, 55, 77], worst: [1, 60, 3, 24, 8, 14, 95, 30, 99, 9, 36, 19, 23, 91, 56, 37, 94, 7, 62, 79, 46, 54, 81, 8, 12, 70, ], mapType: 2},
-    { id: 8, name: "Goldarm Gulch", mode: "Knockout", link: "https://brawlify.com/maps/15000367", image: "https://media.brawltime.ninja/maps/15000367.webp?size=512" },
-    { id: 9, name: "Konnakol", mode: "Knockout", link: "https://brawlify.com/maps/15001173", image: "https://media.brawltime.ninja/maps/15001173.webp?size=512" },
-    { id: 10, name: "Chivalry", mode: "Knockout", link: "https://brawlify.com/maps/15001127", image: "https://media.brawltime.ninja/maps/15001127.webp?size=512" },
-    { id: 11, name: "Double Decker", mode: "Knockout", link: "https://brawlify.com/maps/15001018", image: "https://media.brawltime.ninja/maps/15001018.webp?size=512" },
-    { id: 12, name: "Pinned Down", mode: "Knockout", link: "https://brawlify.com/maps/15001179", image: "https://media.brawltime.ninja/maps/15001179.webp?size=512" },
-    { id: 13, name: "Streets with No Name", mode: "Knockout", link: "https://brawlify.com/maps/15001019", image: "https://media.brawltime.ninja/maps/15001019.webp?size=512" },
-    { id: 14, name: "Four Levels", mode: "Knockout", link: "https://brawlify.com/maps/15000734", image: "https://media.brawltime.ninja/maps/15000734.webp?size=512" },
-    { id: 15, name: "New Horizons", mode: "Knockout", link: "https://brawlify.com/maps/15000703", image: "https://media.brawltime.ninja/maps/15000703.webp?size=512", best: [4, 66, 100, 50, 52, 57, 90, 45, 20, 34, 87, 72, 40, 22, 48, 84, 97, 77, 55, 2, 66, 53, 29, 45, 16], firstPick: [4, 66, 100, 90, 45, 20, 87, 2], lastPick: [50, 72, 84, 97, 77, 55, 16], worst: [102, 53, 17, 64, 60, 96, 14, 15, 82, 34, 19, 10, 36, 23, 98, 56, 7, 46, 8, 70, 39, 12, 79, 5, 54, 92], mapType: 1},
-    { id: 16, name: "Snake Out", mode: "Knockout", link: "https://brawlify.com/maps/15000365", image: "https://brawlify.com/images/maps/150/15000365.webp" },
-    { id: 17, name: "A Ballad About Minced Cutlets", mode: "Knockout", link: "https://brawlify.com/maps/15001096", image: "https://media.brawltime.ninja/maps/15001096.webp?size=512" },
-    { id: 18, name: "Call of the Water", mode: "Knockout", link: "https://brawlify.com/maps/15001059", image: "https://media.brawltime.ninja/maps/15001059.webp?size=512" },
-    { id: 19, name: "Crab Claws", mode: "Knockout", link: "https://brawlify.com/maps/15001211", image: "https://media.brawltime.ninja/maps/15001211.webp?size=512" },
-    { id: 20, name: "Deep End", mode: "Knockout", link: "https://brawlify.com/maps/15000429", image: "https://media.brawltime.ninja/maps/15000429.webp?size=512" },
-    { id: 21, name: "H for...", mode: "Knockout", link: "https://brawlify.com/maps/15000882", image: "https://media.brawltime.ninja/maps/15000882.webp?size=512" },
-    { id: 22,name: "Party for You", mode: "Knockout", link: "https://brawlify.com/maps/15001095", image: "https://media.brawltime.ninja/maps/15001095.webp?size=512" },
-    { id: 23, name: "Think Ahead", mode: "Knockout", link: "https://brawlify.com/maps/15001058", image: "https://media.brawltime.ninja/maps/15001058.webp?size=512" },
-    { id: 24, name: "Super Beach", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000259", image: "https://media.brawltime.ninja/maps/15000051.webp?size=512" },
-    { id: 25, name: "Nutmeg", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001168", image: "https://media.brawltime.ninja/maps/15001168.webp?size=512" },
-    { id: 26, name: "Beach Ball", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000143", image: "https://media.brawltime.ninja/maps/15000143.webp?size=512" },
-    { id: 27, name: "Backyard Bowl", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000024", image: "https://media.brawltime.ninja/maps/15000024.webp?size=512" },
-    { id: 28, name: "Singed Earth", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001167", image: "https://media.brawltime.ninja/maps/15001167.webp?size=512" },
-    { id: 29, name: "Pinhole Punt", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000026", image: "https://media.brawltime.ninja/maps/15000026.webp?size=512" },
-    { id: 30, name: "Pinball Dreams", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000118", image: "https://media.brawltime.ninja/maps/15000118.webp?size=512", best: [95, 89, 11, 2, 90, 100, 88, 3, 25, 26, 75, 24, 102, 87, 27], firstPick: [95, 89, 11, 2, 90, 100, 87], lastPick: [3, 25, 88, 50, 24, 69, 84], worst: [22, 40, 16, 57, 17, 54, 12, 62, 52, 38, 53, 33, 22, 23, 70, 61, 29, 18, 55, 46, 57, 37, 79, 54], mapType: 2},
-    { id: 31, name: "Spiraling Out", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001021", image: "https://media.brawltime.ninja/maps/15001021.webp?size=512" },
-    { id: 32, name: "Grass Knot", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001020", image: "https://media.brawltime.ninja/maps/15001020.webp?size=512" },
-    { id: 33, name: "Triple Dribble", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000025", image: "https://media.brawltime.ninja/maps/15000025.webp?size=512", best: [95, 11, 89, 90, 48, 27, 3, 88, 50, 47, 25, 102, 13, 75, 77, 84, 87, 7, 76, 42, ], firstPick: [95, 11, 89, 90], lastPick: [3, 50, 47, 25, 75, 77, 84, 24, 68], worst: [22, 4, 21, 40, 57, 16, 19, 69, 13, 33, 52, 38, 62, 29, 53, 29, 23, 22, 70, 55, 79, 4, 43, 56, 15], mapType: 2},
-    { id: 34, name: "Match 1123581321", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001054", image: "https://media.brawltime.ninja/maps/15001054.webp?size=512" },
-    { id: 35, name: "Super Beach", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000051", image: "https://media.brawltime.ninja/maps/15000051.webp?size=512" },
-    { id: 36, name: "Sunny Soccer", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000144", image: "https://media.brawltime.ninja/maps/15000144.webp?size=512" },
-    { id: 37, name: "Sneaky Fields", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000050", image: "https://media.brawltime.ninja/maps/15000050.webp?size=512", best: [95, 11, 88, 89, 27, 3, 25, 50, 24, 87, 75, 102, 7], firstPick: [95, 11, 89, 87], lastPick: [3, 25, 50, 24, 69, 19], worst: [4, 97, 74, 16, 40, 29, 54, 62, 52, 53, 38, 33, 22, 23, 70, 79, 18, 57, 55, 46, 4, 77, 45, 20, 29, 44], mapType: 3},
-    { id: 38, name: "Sidetrack", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001053", image: "https://media.brawltime.ninja/maps/15001053.webp?size=512" },
-    { id: 39, name: "Center Stage", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000132", image: "https://media.brawltime.ninja/maps/15000132.webp?size=512", best: [95, 88, 11, 89, 64, 3, 2, 27, 75, 90, 26, 75, 87, 24, 102, 28, 7], firstPick: [95, 88, 11, 89, 64, 2, 27, 90], lastPick: [3, 50, 25, 34, 1, 97, 69, 24, 19], worst: [22, 4, 40, 74, 16, 17, 45, 33, 62, 52, 38, 53, 22, 44, 23, 29, 5, 18, 55, 20, 79, 16, ], mapType: 3},
-    { id: 40, name: "Flute Chutes", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001093", image: "https://media.brawltime.ninja/maps/15001093.webp?size=512" },
-    { id: 41, name: "Goalies", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001204", image: "https://media.brawltime.ninja/maps/15001204.webp?size=512" },
-    { id: 42, name: "Grab the Moment", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001094", image: "https://brawlify.com/images/maps/150/15001094.webp" },
-    { id: 43, name: "No Good Deed", mode: "Brawl Ball", link: "https://brawlify.com/maps/15001205", image: "https://brawlify.com/images/maps/15001205.png" },
-    { id: 44, name: "Priceless Cactus", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000928", image: "https://media.brawltime.ninja/maps/15000928.webp?size=512" },
-    { id: 45, name: "Rooftop Runners", mode: "Brawl Ball", link: "https://brawlify.com/maps/15000929", image: "https://media.brawltime.ninja/maps/15000929.webp?size=512" },
-    { id: 46, name: "Double Swoosh", mode: "Gem Grab", link: "https://brawlify.com/maps/15000115", image: "https://media.brawltime.ninja/maps/15000115.webp?size=512", best: [95, 88, 50, 89, 90, 21, 63, 27, 75, 21, 87, 7, 76, 63, 91, 74], firstPick: [89, 90, 21, 63], lastPick: [50, 27, 75, 3], worst: [22, 48, 40, 14, 68, 34, 4, 47, 69, 49, 10, 82, 74, 38, 62, 46, 5, 44, 73, 29, 55, 22, 66, 42, 37, 84, 79, 56, 54, 77, 70], mapType: 3},
-    { id: 47, name: "Hard Rock Mine", mode: "Gem Grab", link: "https://brawlify.com/maps/15000007", image: "https://media.brawltime.ninja/maps/15000007.webp?size=512", best: [11, 95, 90, 89, 21, 3, 25, 50, 64, 75, 87, 51], firstPick: [11, 95, 90, 89, 21, 100], lastPick: [3, 25, 50, 64], worst: [22, 40, 93, 57, 53, 66, 29, 32, 48, 76, 38, 5, 62, 55, 78, 46, 66, 29, 33, 79, 68, 79, 22, 45], mapType: 3},
-    { id: 48, name: "Gem Fort", mode: "Gem Grab", link: "https://brawlify.com/maps/15000010", image: "https://media.brawltime.ninja/maps/15000010.webp?size=512", best: [11, 95, 50, 90, 89, 88, 3, 21, 82, 75, 25, 27, 87, 51], firstPick: [11, 95, 90, 89, 21], lastPick: [50, 3, 82, 75, 25], worst: [29, 57, 40, 28, 34, 20, 48, 52, 66, 69, 62, 38, 44, 33, 55, 5, 77, 39, 46, 73, 78, 29, 22, 70, 42, 79, 57, 4, 16, 8], mapType: 2},
-    { id: 49, name: "Snake Pit", mode: "Gem Grab", link: "https://brawlify.com/maps/15001171", image: "https://media.brawltime.ninja/maps/15001171.webp?size=512" },
-    { id: 50, name: "Storage Sector", mode: "Gem Grab", link: "https://brawlify.com/maps/15001027", image: "https://media.brawltime.ninja/maps/15001027.webp?size=512" },
-    { id: 51, name: "Deathcap Trap", mode: "Gem Grab", link: "https://brawlify.com/maps/15000009", image: "https://media.brawltime.ninja/maps/15000009.webp?size=512" },
-    { id: 52, name: "On a Roll", mode: "Gem Grab", link: "https://brawlify.com/maps/15001026", image: "https://media.brawltime.ninja/maps/15001026.webp?size=512" },
-    { id: 53, name: "Crystal Arcade", mode: "Gem Grab", link: "https://brawlify.com/maps/15000008", image: "https://media.brawltime.ninja/maps/15000008.webp?size=512" },
-    { id: 54, name: "Undermine", mode: "Gem Grab", link: "https://brawlify.com/maps/15000011", image: "https://media.brawltime.ninja/maps/15000011.webp?size=512", best: [95, 90, 11, 89, 64, 100, 88, 51, 27, 12, 72, 87, 102, 27], firstPick: [95, 90, 11, 89], lastPick: [50, 88, 97, 25, 3], worst: [48, 22, 54, 28, 4, 40, 57, 29, 32, 62, 38, 78, 5, 46, 44, 81, 29, 42, 33, 39, 37, 77, 68, 70, 85, 45, 55, 8, 79, 73], mapType: 2},
-    { id: 55, name: "Rustic Arcade", mode: "Gem Grab", link: "https://brawlify.com/maps/15000343", image: "https://media.brawltime.ninja/maps/15000343.webp?size=512" },
-    { id: 56, name: "Open Space", mode: "Gem Grab", link: "https://brawlify.com/maps/15000499", image: "https://media.brawltime.ninja/maps/15000499.webp?size=512" },
-    { id: 57, name: "Afterparty", mode: "Gem Grab", link: "https://brawlify.com/maps/15001090", image: "https://media.brawltime.ninja/maps/15001090.webp?size=512" },
-    { id: 58, name: "Railroad Robbery", mode: "Gem Grab", link: "https://brawlify.com/maps/15001123", image: "https://media.brawltime.ninja/maps/15001123.webp?size=512" },
-    { id: 59, name: "Fortress Fall", mode: "Gem Grab", link: "https://brawlify.com/maps/15001172", image: "https://media.brawltime.ninja/maps/15001172.webp?size=512" },
-    { id: 60, name: "ATLAS", mode: "Gem Grab", link: "https://brawlify.com/maps/15001089", image: "https://media.brawltime.ninja/maps/15001089.webp?size=512" },
-    { id: 61, name: "Extreme Nonchalance", mode: "Gem Grab", link: "https://brawlify.com/maps/15001052", image: "https://media.brawltime.ninja/maps/15001052.webp?size=512" },
-    { id: 62, name: "Lilygear Lake", mode: "Gem Grab", link: "https://brawlify.com/maps/15000931", image: "https://media.brawltime.ninja/maps/15000931.webp?size=512" },
-    { id: 63, name: "Local Restaurants", mode: "Gem Grab", link: "https://brawlify.com/maps/15000932", image: "https://media.brawltime.ninja/maps/15000932.webp?size=512" },
-    { id: 64, name: "Picturesque", mode: "Gem Grab", link: "https://brawlify.com/maps/15001208", image: "https://media.brawltime.ninja/maps/15001208.webp?size=512" },
-    { id: 65, name: "Satomi Springs", mode: "Gem Grab", link: "https://brawlify.com/maps/15001209", image: "https://media.brawltime.ninja/maps/15001209.webp?size=512" },
-    { id: 66, name: "Whisper Vale", mode: "Gem Grab", link: "https://brawlify.com/maps/15001051", image: "https://media.brawltime.ninja/maps/15001051.webp?size=512" },
-    { id: 67, name: "Bridge Too Far", mode: "Heist", link: "https://brawlify.com/maps/15000077", image: "https://media.brawltime.ninja/maps/15000072.webp?size=512", best: [2, 29, 100, 73, 89, 45, 33, 22, 93, 101, 70, 12, 72, 4, 18, 93, 87, 29, 22, 33, 26, 57], firstPick: [2, 29, 100, 73, 89, 45, 33, 22, 93, 70], lastPick: [101, 82, 72], worst: [22, 50, 16, 55, 95, 52, 78, 10, 36, 23, 19, 91, 65, 16, 9, 5, 42, 44, 55, 92, 98, 54, 79, 46], mapType: 1},
-    { id: 68, name: "Hot Potato", mode: "Heist", link: "https://brawlify.com/maps/15000053", image: "https://media.brawltime.ninja/maps/15000053.webp?size=512", best: [2, 11, 89, 46, 7, 88, 96, 25, 3, 75, 70, 72, 102, 73, 46], firstPick: [2, 11, 89, 75, 70, 72], lastPick: [46, 7, 88, 96, 25, 3], worst: [22, 50, 45, 61, 95, 64, 55, 16, 29, 52, 78, 38, 54, 66, 36, 33, 23,91, 53, 65, 56, 19, 26, 22, 45, 16, 62, 9, 43], mapType: 2},
-    { id: 69, name: "Safe Zone", mode: "Heist", link: "https://brawlify.com/maps/15000019", image: "https://media.brawltime.ninja/maps/15000019.webp?size=512", best: [2, 100, 89, 72, 15, 17, 45, 73, 3, 70, 12, 87], firstPick: [2, 100, 89, 70], lastPick: [72, 3, 73], worst: [57, 50, 16, 64, 20, 92, 1, 14, 74, 55, 52, 78, 36, 19, 10, 91, 56, 42, 23, 65, 48, 9, 16, 68, 20, 55, 81, 1, 44, 79, 66,], mapType: 1},
-    { id: 70, name: "Photic Doom", mode: "Heist", link: "https://brawlify.com/maps/15001099", image: "https://media.brawltime.ninja/maps/15001099.webp?size=512" },
-    { id: 71, name: "Aridity", mode: "Heist", link: "https://brawlify.com/maps/15001169", image: "https://media.brawltime.ninja/maps/15001169.webp?size=512" },
-    { id: 72, name: "GG 2.0", mode: "Heist", link: "https://brawlify.com/maps/15000900", image: "https://brawlify.com/images/maps/150/15000900.webp" },
-    { id: 73, name: "Quintillion", mode: "Heist", link: "https://brawlify.com/maps/15001170", image: "https://media.brawltime.ninja/maps/15001170.webp?size=512" },
-    { id: 74, name: "All Things Wicked", mode: "Heist", link: "https://brawlify.com/maps/15001098", image: "https://media.brawltime.ninja/maps/15001098.webp?size=512" },
-    { id: 76, name: "Corner Cave", mode: "Heist", link: "https://brawlify.com/maps/15001063", image: "https://media.brawltime.ninja/maps/15001063.webp?size=512" },
-    { id: 77, name: "Kaboom Canyon", mode: "Heist", link: "https://brawlify.com/maps/15000018", image: "https://brawlify.com/images/maps/150/15000018.webp", best: [2, 100, 45, 73, 101, 3, 89, 88, 72, 70, 75, 87, 100, 62, 15, 26, 29], firstPick: [2, 100, 45], lastPick: [3, 88, 72], worst: [22, 50, 45, 61, 95, 64, 55, 16, 52, 78, 36, 19, 10, 91, 56, 42, 23, 65, 48, 9, 16, 68, 20, 55, 81, 1, 44, 79, 66], mapType: 2},
-    { id: 78, name: "Perpetual Motion", mode: "Heist", link: "https://brawlify.com/maps/15001207", image: "https://media.brawltime.ninja/maps/15001207.webp?size=512" },
-    { id: 79, name: "Pit Stop", mode: "Heist", link: "https://brawlify.com/maps/15000137", image: "https://media.brawltime.ninja/maps/15000137.webp?size=512" },
-    { id: 80, name: "Plain Text", mode: "Heist", link: "https://brawlify.com/maps/15000933", image: "https://brawlify.com/images/maps/150/15000933.webp" },
-    { id: 81, name: "Subway Turfers", mode: "Heist", link: "https://brawlify.com/maps/15001024", image: "https://media.brawltime.ninja/maps/15001024.webp?size=512" },
-    { id: 82, name: "Tuning Fork", mode: "Heist", link: "https://brawlify.com/maps/15001206", image: "https://media.brawltime.ninja/maps/15001206.webp?size=512" },
-    { id: 83, name: "Zip Zap Zoom", mode: "Heist", link: "https://brawlify.com/maps/15001062", image: "https://media.brawltime.ninja/maps/15001062.webp?size=512" },
-    { id: 84, name: "Temple Ruins", mode: "Bounty", link: "https://brawlify.com/maps/15000000", image: "https://brawlify.com/images/maps/150/15000000.webp" },
-    { id: 85, name: "Snake Prairie", mode: "Bounty", link: "https://brawlify.com/maps/15000004", image: "https://media.brawltime.ninja/maps/15000004.webp?size=512" },
-    { id: 86, name: "Shooting Star", mode: "Bounty", link: "https://brawlify.com/maps/15000005", image: "https://media.brawltime.ninja/maps/15000005.webp?size=512", best: [57, 52, 22, 29, 90, 20, 45, 100, 87, 4, 33, 34, 16, 2, 26, 88], firstPick: [57, 52, 22, 29, 90, 20, 45, 100, 87, 4], lastPick: [50, 34, 16, 84], worst: [19, 8, 3, 36, 1, 92, 93, 32, 54, 68, 47, 79, 95, 36, 10, 78, 23, 91, 46, 19, 8, 7, 5, 39], mapType: 1},
-    { id: 87, name: "Hideout", mode: "Bounty", link: "https://brawlify.com/maps/15000022", image: "https://media.brawltime.ninja/maps/15000022.webp?size=512", best: [57, 29, 52, 50, 20, 4, 22, 33, 101, 89, 100, 26, 84, 50, 90, 87, 34, 21, 40, 72, 2, 45], firstPick: [57, 29, 52, 20, 4, 22, 33, 89, 100, 26, 90, 87], lastPick: [101, 84, 50, 97, 16, 44, 77, 34, 72], worst: [92, 95, 47, 17, 3, 8, 35, 1, 83, 24, 19, 25, 98, 36, 23, 10, 56, 19, 46, 8, 42, 79, 39, 98, 70], mapType: 1},
-    { id: 88, name: "Dry Season", mode: "Bounty", link: "https://brawlify.com/maps/15000083", image: "https://media.brawltime.ninja/maps/15000083.webp?size=512", best: [87, 102, 34, 4, 22, 26, 40, 101, 90, 74, 20, 52, 57, 66, 72, 84, 100, 45, 29], firstPick: [87, 102, 34, 4, 22, 26, 40, 90, 20, 52, 100], lastPick: [101, 74, 16, 34, 55, 97, 86, 84, 50, 72, 84, 55, 97], worst: [8, 1, 47, 54, 35, 3, 30, 14, 52, 99, 79, 14, 19, 36, 25, 36, 10, 23, 19, 79, 5, 56, 91, 47, 42, 70, 44, 39, 12, 54, 92], mapType: 1},
-    { id: 89, name: "Starrburst", mode: "Bounty", link: "https://brawlify.com/maps/15001067", image: "https://media.brawltime.ninja/maps/15001067.webp?size=512" },
-    { id: 90, name: "Choral Chambers", mode: "Bounty", link: "https://brawlify.com/maps/15001176", image: "https://media.brawltime.ninja/maps/15001176.webp?size=512" },
-    { id: 91, name: "Layer Cake", mode: "Bounty", link: "https://brawlify.com/maps/15000082", image: "https://media.brawltime.ninja/maps/15000082.webp?size=512",  best: [16, 87, 50, 90, 89, 88, 52, 100, 48, 26, 40, 34, 74, 72, 84], firstPick: [87, 89, 88, 52, 100, 48, 26, 40], lastPick: [16, 3, 84, 72, 74, 97, 34, 50, 74, 84, 97, 101], worst: [95, 8, 79, 36, 39, 60, 73, 23, 56, 36, 62, 39, 46, 49, 98, 19], mapType: 2},
-    { id: 92, name: "Wall Hugging", mode: "Bounty", link: "https://brawlify.com/maps/15001175", image: "https://media.brawltime.ninja/maps/15001175.webp?size=512" },
-    { id: 93, name: "Excel", mode: "Bounty", link: "https://brawlify.com/maps/15000081", image: "https://brawlify.com/images/maps/150/15000081.webp" },
-    { id: 94, name: "Deathcap Trap", mode: "Bounty", link: "https://brawlify.com/maps/15000002", image: "https://media.brawltime.ninja/maps/15000009.webp?size=512" },
-    { id: 95, name: "Brace for Impact", mode: "Bounty", link: "https://brawlify.com/maps/15000935", image: "https://media.brawltime.ninja/maps/15000935.webp?size=512" },
-    { id: 96, name: "Don't turn around", mode: "Bounty", link: "https://brawlify.com/maps/15000553", image: "https://media.brawltime.ninja/maps/15000553.webp?size=512" },
-    { id: 97, name: "Hit and Run", mode: "Bounty", link: "https://brawlify.com/maps/15001220", image: "https://media.brawltime.ninja/maps/15000295.webp?size=512" },
-    { id: 98, name: "No Excuses", mode: "Bounty", link: "https://brawlify.com/maps/15000295", image: "https://media.brawltime.ninja/maps/15001220.webp?size=512" },
-    { id: 99, name: "Side by Side", mode: "Bounty", link: "https://brawlify.com/maps/15000554", image: "https://media.brawltime.ninja/maps/15000554.webp?size=512" },
-    { id: 100, name: "Watermelons", mode: "Bounty", link: "https://brawlify.com/maps/15001219", image: "https://media.brawltime.ninja/maps/15001219.webp?size=512" },
-    { id: 101, name: "Open Business", mode: "Hot Zone", link: "https://brawlify.com/maps/15000292", image: "https://media.brawltime.ninja/maps/15000292.webp?size=512", best: [100, 90, 95, 89, 50, 21, 27, 88, 48, 75, 102, 87, 98, 91, 42, 12, 35], firstPick: [100, 90, 89, 21, 87], lastPick: [75, 25, 50, 77, 16, 98, 69, 84, 34, 49, 72, 70, 65], worst: [22, 4, 29, 57, 66, 40, 1, 32, 62, 45, 38, 33, 52, 29, 22, 37, 36, 63, 73, 54, 20, 82, 4], mapType: 2},
-    { id: 102, name: "Dueling Beetles", mode: "Hot Zone", link: "https://brawlify.com/maps/15000306", image: "https://media.brawltime.ninja/maps/15000306.webp?size=512", best: [90, 50, 89, 21, 88, 27, 100, 25, 15, 95, 87, 75, 99, 42, 49, 70, 91, 3, 95, 12, 15, 101, 83, 48], firstPick: [90, 89, 21, 100, 87], lastPick: [50, 27, 88, 25, 16, 69, 99, 34, 84, 49, 98, 70, 3, 24, 101, 5], worst: [4, 22, 40, 66, 57, 60, 74, 92, 54, 52, 45, 22, 38, 54, 29, 36, 53, 79, 68, 63, 20, 4], mapType: 2},
-    { id: 103, name: "Tax Evasion", mode: "Hot Zone", link: "https://brawlify.com/maps/15001165", image: "https://media.brawltime.ninja/maps/15001165.webp?size=512" },
-    { id: 104, name: "Playmaker", mode: "Hot Zone", link: "https://brawlify.com/maps/15001057", image: "https://media.brawltime.ninja/maps/15001057.webp?size=512" },
-    { id: 105, name: "Parallel Plays", mode: "Hot Zone", link: "https://brawlify.com/maps/15000293", image: "https://media.brawltime.ninja/maps/15000293.webp?size=512", best: [25, 50, 96, 27, 47, 90, 89, 99, 77, 88, 69, 102, 87, 100, 21, 32, 46, 75], firstPick: [90, 89], lastPick: [25, 50, 96, 27, 47, 69, 19, 49, 42, 3, 72, 31, 5, 99, 97, 84, 44, 96], worst: [95, 65, 14, 28, 26, 35, 34, 62, 52, 38, 33, 54, 22, 78, 26, 81, 57, 55, 37, 18, 36, 79, 4, 10, 20, 45, 40, 66, 63, 70, 2, 39, 58, 23], mapType: 3},
-    { id: 106, name: "The Seven Pillars of Humanity", mode: "Hot Zone", link: "https://brawlify.com/maps/15001166", image: "https://media.brawltime.ninja/maps/15001166.webp?size=512" },
-    { id: 107, name: "Ring of Fire", mode: "Hot Zone", link: "https://brawlify.com/maps/15000300", image: "https://media.brawltime.ninja/maps/15000300.webp?size=512", best: [95, 90, 100, 50, 88, 89, 21, 80, 15, 57, 16, 75, 27, 9, 87, 12, 61, 80, 34, 91, 15, 100], firstPick: [95, 90, 100, 16], lastPick: [50, 25, 70, 34, 69, 99], worst: [38, 78, 36, 52, 55, 85, 54, 68, 79, 22, 42, 39, 95, 44, 37, 41, 1], mapType: 1},
-    { id: 108, name: "Abracadabra", mode: "Hot Zone", link: "https://brawlify.com/maps/15001022", image: "https://media.brawltime.ninja/maps/15001022.webp?size=512" },
-    { id: 109, name: "Back Shuffle", mode: "Hot Zone", link: "https://brawlify.com/maps/15001092", image: "https://brawlify.com/images/maps/150/15001092.webp" },
-    { id: 110, name: "Fishing Bed", mode: "Hot Zone", link: "https://brawlify.com/maps/15000927", image: "https://media.brawltime.ninja/maps/15000927.webp?size=512" },
-    { id: 111, name: "Golden Bay", mode: "Hot Zone", link: "https://brawlify.com/maps/15001202", image: "https://media.brawltime.ninja/maps/15001202.webp?size=512" },
-    { id: 112, name: "Hyacinth House", mode: "Hot Zone", link: "https://brawlify.com/maps/15001203", image: "https://media.brawltime.ninja/maps/15001203.webp?size=512" },
-    { id: 113, name: "In the Liminal", mode: "Hot Zone", link: "https://brawlify.com/maps/15001023", image: "https://media.brawltime.ninja/maps/15001023.webp?size=512", best: [50, 95, 90, 100, 89, 21, 27, 88, 2, 75, 9, 87, 91, 94, 80], firstPick: [90, 100, 89, 21], lastPick: [50, 88, 25, 99, 16, 70,], worst: [78, 45, 36, 38, 52, 85, 79, 55, 82, 68, 62, 47], mapType: 2},
-    { id: 114, name: "Just Another Race To Anywhere", mode: "Hot Zone", link: "https://brawlify.com/maps/15001091", image: "https://media.brawltime.ninja/maps/15001091.webp?size=512" },
-    { id: 115, name: "Open Zone", mode: "Hot Zone", link: "https://brawlify.com/maps/15000527", image: "https://media.brawltime.ninja/maps/15000527.webp?size=512" },
-    { id: 116, name: "Ticket to Die", mode: "Hot Zone", link: "https://brawlify.com/maps/15001126", image: "https://media.brawltime.ninja/maps/15001126.webp?size=512" },
-    { id: 117, name: "Zone Splitting", mode: "Hot Zone", link: "https://brawlify.com/maps/15001125", image: "https://media.brawltime.ninja/maps/15001125.webp?size=512" },
-    { id: 118, name: "Quick Travel", mode: "Hot Zone", link: "https://brawltime.ninja/tier-list/mode/hot-zone/map/Quick-Travel", image: "https://media.brawltime.ninja/maps/15000350.webp?size=512", best: [89, 75, 88, 90, 72, 47, 25, 3, 93, 64, 102, 27, 19, 21], firstPick: [89, 75, 88, 90], lastPick: [3, 25, 47, 93, 64, 69, 49, 24, 10, 42, 99], worst: [38, 62, 52, 45, 54, 26, 78, 22, 37, 33, 55, 20, 79, 57, 29, 73, 18, 39, 4, 80, 63, 30, 81, 85, 23, 43, 58, 77, 14, 59, 70, 17, 2, 41, 5], mapType: 3},
-
-    
-];
-
-function displayMaps(filteredMaps = maps) {
-    const mapsList = document.getElementById('maps-list');
-    if (!mapsList) return;
-    
-    mapsList.innerHTML = ""; // Очистка
-    
-    // ПРИНУДИТЕЛЬНО ставим вертикальный стек для главного контейнера
-    mapsList.style.display = "flex";
-    mapsList.style.flexDirection = "column";
-    mapsList.style.alignItems = "center";
-    mapsList.style.width = "100%";
-
-    const modes = [...new Set(filteredMaps.map(m => m.mode))];
-
-    modes.forEach(mode => {
-        // Обертка для ОДНОГО режима (Заголовок + Сетка)
-        const modeSection = document.createElement('div');
-        modeSection.className = "class-group"; 
-        
-        // Стилизуем секцию, чтобы она занимала всю ширину и шла вниз
-        modeSection.style.width = "100%";
-        modeSection.style.display = "flex";
-        modeSection.style.flexDirection = "column";
-        modeSection.style.alignItems = "center";
-        modeSection.style.marginBottom = "40px";
-
-        // Заголовок (Knockout, и т.д.)
-        const title = document.createElement('div');
-        title.className = "class-title";
-        title.innerText = mode;
-        modeSection.appendChild(title);
-
-        // Сетка для карт именно этого режима
-        const grid = document.createElement('div');
-        grid.className = "grid-container";
-        // Обнуляем возможные внешние отступы, которые могут мешать
-        grid.style.width = "100%"; 
-        grid.style.margin = "0 auto";
-
-        const modeMaps = filteredMaps.filter(m => m.mode === mode);
-
-        // Проверь, чтобы в displayMaps было именно так:
-modeMaps.forEach(map => {
-    const card = document.createElement('div');
-    card.className = "map-card"; 
-    
-    // Используем onclick, а не ссылки <a>
-    card.onclick = (e) => {
-        e.preventDefault();
-        showMapDetails(map.id);
-    };
-
-    card.innerHTML = `
-        <img src="${map.image}" alt="${map.name}" style="width: 100%; border-radius: 15px;">
-        <p>${map.name}</p>
-    `;
-    grid.appendChild(card);
-});
-
-        modeSection.appendChild(grid);
-        mapsList.appendChild(modeSection);
-    });
-}
-
-function getBrawlerIcons(ids) {
-    if (!ids || ids.length === 0) return `<p style="opacity:0.5;">No data</p>`;
-    
-    return ids.map(id => {
-        const b = brawlers.find(x => x.id === id);
-        if (!b) return "";
-
-        // Возвращаем onclick, передавая ID бойца
-        // Твоя функция showBrawlerDetails сама найдет объект по этому ID
-        return `
-            <div onclick="showBrawlerDetails(${b.id})" 
+                             </video>`;}else{_0x50be['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=b['\u0063\u006F\u006C\u006F\u0072']||"\u0023\u0032\u0065\u0037\u0064\u0033\u0032";}_0x50be['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="fff# dilos xp3".split("").reverse().join("");_0x50be['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                ${_0xaffba}
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                <h3 style="margin: 10px 0 5px;">${b['\u006E\u0061\u006D\u0065']}</h3>
+                <p style="font-size: 12px; opacity: 0.9;">${b['\u0063\u006C\u0061\u0073\u0073']}</p>
+            `;_0x50be['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>showBrawlerDetails(b['\u0069\u0064']);_0x2f24e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x50be);}});_0x2ead['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x2f24e);}const maps=[{"id":1,"name":"Out in the Open","mode":"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"https://brawlify.com/maps/15000548",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000548.webp?size=512",'\u0062\u0065\u0073\u0074':[310401^310423,550017^550057,393444^393440,429212^429214,399005^399047,842719^842630,134995^135018,886688^886776,420933^420977,545226^545246,571767^571738,948539^948506,692643^692670,959503^959576,253990^253974,876758^876748,754640^754612,449866^449896,364394^364322,886465^886515,412668^412648,114330^114427,956854^956829,630163^630179,790571^790538,308327^308313],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[561509^561523,650021^649997,941177^941091,314984^314928,326974^326922,666638^666650,394373^394408,547685^547634,268384^268292],"lastPick":[843512^843466,327911^327877,200231^200247,852319^852286,725887^725801,266781^266839,161060^161089,260727^260671],'\u0077\u006F\u0072\u0073\u0074':[578006^578007,397256^397300,451349^451363,964770^964862,441709^441717,782799^782726,253763^253792,120559^120550,651949^652008,294427^294468,726208^726244,867477^867462,274846^274825,381683^381689,405865^405810,377944^377972,933174^933169,736588^736585,421192^421222,580592^580575,270553^270523,506510^506532,944738^944721,502733^502762,607067^607007,634458^634426,430833^430776,688940^689002,731377^731337,940702^940719,936902^936854,161987^161999],"mapType":1},{"id":2,"name":"Opening Move",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001210","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0031\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':3,"name":"Healthy Middle Ground","mode":"Knockout",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000581","image":"https://media.brawltime.ninja/maps/15000581.webp?size=512"},{'\u0069\u0064':4,'\u006E\u0061\u006D\u0065':"\u004E\u0065\u0077\u0020\u0050\u0065\u0072\u0073\u0070\u0065\u0063\u0074\u0069\u0076\u0065",'\u006D\u006F\u0064\u0065':"Knockout",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0032\u0038",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000528.webp?size=512"},{'\u0069\u0064':5,"name":"Flowing Springs",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0030\u0032",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000502.webp?size=512"},{"id":6,"name":"Belle's Rock","mode":"Knockout","link":"https://brawlify.com/maps/15000368",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000368.webp?size=512","best":[656789^656847,583946^584046,219093^219102,753786^753774,948103^948147,826756^826822,634480^634484,853432^853377,397862^397937,214000^213970,930105^930161,956739^956785,699792^699776,782729^782824,566990^567014,196429^196472,820552^820585,855494^855454,176040^176042,806134^806124],"firstPick":[567360^567322,305839^305867,636161^636170,595940^595936,847563^847516,957325^957356],"lastPick":[731974^732020,595106^595178,763622^763638,512237^512140,936801^936830,486287^486363,156051^156068],'\u0077\u006F\u0072\u0073\u0074':[754893^754892,233565^233569,795081^795020,577335^577343,585691^585607,537112^537147,216573^216549,806449^806419,342672^342708,763863^763840,717679^717669,294215^294228,523869^523875,786374^786430,113473^113434,328453^328450,990185^990135,259529^259566,799690^799682,647556^647557,518267^518238,294225^294167,688446^688497,889504^889516],"mapType":1},{"id":7,'\u006E\u0061\u006D\u0065':"\u0046\u006C\u0061\u0072\u0069\u006E\u0067\u0020\u0050\u0068\u006F\u0065\u006E\u0069\u0078","mode":"Knockout","link":"https://brawlify.com/maps/15000440","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0034\u0034\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[149628^149624,264576^264666,527508^527520,321611^321583,321580^321646,492594^492555,395072^395122,369157^369245,721790^721750,364687^364724,238725^238799,531733^531767,327684^327773,339610^339661,342720^342664,308962^308978,746720^746676,647228^647258,153946^153915,609649^609614,824902^824950,384417^384492,277027^277045,427603^427537,983112^983164],"firstPick":[589101^589097,943072^943034,270284^270328,903319^903411,973597^973642],"lastPick":[478897^478851,716631^716573,812846^812812,699385^699313,186099^186083,751566^751514,391292^391267,893158^893063,550627^550566,539404^539451,903241^903172],'\u0077\u006F\u0072\u0073\u0074':[497201^497200,482092^482064,159940^159943,140168^140176,731443^731451,734449^734463,480746^480693,576256^576286,844002^843905,669434^669427,933467^933503,246095^246108,943884^943899,591383^591436,232826^232770,557400^557437,112476^112386,190868^190867,446035^446061,929663^929584,339414^339448,416205^416251,234372^234453,798992^799000,280178^280190,724754^724820],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':2},{'\u0069\u0064':8,"name":"Goldarm Gulch","mode":"Knockout","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0036\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0036\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':9,"name":"\u004B\u006F\u006E\u006E\u0061\u006B\u006F\u006C",'\u006D\u006F\u0064\u0065':"Knockout","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0033",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":10,"name":"\u0043\u0068\u0069\u0076\u0061\u006C\u0072\u0079","mode":"Knockout",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0032\u0037","image":"https://media.brawltime.ninja/maps/15001127.webp?size=512"},{'\u0069\u0064':11,'\u006E\u0061\u006D\u0065':"Double Decker",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0031\u0038",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0031\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":12,'\u006E\u0061\u006D\u0065':"\u0050\u0069\u006E\u006E\u0065\u0064\u0020\u0044\u006F\u0077\u006E","mode":"Knockout","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0039",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001179.webp?size=512"},{"id":13,"name":"Streets with No Name",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0031\u0039",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0031\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':14,'\u006E\u0061\u006D\u0065':"Four Levels","mode":"Knockout",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000734",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0037\u0033\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':15,"name":"\u004E\u0065\u0077\u0020\u0048\u006F\u0072\u0069\u007A\u006F\u006E\u0073",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0037\u0030\u0033",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000703.webp?size=512","best":[234131^234135,900718^900652,762268^762360,640033^640019,677516^677560,857009^856968,180454^180412,513884^513905,488342^488322,102380^102350,371355^371404,626211^626283,325179^325139,377505^377527,215986^215938,328892^328936,929931^930026,180874^180935,120957^120906,760353^760355,266917^266983,206018^206071,577957^577976,450699^450726,127926^127910],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[613213^613209,102835^102897,971064^971100,536112^536170,547759^547714,737778^737766,451015^450960,169042^169040],"lastPick":[257906^257856,752503^752447,969610^969694,316144^316049,872232^872293,730207^730216,933253^933269],'\u0077\u006F\u0072\u0073\u0074':[418214^418240,158959^158938,387919^387934,689914^689850,692148^692104,479244^479340,453825^453839,672006^672009,838470^838420,705860^705894,272924^272911,913909^913919,408203^408239,635649^635670,783107^783201,171787^171827,624143^624136,440959^440913,430433^430441,683062^683120,642038^642001,605938^605950,940701^940754,510929^510932,500704^500694,452098^452190],"mapType":1},{'\u0069\u0064':16,'\u006E\u0061\u006D\u0065':"Snake Out","mode":"Knockout",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000365",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/maps/150/15000365.webp"},{'\u0069\u0064':17,'\u006E\u0061\u006D\u0065':"\u0041\u0020\u0042\u0061\u006C\u006C\u0061\u0064\u0020\u0041\u0062\u006F\u0075\u0074\u0020\u004D\u0069\u006E\u0063\u0065\u0064\u0020\u0043\u0075\u0074\u006C\u0065\u0074\u0073","mode":"Knockout",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0036","image":"https://media.brawltime.ninja/maps/15001096.webp?size=512"},{'\u0069\u0064':18,"name":"\u0043\u0061\u006C\u006C\u0020\u006F\u0066\u0020\u0074\u0068\u0065\u0020\u0057\u0061\u0074\u0065\u0072",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"https://brawlify.com/maps/15001059","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':19,"name":"\u0043\u0072\u0061\u0062\u0020\u0043\u006C\u0061\u0077\u0073","mode":"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0031\u0031",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001211.webp?size=512"},{"id":20,'\u006E\u0061\u006D\u0065':"\u0044\u0065\u0065\u0070\u0020\u0045\u006E\u0064","mode":"Knockout","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0034\u0032\u0039","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0034\u0032\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':21,"name":"H for...",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0038\u0038\u0032",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000882.webp?size=512"},{"id":22,"name":"Party for You",'\u006D\u006F\u0064\u0065':"Knockout",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001095",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001095.webp?size=512"},{"id":23,'\u006E\u0061\u006D\u0065':"Think Ahead",'\u006D\u006F\u0064\u0065':"\u004B\u006E\u006F\u0063\u006B\u006F\u0075\u0074","link":"https://brawlify.com/maps/15001058",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001058.webp?size=512"},{"id":24,"name":"\u0053\u0075\u0070\u0065\u0072\u0020\u0042\u0065\u0061\u0063\u0068","mode":"Brawl Ball","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0032\u0035\u0039",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000051.webp?size=512"},{'\u0069\u0064':25,'\u006E\u0061\u006D\u0065':"\u004E\u0075\u0074\u006D\u0065\u0067",'\u006D\u006F\u0064\u0065':"Brawl Ball",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0038",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':26,"name":"Beach Ball",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000143",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0031\u0034\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':27,'\u006E\u0061\u006D\u0065':"\u0042\u0061\u0063\u006B\u0079\u0061\u0072\u0064\u0020\u0042\u006F\u0077\u006C","mode":"Brawl Ball",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0034",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':28,"name":"\u0053\u0069\u006E\u0067\u0065\u0064\u0020\u0045\u0061\u0072\u0074\u0068","mode":"Brawl Ball",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":29,'\u006E\u0061\u006D\u0065':"\u0050\u0069\u006E\u0068\u006F\u006C\u0065\u0020\u0050\u0075\u006E\u0074","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0036","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0036\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":30,'\u006E\u0061\u006D\u0065':"Pinball Dreams","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000118",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000118.webp?size=512","best":[473866^473941,141512^141457,628324^628335,972905^972907,314703^314645,829371^829407,488648^488592,259688^259691,483598^483607,376500^376494,173978^174033,229743^229751,744096^744134,985725^985642,949726^949701],"firstPick":[248248^248295,756899^756986,860436^860447,547032^547034,976852^976782,987670^987762,807846^807921],"lastPick":[925189^925190,860691^860682,662688^662776,694056^694042,242204^242180,105592^105533,754288^754212],"worst":[951870^951848,316259^316235,920340^920324,199347^199306,444878^444895,712380^712330,856798^856786,768248^768198,665006^664986,875881^875855,435839^435786,661038^661007,608804^608818,908155^908140,275252^275314,894139^894086,478441^478452,635337^635355,319519^319528,392680^392646,614369^614360,465303^465330,667297^667374,717271^717281],"mapType":2},{'\u0069\u0064':31,'\u006E\u0061\u006D\u0065':"\u0053\u0070\u0069\u0072\u0061\u006C\u0069\u006E\u0067\u0020\u004F\u0075\u0074","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0031",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':32,'\u006E\u0061\u006D\u0065':"Grass Knot",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"https://brawlify.com/maps/15001020",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":33,'\u006E\u0061\u006D\u0065':"\u0054\u0072\u0069\u0070\u006C\u0065\u0020\u0044\u0072\u0069\u0062\u0062\u006C\u0065",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0035",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000025.webp?size=512","best":[409071^409008,632215^632220,790878^790791,663094^663148,960546^960530,714873^714850,419814^419813,221982^222022,876907^876889,334652^334611,388316^388293,330457^330431,451014^451019,523040^523115,504366^504419,238927^238875,913097^913054,518862^518857,305834^305894,966845^966807],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[788818^788749,528400^528411,382904^382945,274309^274399],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[195064^195067,116688^116706,620850^620829,712087^712078,141461^141534,633827^633774,364788^364704,596270^596278,433398^433330],"worst":[717050^717036,139569^139573,289412^289425,506810^506770,397035^397010,516688^516672,143631^143644,746520^746589,168177^168188,406474^406507,290032^289988,799484^799450,120705^120767,270790^270811,809386^809375,492598^492587,941648^941639,464256^464278,935798^935728,140087^140032,272421^272490,694258^694262,635367^635340,752434^752394,821763^821772],"mapType":2},{'\u0069\u0064':34,'\u006E\u0061\u006D\u0065':"Match 1123581321","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"https://brawlify.com/maps/15001054",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001054.webp?size=512"},{"id":35,'\u006E\u0061\u006D\u0065':"\u0053\u0075\u0070\u0065\u0072\u0020\u0042\u0065\u0061\u0063\u0068","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0035\u0031","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0035\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':36,"name":"Sunny Soccer","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000144","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0031\u0034\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':37,'\u006E\u0061\u006D\u0065':"Sneaky Fields",'\u006D\u006F\u0064\u0065':"Brawl Ball",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000050","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0035\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032","best":[927143^927224,264448^264459,698922^698994,362504^362577,977523^977512,539083^539080,328596^328589,672818^672768,691255^691247,133676^133755,900446^900373,342160^342262,556241^556246],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[691053^690994,787621^787630,805914^805955,619305^619390],"lastPick":[106712^106715,301509^301532,222269^222223,652108^652116,801025^801092,102730^102745],"worst":[678906^678910,456745^456776,418572^418630,665069^665085,286110^286134,234352^234349,313931^313981,971801^971815,427239^427219,670945^670932,628231^628257,887249^887280,540218^540204,272571^272556,581706^581644,354795^354724,563246^563260,597988^597981,978321^978342,609234^609276,630093^630089,322217^322276,144912^144957,145528^145516,419324^419297,205080^205108],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':3},{"id":38,"name":"\u0053\u0069\u0064\u0065\u0074\u0072\u0061\u0063\u006B",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"https://brawlify.com/maps/15001053",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":39,'\u006E\u0061\u006D\u0065':"Center Stage","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000132","image":"https://media.brawltime.ninja/maps/15000132.webp?size=512",'\u0062\u0065\u0073\u0074':[848147^848204,948725^948653,697375^697364,885205^885132,787718^787782,828991^828988,557986^557984,728805^728830,983807^983732,734581^734511,555645^555623,109687^109628,620422^620497,657561^657537,860939^861037,406094^406098,208702^208697],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[736059^736100,878165^878093,977986^977993,793221^793308,296665^296601,841890^841888,943964^943943,223383^223437],"lastPick":[692836^692839,982031^982077,544341^544332,362739^362705,341927^341926,895335^895238,323184^323125,818324^818316,918052^918071],"worst":[502714^502700,252646^252642,701928^701888,424186^424112,332302^332318,139655^139670,143939^143982,834624^834657,314386^314412,415694^415738,998653^998619,660760^660781,711340^711354,232133^232169,236508^236491,135699^135694,519818^519823,557357^557375,151755^151804,663938^663958,975307^975236,534993^534977],"mapType":3},{'\u0069\u0064':40,"name":"Flute Chutes","mode":"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0033","image":"https://media.brawltime.ninja/maps/15001093.webp?size=512"},{"id":41,'\u006E\u0061\u006D\u0065':"\u0047\u006F\u0061\u006C\u0069\u0065\u0073",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0030\u0034",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001204.webp?size=512"},{'\u0069\u0064':42,'\u006E\u0061\u006D\u0065':"\u0047\u0072\u0061\u0062\u0020\u0074\u0068\u0065\u0020\u004D\u006F\u006D\u0065\u006E\u0074","mode":"Brawl Ball",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001094",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0034\u002E\u0077\u0065\u0062\u0070"},{'\u0069\u0064':43,'\u006E\u0061\u006D\u0065':"\u004E\u006F\u0020\u0047\u006F\u006F\u0064\u0020\u0044\u0065\u0065\u0064",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C","link":"https://brawlify.com/maps/15001205",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/maps/15001205.png"},{'\u0069\u0064':44,"name":"Priceless Cactus",'\u006D\u006F\u0064\u0065':"\u0042\u0072\u0061\u0077\u006C\u0020\u0042\u0061\u006C\u006C",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0032\u0038",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0032\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':45,'\u006E\u0061\u006D\u0065':"Rooftop Runners",'\u006D\u006F\u0064\u0065':"Brawl Ball",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0032\u0039","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0032\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":46,"name":"\u0044\u006F\u0075\u0062\u006C\u0065\u0020\u0053\u0077\u006F\u006F\u0073\u0068",'\u006D\u006F\u0064\u0065':"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0031\u0031\u0035",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0031\u0031\u0035\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032","best":[736102^736057,249070^249014,835614^835628,802799^802742,184506^184544,449838^449851,513913^513862,450198^450189,202983^202924,755351^755330,475583^475624,725390^725385,461550^461474,555018^555061,918179^918264,720798^720852],"firstPick":[216774^216735,656587^656529,411007^410986,672578^672637],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[704799^704813,121777^121770,867837^867766,546506^546505],'\u0077\u006F\u0072\u0073\u0074':[892843^892861,713229^713277,589076^589116,129801^129799,985908^985968,287178^287208,519460^519456,901848^901879,361944^361885,598124^598109,755922^755928,202028^202110,582857^582787,379311^379273,498975^498977,153965^153923,973255^973250,185838^185794,904195^904266,413223^413242,543218^543173,344363^344381,693089^693027,408209^408251,926326^926291,255778^255862,462689^462638,837969^837993,376395^376445,922892^922945,400426^400492],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':3},{'\u0069\u0064':47,'\u006E\u0061\u006D\u0065':"\u0048\u0061\u0072\u0064\u0020\u0052\u006F\u0063\u006B\u0020\u004D\u0069\u006E\u0065",'\u006D\u006F\u0064\u0065':"Gem Grab",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000007","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[842298^842289,736312^736359,871170^871256,176623^176566,806939^806926,250369^250370,592362^592371,724004^723990,922814^922878,302244^302319,447133^447178,361968^361923],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[991304^991299,756146^756205,925189^925279,743182^743255,459036^459017,756435^756407],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[514013^514014,590934^590927,642091^642073,969700^969636],'\u0077\u006F\u0072\u0073\u0074':[109809^109799,104417^104393,192114^192047,447353^447296,417566^417579,188889^188827,898582^898571,645564^645532,901941^901893,506399^506451,994573^994603,200018^200023,384750^384720,568548^568531,874419^874493,765443^765485,853853^853791,738749^738720,453787^453818,362308^362251,858646^858706,605502^605553,555660^555674,343826^343871],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':3},{'\u0069\u0064':48,'\u006E\u0061\u006D\u0065':"Gem Fort","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0031\u0030","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0031\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032","best":[686660^686671,564558^564497,981381^981431,153103^153173,603188^603245,229392^229448,171231^171228,372997^373008,604384^604338,306874^306929,853864^853873,615576^615555,447271^447344,693161^693146],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[153085^153078,856169^856118,871477^871535,234354^234283,166778^166767],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[759589^759575,671862^671861,636839^636917,349041^348986,437187^437210],'\u0077\u006F\u0072\u0073\u0074':[842236^842209,786429^786372,278140^278100,615769^615749,182716^182686,905161^905181,877484^877468,837344^837332,192031^192093,870362^870303,388240^388270,222070^222032,326585^326549,856640^856673,569731^569780,527038^527035,829883^829942,283942^283905,123849^123879,482538^482467,281111^281177,778400^778429,336488^336510,737152^737222,860431^860453,819929^819862,632245^632204,259733^259729,885089^885105,685943^685951],"mapType":2},{'\u0069\u0064':49,"name":"\u0053\u006E\u0061\u006B\u0065\u0020\u0050\u0069\u0074","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062","link":"https://brawlify.com/maps/15001171",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":50,"name":"\u0053\u0074\u006F\u0072\u0061\u0067\u0065\u0020\u0053\u0065\u0063\u0074\u006F\u0072","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":51,"name":"\u0044\u0065\u0061\u0074\u0068\u0063\u0061\u0070\u0020\u0054\u0072\u0061\u0070",'\u006D\u006F\u0064\u0065':"Gem Grab","link":"https://brawlify.com/maps/15000009",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":52,'\u006E\u0061\u006D\u0065':"\u004F\u006E\u0020\u0061\u0020\u0052\u006F\u006C\u006C","mode":"Gem Grab",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001026","image":"https://media.brawltime.ninja/maps/15001026.webp?size=512"},{'\u0069\u0064':53,"name":"\u0043\u0072\u0079\u0073\u0074\u0061\u006C\u0020\u0041\u0072\u0063\u0061\u0064\u0065",'\u006D\u006F\u0064\u0065':"Gem Grab","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0038","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":54,'\u006E\u0061\u006D\u0065':"\u0055\u006E\u0064\u0065\u0072\u006D\u0069\u006E\u0065","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000011",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0031\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[431377^431438,587874^587832,448716^448711,987757^987700,741626^741562,886860^886824,925044^924972,276327^276308,124128^124155,627130^627126,421642^421698,384953^385006,696218^696316,831787^831792],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[506580^506507,479783^479869,162006^162013,819278^819223],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[970005^970023,434238^434278,408112^408145,479648^479673,977132^977135],'\u0077\u006F\u0072\u0073\u0074':[684692^684708,533767^533777,886204^886154,878526^878498,695915^695919,164358^164398,872820^872781,207169^207196,920885^920853,482951^483001,136924^136954,490451^490397,602372^602369,301464^301494,427519^427475,224749^224700,214850^214879,643914^643936,785901^785868,724737^724774,352279^352306,130888^130821,745060^744992,596312^596254,184809^184764,317703^317738,805869^805850,639118^639110,277387^277444,627738^627795],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':2},{'\u0069\u0064':55,'\u006E\u0061\u006D\u0065':"\u0052\u0075\u0073\u0074\u0069\u0063\u0020\u0041\u0072\u0063\u0061\u0064\u0065",'\u006D\u006F\u0064\u0065':"Gem Grab","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0034\u0033",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0034\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':56,"name":"\u004F\u0070\u0065\u006E\u0020\u0053\u0070\u0061\u0063\u0065",'\u006D\u006F\u0064\u0065':"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0034\u0039\u0039","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0034\u0039\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":57,"name":"\u0041\u0066\u0074\u0065\u0072\u0070\u0061\u0072\u0074\u0079",'\u006D\u006F\u0064\u0065':"Gem Grab",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001090","image":"https://media.brawltime.ninja/maps/15001090.webp?size=512"},{'\u0069\u0064':58,"name":"\u0052\u0061\u0069\u006C\u0072\u006F\u0061\u0064\u0020\u0052\u006F\u0062\u0062\u0065\u0072\u0079","mode":"Gem Grab",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001123",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0032\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":59,"name":"\u0046\u006F\u0072\u0074\u0072\u0065\u0073\u0073\u0020\u0046\u0061\u006C\u006C","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062","link":"https://brawlify.com/maps/15001172",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":60,'\u006E\u0061\u006D\u0065':"ATLAS","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0038\u0039","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0038\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':61,"name":"Extreme Nonchalance",'\u006D\u006F\u0064\u0065':"Gem Grab",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0032",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001052.webp?size=512"},{'\u0069\u0064':62,"name":"Lilygear Lake","mode":"Gem Grab","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0031",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":63,'\u006E\u0061\u006D\u0065':"\u004C\u006F\u0063\u0061\u006C\u0020\u0052\u0065\u0073\u0074\u0061\u0075\u0072\u0061\u006E\u0074\u0073",'\u006D\u006F\u0064\u0065':"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0032","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':64,'\u006E\u0061\u006D\u0065':"\u0050\u0069\u0063\u0074\u0075\u0072\u0065\u0073\u0071\u0075\u0065","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062","link":"https://brawlify.com/maps/15001208",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0030\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":65,'\u006E\u0061\u006D\u0065':"\u0053\u0061\u0074\u006F\u006D\u0069\u0020\u0053\u0070\u0072\u0069\u006E\u0067\u0073","mode":"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001209",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001209.webp?size=512"},{'\u0069\u0064':66,'\u006E\u0061\u006D\u0065':"\u0057\u0068\u0069\u0073\u0070\u0065\u0072\u0020\u0056\u0061\u006C\u0065",'\u006D\u006F\u0064\u0065':"\u0047\u0065\u006D\u0020\u0047\u0072\u0061\u0062","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0031",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001051.webp?size=512"},{'\u0069\u0064':67,'\u006E\u0061\u006D\u0065':"\u0042\u0072\u0069\u0064\u0067\u0065\u0020\u0054\u006F\u006F\u0020\u0046\u0061\u0072",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0037\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0037\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[321917^321919,584514^584543,975901^975993,947455^947382,669304^669217,814550^814587,284884^284917,396371^396357,917169^917228,482139^482110,853477^853411,572804^572808,411784^411840,664430^664426,841986^842000,405015^405066,239572^239491,398274^398303,188108^188122,737485^737516,598127^598133,958152^958193],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[864552^864554,293842^293839,305123^305031,599029^598972,804166^804127,350744^350773,820386^820355,869577^869599,546372^546329,201470^201400],"lastPick":[697016^697053,409442^409392,329353^329409],"worst":[140323^140341,818319^818365,103573^103557,869892^869939,725725^725634,383043^383095,941571^941645,632699^632689,789473^789445,731775^731752,571968^571987,271824^271755,843024^843089,497818^497802,483646^483639,301892^301889,408152^408178,776160^776140,384453^384498,478681^478597,259372^259406,162471^162449,934705^934782,660337^660319],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':1},{'\u0069\u0064':68,"name":"Hot Potato","mode":"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000053",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000053.webp?size=512","best":[850370^850368,886158^886149,868560^868489,160048^160030,359537^359542,223809^223769,397649^397617,736864^736889,460657^460658,277399^277468,134894^134824,186779^186835,370165^370067,623737^623664,968114^968092],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[447033^447035,782928^782939,624144^624201,128590^128517,187208^187150,944216^944144],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[756336^756318,346427^346428,894562^894522,576328^576296,165486^165495,770545^770546],'\u0077\u006F\u0072\u0073\u0074':[432139^432157,342528^342578,513846^513819,356295^356346,393843^393772,384684^384748,980179^980196,655408^655392,751049^751060,639525^639505,852246^852312,358527^358489,654640^654598,409967^409901,866100^866064,981032^981001,419328^419351,437126^437213,757649^757668,236705^236768,412136^412112,401494^401477,329619^329609,526000^525990,801334^801307,583317^583301,978682^978628,234825^234816,474941^474902],"mapType":2},{'\u0069\u0064':69,"name":"Safe Zone","mode":"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000019","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0031\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[738701^738703,777098^777198,894941^894852,416338^416282,356511^356496,135583^135566,844228^844265,439984^440057,449528^449531,140555^140621,203879^203883,776543^776456],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[395003^395001,902646^902546,490150^490239,443740^443674],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[637468^637524,302016^302019,475745^475688],'\u0077\u006F\u0072\u0073\u0074':[349932^349909,712325^712375,691453^691437,191965^191901,781765^781777,666492^666400,986891^986890,681741^681731,656051^656121,980915^980868,213540^213520,485314^485260,168560^168532,195419^195400,802439^802445,591849^591794,503638^503662,614060^614022,638133^638114,196545^196480,460025^459977,110816^110825,178553^178537,432896^432964,587949^587961,703575^703584,849169^849216,899071^899070,344112^344092,308505^308566,478350^478412],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':1},{'\u0069\u0064':70,"name":"\u0050\u0068\u006F\u0074\u0069\u0063\u0020\u0044\u006F\u006F\u006D","mode":"Heist",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001099",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':71,'\u006E\u0061\u006D\u0065':"\u0041\u0072\u0069\u0064\u0069\u0074\u0079","mode":"Heist","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0039",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':72,'\u006E\u0061\u006D\u0065':"\u0047\u0047\u0020\u0032\u002E\u0030",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0030\u0030","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0030\u0030\u002E\u0077\u0065\u0062\u0070"},{"id":73,'\u006E\u0061\u006D\u0065':"Quintillion","mode":"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001170",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':74,'\u006E\u0061\u006D\u0065':"All Things Wicked","mode":"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001098",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0038\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':76,"name":"\u0043\u006F\u0072\u006E\u0065\u0072\u0020\u0043\u0061\u0076\u0065",'\u006D\u006F\u0064\u0065':"Heist","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0036\u0033",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001063.webp?size=512"},{'\u0069\u0064':77,'\u006E\u0061\u006D\u0065':"Kaboom Canyon","mode":"Heist","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0031\u0038",'\u0069\u006D\u0061\u0067\u0065':"https://brawlify.com/images/maps/150/15000018.webp","best":[552449^552451,419596^419688,951629^951648,514993^515064,344949^344848,845478^845477,407609^407648,499966^499878,896040^896096,745173^745107,554441^554370,994623^994664,116048^116020,600959^600897,541612^541603,775866^775840,300725^300712],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[206675^206673,522846^522810,612187^612214],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[424409^424410,126066^125994,985985^986057],"worst":[547224^547214,210990^210972,357379^357422,115596^115633,514096^514159,533975^533911,412152^412111,970210^970226,942348^942392,821802^821860,133505^133541,249453^249470,583510^583516,601847^601772,618528^618520,725162^725120,644623^644632,644406^644471,689043^689059,171409^171416,583546^583530,919893^919825,798899^798887,210518^210529,186353^186272,742383^742382,188177^188221,777487^777536,378808^378874],"mapType":2},{'\u0069\u0064':78,'\u006E\u0061\u006D\u0065':"\u0050\u0065\u0072\u0070\u0065\u0074\u0075\u0061\u006C\u0020\u004D\u006F\u0074\u0069\u006F\u006E",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074","link":"https://brawlify.com/maps/15001207",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0030\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":79,"name":"\u0050\u0069\u0074\u0020\u0053\u0074\u006F\u0070",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000137",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0031\u0033\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':80,"name":"\u0050\u006C\u0061\u0069\u006E\u0020\u0054\u0065\u0078\u0074",'\u006D\u006F\u0064\u0065':"Heist","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0033",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0033\u002E\u0077\u0065\u0062\u0070"},{"id":81,'\u006E\u0061\u006D\u0065':"Subway Turfers",'\u006D\u006F\u0064\u0065':"Heist",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0034",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":82,'\u006E\u0061\u006D\u0065':"Tuning Fork",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0030\u0036","image":"https://media.brawltime.ninja/maps/15001206.webp?size=512"},{'\u0069\u0064':83,'\u006E\u0061\u006D\u0065':"\u005A\u0069\u0070\u0020\u005A\u0061\u0070\u0020\u005A\u006F\u006F\u006D",'\u006D\u006F\u0064\u0065':"\u0048\u0065\u0069\u0073\u0074",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001062",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001062.webp?size=512"},{'\u0069\u0064':84,'\u006E\u0061\u006D\u0065':"Temple Ruins","mode":"\u0042\u006F\u0075\u006E\u0074\u0079","link":"https://brawlify.com/maps/15000000","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0030\u002E\u0077\u0065\u0062\u0070"},{'\u0069\u0064':85,"name":"\u0053\u006E\u0061\u006B\u0065\u0020\u0050\u0072\u0061\u0069\u0072\u0069\u0065",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0034","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':86,"name":"\u0053\u0068\u006F\u006F\u0074\u0069\u006E\u0067\u0020\u0053\u0074\u0061\u0072",'\u006D\u006F\u0064\u0065':"Bounty",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0035","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0035\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[783317^783340,574175^574187,779121^779111,115904^115933,944825^944867,689028^689040,223730^223711,367731^367639,863908^863987,431969^431973,133674^133643,830194^830160,493524^493508,790370^790368,247581^247559,875732^875660],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[668318^668327,492880^492900,823958^823936,117759^117730,422677^422735,331206^331218,398317^398272,704753^704661,490194^490117,645274^645278],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[208680^208666,756044^756078,156836^156852,484660^484704],'\u0077\u006F\u0072\u0073\u0074':[456421^456438,723678^723670,531769^531770,385638^385602,376083^376082,641390^641330,752925^752960,950918^950950,814626^814612,225276^225208,169515^169476,203285^203354,140029^139938,123003^122975,508222^508212,421941^422011,364731^364716,665252^665343,400183^400153,779433^779450,915210^915202,305294^305289,963801^963804,485161^485134],"mapType":1},{"id":87,"name":"\u0048\u0069\u0064\u0065\u006F\u0075\u0074",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079","link":"https://brawlify.com/maps/15000022",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0032\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[285163^285138,912723^912718,108181^108193,311163^311113,706931^706919,923837^923833,743903^743881,240134^240167,599960^600061,250588^250501,379108^379008,690552^690530,248387^248343,995692^995678,238886^238972,297312^297271,988539^988505,994456^994445,206470^206510,568804^568748,785516^785518,142676^142713],"firstPick":[729798^729855,215137^215164,484789^484737,533358^533370,862880^862884,184603^184589,331818^331787,100247^100302,112252^112152,317936^317930,132487^132573,524113^524038],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[400117^400016,407044^407120,911351^911301,238477^238572,120562^120546,248253^248209,546690^546767,901549^901519,860364^860292],'\u0077\u006F\u0072\u0073\u0074':[940360^940308,832259^832348,213360^213343,947681^947696,213950^213949,177812^177820,450297^450266,565706^565707,448214^448133,975910^975934,588344^588331,255399^255422,827833^827867,233765^233729,780212^780195,826397^826391,908083^908043,632486^632501,267260^267218,981972^981980,457380^457358,428902^428841,505521^505494,323947^323849,185916^185978],"mapType":1},{"id":88,"name":"\u0044\u0072\u0079\u0020\u0053\u0065\u0061\u0073\u006F\u006E","mode":"Bounty","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0038\u0033",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0038\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032",'\u0062\u0065\u0073\u0074':[222525^222570,877159^877057,731335^731365,398946^398950,379290^379276,110828^110838,386298^386258,153152^153125,320654^320724,622472^622530,578577^578565,279406^279386,626646^626671,374026^374088,309651^309723,982466^982422,550255^550155,949874^949855,788472^788453],"firstPick":[461446^461521,727292^727194,982135^982101,137423^137419,138146^138164,382364^382342,429214^429238,252564^252622,216038^216050,671220^671168,144875^144783],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[370093^370120,238421^238367,232621^232637,190933^190967,585606^585649,716046^716143,160273^160327,556216^556268,182450^182400,552464^552536,686820^686768,603685^603666,179428^179333],'\u0077\u006F\u0072\u0073\u0074':[854340^854348,156741^156740,180444^180467,673182^673192,580213^580182,162102^162101,422706^422700,757920^757934,959565^959609,790821^790854,777580^777507,897329^897343,709228^709247,953623^953651,566645^566636,585691^585727,719408^719418,719901^719882,977929^977946,856929^856878,348269^348264,525524^525548,172711^172796,205248^205295,824294^824268,919601^919671,888351^888371,775398^775361,344875^344871,652898^652884,919928^919844],"mapType":1},{"id":89,'\u006E\u0061\u006D\u0065':"\u0053\u0074\u0061\u0072\u0072\u0062\u0075\u0072\u0073\u0074","mode":"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0036\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0036\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":90,"name":"\u0043\u0068\u006F\u0072\u0061\u006C\u0020\u0043\u0068\u0061\u006D\u0062\u0065\u0072\u0073","mode":"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0037\u0036",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001176.webp?size=512"},{'\u0069\u0064':91,"name":"Layer Cake",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0038\u0032","image":"https://media.brawltime.ninja/maps/15000082.webp?size=512",'\u0062\u0065\u0073\u0074':[763693^763709,969887^969928,353108^353126,905708^905654,281180^281093,731845^731805,763285^763297,760041^759949,943600^943552,369605^369631,558405^558445,363163^363193,325898^325952,717544^717472,471989^472033],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[308041^307998,176922^176963,471736^471776,121691^121711,271951^271915,483978^484026,829702^829724,123240^123200],"lastPick":[345430^345414,302673^302674,718961^718885,513640^513568,104820^104766,307513^307544,260339^260305,873473^873523,817195^817249,788491^788575,940967^940998,936441^936348],'\u0077\u006F\u0072\u0073\u0074':[310638^310577,935689^935681,531954^531901,655512^655548,621807^621768,827009^827069,973815^973758,569080^569071,796230^796286,254676^254704,782288^782318,878168^878207,390503^390473,834777^834792,597145^597243,242292^242279],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':2},{"id":92,"name":"\u0057\u0061\u006C\u006C\u0020\u0048\u0075\u0067\u0067\u0069\u006E\u0067","mode":"\u0042\u006F\u0075\u006E\u0074\u0079","link":"https://brawlify.com/maps/15001175",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001175.webp?size=512"},{'\u0069\u0064':93,'\u006E\u0061\u006D\u0065':"\u0045\u0078\u0063\u0065\u006C",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0038\u0031","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0038\u0031\u002E\u0077\u0065\u0062\u0070"},{'\u0069\u0064':94,'\u006E\u0061\u006D\u0065':"Deathcap Trap",'\u006D\u006F\u0064\u0065':"Bounty",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000002",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0030\u0030\u0039\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':95,'\u006E\u0061\u006D\u0065':"Brace for Impact",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079","link":"https://brawlify.com/maps/15000935","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0033\u0035\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":96,'\u006E\u0061\u006D\u0065':"Don't turn around","mode":"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0035\u0033",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0035\u0033\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':97,'\u006E\u0061\u006D\u0065':"\u0048\u0069\u0074\u0020\u0061\u006E\u0064\u0020\u0052\u0075\u006E","mode":"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001220","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0032\u0039\u0035\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':98,'\u006E\u0061\u006D\u0065':"\u004E\u006F\u0020\u0045\u0078\u0063\u0075\u0073\u0065\u0073",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0032\u0039\u0035",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0032\u0030\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":99,"name":"Side by Side",'\u006D\u006F\u0064\u0065':"\u0042\u006F\u0075\u006E\u0074\u0079","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0035\u0034","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0035\u0034\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":100,'\u006E\u0061\u006D\u0065':"\u0057\u0061\u0074\u0065\u0072\u006D\u0065\u006C\u006F\u006E\u0073","mode":"Bounty",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0031\u0039",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001219.webp?size=512"},{'\u0069\u0064':101,"name":"Open Business","mode":"Hot Zone","link":"https://brawlify.com/maps/15000292","image":"https://media.brawltime.ninja/maps/15000292.webp?size=512","best":[466406^466306,545066^545136,740028^740067,467832^467745,544453^544503,275198^275179,891340^891351,243464^243536,143241^143289,604606^604661,421801^421839,287240^287327,439473^439507,589391^589332,984348^984374,928841^928837,693841^693874],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[234872^234780,735164^735206,990317^990260,574886^574899,370897^370822],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[938855^938796,124188^124165,117891^117937,590038^589979,395391^395375,511715^511617,789182^789243,461286^461234,593489^593523,415698^415715,427712^427656,446827^446765,595911^595846],"worst":[215114^215132,551152^551156,936917^936904,130467^130458,689744^689682,745437^745461,514589^514588,339790^339822,794956^794994,222813^222832,732098^732132,894590^894559,465689^465709,940199^940218,294058^294076,604389^604352,639851^639823,399354^399301,844238^844167,105898^105884,446753^446773,687369^687451,516988^516984],"mapType":2},{"id":102,'\u006E\u0061\u006D\u0065':"\u0044\u0075\u0065\u006C\u0069\u006E\u0067\u0020\u0042\u0065\u0065\u0074\u006C\u0065\u0073",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0030\u0036",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0030\u0036\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032","best":[774917^775007,833968^833922,435008^434969,365064^365085,355189^355117,319742^319717,967295^967195,651498^651507,873662^873649,759404^759347,905102^905177,248509^248566,663957^664054,149808^149786,472884^472837,834060^834122,913673^913746,801355^801352,472384^472351,465605^465609,620400^620415,612347^612254,574460^574383,884107^884155],"firstPick":[674909^674823,800142^800215,957533^957512,209840^209876,187275^187356],"lastPick":[352951^352901,325657^325634,800187^800227,486931^486922,303073^303089,757727^757658,381999^382028,997660^997694,828791^828707,267654^267703,359223^359253,378185^378127,215933^215934,648580^648604,402131^402102,579230^579227],'\u0077\u006F\u0072\u0073\u0074':[310382^310378,635187^635173,167584^167560,894027^893961,877335^877358,440901^440953,144677^144751,810146^810238,871871^871817,195055^195035,322646^322683,232874^232892,412129^412103,898062^898104,791147^791158,169620^169648,322932^322881,942896^942975,388254^388314,627731^627756,218409^218429,587087^587083],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':2},{"id":103,'\u006E\u0061\u006D\u0065':"Tax Evasion",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001165",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0035\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':104,"name":"Playmaker",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0037",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0035\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":105,'\u006E\u0061\u006D\u0065':"\u0050\u0061\u0072\u0061\u006C\u006C\u0065\u006C\u0020\u0050\u006C\u0061\u0079\u0073",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000293","image":"https://media.brawltime.ninja/maps/15000293.webp?size=512","best":[762963^762954,713677^713727,364092^364124,897205^897198,776889^776854,857350^857436,289472^289433,718667^718632,747295^747346,182293^182349,455786^455727,619195^619229,725018^725069,233428^233392,289527^289506,604122^604154,725925^725899,348779^348704],"firstPick":[924386^924344,732526^732471],'\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B':[429502^429479,563438^563420,974817^974721,148878^148885,158050^158029,575698^575639,188292^188311,326645^326596,239760^239802,889941^889942,347401^347457,137330^137325,961851^961854,437826^437793,910010^910043,105247^105291,246562^246542,894938^894906],'\u0077\u006F\u0072\u0073\u0074':[796752^796687,776949^776884,859290^859284,151167^151139,590078^590052,560097^560066,699968^700002,876031^875969,462813^462825,767191^767217,765613^765580,202002^202020,125568^125590,893930^893860,143246^143252,226470^226551,463592^463569,337747^337764,457179^457214,824145^824131,971431^971395,963614^963665,874130^874134,851217^851227,874154^874174,476467^476446,930260^930300,486973^487039,863355^863300,754245^754179,450311^450309,381816^381791,818461^818471,208921^208910],'\u006D\u0061\u0070\u0054\u0079\u0070\u0065':3},{'\u0069\u0064':106,'\u006E\u0061\u006D\u0065':"\u0054\u0068\u0065\u0020\u0053\u0065\u0076\u0065\u006E\u0020\u0050\u0069\u006C\u006C\u0061\u0072\u0073\u0020\u006F\u0066\u0020\u0048\u0075\u006D\u0061\u006E\u0069\u0074\u0079",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001166",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0031\u0036\u0036\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':107,"name":"\u0052\u0069\u006E\u0067\u0020\u006F\u0066\u0020\u0046\u0069\u0072\u0065",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0033\u0030\u0030","image":"https://media.brawltime.ninja/maps/15000300.webp?size=512","best":[209679^209744,303108^303198,451232^451268,602297^602251,269438^269350,617488^617545,838948^838961,242456^242504,292857^292854,143931^143874,168567^168551,531489^531562,662114^662137,639956^639965,715449^715502,931936^931948,751649^751644,925257^925209,597496^597466,236352^236315,141974^141977,710957^710985],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[217359^217424,306605^306679,814297^814269,920825^920809],"lastPick":[325989^325975,693893^693916,810620^810554,963906^963936,939598^939531,520438^520341],"worst":[524692^524722,952809^952743,905447^905411,390818^390806,933983^933992,998296^998349,799032^798990,710506^710446,652653^652578,115187^115173,615599^615557,828793^828766,653496^653543,702957^702913,169703^169666,796357^796396,509981^509980],"mapType":1},{"id":108,'\u006E\u0061\u006D\u0065':"Abracadabra",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0032","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{"id":109,'\u006E\u0061\u006D\u0065':"\u0042\u0061\u0063\u006B\u0020\u0053\u0068\u0075\u0066\u0066\u006C\u0065","mode":"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065","link":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0032","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u0069\u006D\u0061\u0067\u0065\u0073\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0032\u002E\u0077\u0065\u0062\u0070"},{"id":110,'\u006E\u0061\u006D\u0065':"\u0046\u0069\u0073\u0068\u0069\u006E\u0067\u0020\u0042\u0065\u0064",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15000927",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0039\u0032\u0037\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':111,'\u006E\u0061\u006D\u0065':"\u0047\u006F\u006C\u0064\u0065\u006E\u0020\u0042\u0061\u0079",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001202","image":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0032\u0030\u0032\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':112,'\u006E\u0061\u006D\u0065':"Hyacinth House","mode":"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001203",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001203.webp?size=512"},{"id":113,'\u006E\u0061\u006D\u0065':"\u0049\u006E\u0020\u0074\u0068\u0065\u0020\u004C\u0069\u006D\u0069\u006E\u0061\u006C",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0032\u0033","image":"https://media.brawltime.ninja/maps/15001023.webp?size=512",'\u0062\u0065\u0073\u0074':[832536^832554,260324^260283,456290^456248,833532^833432,622428^622341,951153^951140,968983^968972,615433^615505,842301^842303,386358^386429,167893^167900,973515^973468,160692^160751,568151^568073,782985^783065],"firstPick":[229460^229390,121680^121652,926278^926239,489483^489502],"lastPick":[789659^789673,385381^385341,674137^674112,399319^399284,421400^421384,301030^300960],'\u0077\u006F\u0072\u0073\u0074':[175735^175673,198933^198968,839033^839005,788725^788691,617567^617579,945880^945805,628426^628357,891448^891407,601194^601144,217053^216985,264691^264653,729549^729570],"mapType":2},{"id":114,"name":"\u004A\u0075\u0073\u0074\u0020\u0041\u006E\u006F\u0074\u0068\u0065\u0072\u0020\u0052\u0061\u0063\u0065\u0020\u0054\u006F\u0020\u0041\u006E\u0079\u0077\u0068\u0065\u0072\u0065",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0031",'\u0069\u006D\u0061\u0067\u0065':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u006D\u0065\u0064\u0069\u0061\u002E\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0031\u0030\u0039\u0031\u002E\u0077\u0065\u0062\u0070\u003F\u0073\u0069\u007A\u0065\u003D\u0035\u0031\u0032"},{'\u0069\u0064':115,"name":"\u004F\u0070\u0065\u006E\u0020\u005A\u006F\u006E\u0065",'\u006D\u006F\u0064\u0065':"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0069\u0066\u0079\u002E\u0063\u006F\u006D\u002F\u006D\u0061\u0070\u0073\u002F\u0031\u0035\u0030\u0030\u0030\u0035\u0032\u0037",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000527.webp?size=512"},{'\u0069\u0064':116,'\u006E\u0061\u006D\u0065':"Ticket to Die",'\u006D\u006F\u0064\u0065':"Hot Zone",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001126",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001126.webp?size=512"},{'\u0069\u0064':117,'\u006E\u0061\u006D\u0065':"\u005A\u006F\u006E\u0065\u0020\u0053\u0070\u006C\u0069\u0074\u0074\u0069\u006E\u0067","mode":"\u0048\u006F\u0074\u0020\u005A\u006F\u006E\u0065",'\u006C\u0069\u006E\u006B':"https://brawlify.com/maps/15001125",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15001125.webp?size=512"},{"id":118,'\u006E\u0061\u006D\u0065':"Quick Travel","mode":"Hot Zone",'\u006C\u0069\u006E\u006B':"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0062\u0072\u0061\u0077\u006C\u0074\u0069\u006D\u0065\u002E\u006E\u0069\u006E\u006A\u0061\u002F\u0074\u0069\u0065\u0072\u002D\u006C\u0069\u0073\u0074\u002F\u006D\u006F\u0064\u0065\u002F\u0068\u006F\u0074\u002D\u007A\u006F\u006E\u0065\u002F\u006D\u0061\u0070\u002F\u0051\u0075\u0069\u0063\u006B\u002D\u0054\u0072\u0061\u0076\u0065\u006C",'\u0069\u006D\u0061\u0067\u0065':"https://media.brawltime.ninja/maps/15000350.webp?size=512",'\u0062\u0065\u0073\u0074':[406743^406670,662091^662016,696248^696288,191173^191135,784703^784759,899851^899876,898186^898195,251999^251996,446994^447055,412695^412759,360330^360428,270061^270070,486749^486734,478380^478393],'\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B':[611656^611601,322394^322321,735244^735316,930552^930466],"lastPick":[273427^273424,771741^771716,478904^478871,992831^992866,839410^839346,438421^438480,821026^821011,970496^970520,853502^853492,322283^322241,705776^705683],"worst":[353994^354028,220408^220358,292924^292872,391870^391827,211030^211040,308658^308648,183959^184025,575455^575433,385201^385172,946640^946673,226922^226909,196541^196521,333052^332979,984359^984350,397205^397192,159649^159720,645998^646012,838982^839009,817614^817610,575794^575842,589008^589039,717684^717674,857197^857148,295159^295074,116256^116279,795293^795318,148437^148463,600356^600425,477401^477399,355027^355048,708055^707985,443109^443124,704820^704822,406700^406661,618437^618432],"mapType":3}];function displayMaps(filteredMaps=maps,_0xc69c,_0x546cdd){const _0x17bd=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u0061\u0070\u0073\u002D\u006C\u0069\u0073\u0074");_0xc69c=(194673^194675)+(725148^725148);if(!_0x17bd)return;_0x17bd['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";_0x17bd['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0066\u006C\u0065\u0078";_0x17bd['\u0073\u0074\u0079\u006C\u0065']['\u0066\u006C\u0065\u0078\u0044\u0069\u0072\u0065\u0063\u0074\u0069\u006F\u006E']="\u0063\u006F\u006C\u0075\u006D\u006E";_0x17bd['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0063\u0065\u006E\u0074\u0065\u0072";_0x17bd['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="\u0031\u0030\u0030\u0025";const _0x7_0x5ca=[...new Set(filteredMaps['\u006D\u0061\u0070'](m=>m['\u006D\u006F\u0064\u0065']))];_0x546cdd='\u0068\u0065\u0065\u006C\u0061\u0062';_0x7_0x5ca['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](mode=>{let _0x2_0x665;const _0xg0dfb=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x2_0x665=996832^996838;_0xg0dfb['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="puorg-ssalc".split("").reverse().join("");_0xg0dfb['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="\u0031\u0030\u0030\u0025";_0xg0dfb['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="xelf".split("").reverse().join("");_0xg0dfb['\u0073\u0074\u0079\u006C\u0065']['\u0066\u006C\u0065\u0078\u0044\u0069\u0072\u0065\u0063\u0074\u0069\u006F\u006E']="\u0063\u006F\u006C\u0075\u006D\u006E";_0xg0dfb['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0063\u0065\u006E\u0074\u0065\u0072";_0xg0dfb['\u0073\u0074\u0079\u006C\u0065']['\u006D\u0061\u0072\u0067\u0069\u006E\u0042\u006F\u0074\u0074\u006F\u006D']="xp04".split("").reverse().join("");const _0xe384c=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xe384c['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="eltit-ssalc".split("").reverse().join("");_0xe384c['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']=mode;_0xg0dfb['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xe384c);const _0x77c25e=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x77c25e['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0067\u0072\u0069\u0064\u002D\u0063\u006F\u006E\u0074\u0061\u0069\u006E\u0065\u0072";_0x77c25e['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="%001".split("").reverse().join("");_0x77c25e['\u0073\u0074\u0079\u006C\u0065']['\u006D\u0061\u0072\u0067\u0069\u006E']="\u0030\u0020\u0061\u0075\u0074\u006F";var _0x28ec=(370284^370284)+(120386^120385);const _0xa8fe8e=filteredMaps['\u0066\u0069\u006C\u0074\u0065\u0072'](m=>m['\u006D\u006F\u0064\u0065']===mode);_0x28ec=(809434^809426)+(737917^737913);_0xa8fe8e['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](map=>{var _0xc9c=(835107^835106)+(364217^364219);const _0xef5da=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xc9c=(604083^604086)+(600199^600207);_0xef5da['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u006D\u0061\u0070\u002D\u0063\u0061\u0072\u0064";_0xef5da['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=e=>{e['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();showMapDetails(map['\u0069\u0064']);};_0xef5da['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+        <img src="${map['\u0069\u006D\u0061\u0067\u0065']}" alt="${map['\u006E\u0061\u006D\u0065']}" style="width: 100%; border-radius: 15px;">
+        <p>${map['\u006E\u0061\u006D\u0065']}</p>
+    `;_0x77c25e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xef5da);});_0xg0dfb['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x77c25e);_0x17bd['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xg0dfb);});}function getBrawlerIcons(ids){if(!ids||ids['\u006C\u0065\u006E\u0067\u0074\u0068']===(878816^878816))return`<p style="opacity:0.5;">No data</p>`;return ids['\u006D\u0061\u0070'](id=>{const b=brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']===id);if(!b)return"";return`
+            <div onclick="showBrawlerDetails(${b['\u0069\u0064']})" 
                  style="display:inline-block; margin: 8px; text-align:center; cursor:pointer;">
-                <img src="${b.image}" 
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" 
                      style="width: 55px; height: 55px; border-radius: 12px; border: 2px solid white; display: block; margin: 0 auto; transition: transform 0.2s;"
                      onmouseover="this.style.transform='scale(1.1)'" 
                      onmouseout="this.style.transform='scale(1)'">
                 <p style="font-size: 11px; margin: 5px 0 0 0; color: white; font-family: 'Lilita One'; text-transform: uppercase;">
-                    ${b.name}
+                    ${b['\u006E\u0061\u006D\u0065']}
                 </p>
             </div>
-        `;
-    }).join("");
-}
-
-function goToBrawler(id) {
-    const brawler = brawlers.find(b => b.id === id);
-    if (brawler) {
-        // Вызываем твою основную функцию, передавая ПОЛНЫЙ ОБЪЕКТ
-        // Если твоя функция называется showBrawlerDetails, вызывай её:
-        showBrawlerDetails(brawler); 
-    }
-}
-
-// 1. Создаем список советов (можешь добавлять свои сколько угодно)
-// Список фраз для примера (информация о карте)
-function showMapDetails(mapId) {
-    const map = maps.find(m => m.id === mapId);
-    if (!map) return;
-
-    showSection('details'); 
-    
-    const detailsContainer = document.getElementById('brawler-details');
-    
-    detailsContainer.innerHTML = `
+        `;})['\u006A\u006F\u0069\u006E']("");}function goToBrawler(id){var _0x50a3cg=(463020^463021)+(742775^742771);const _0x12a=brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']===id);_0x50a3cg='\u0070\u006D\u0063\u0062\u0063\u0065';if(_0x12a){showBrawlerDetails(_0x12a);}}function showMapDetails(mapId,_0xdd9d){var _0xf7e6a=(701399^701407)+(206404^206400);const _0xdga3d=maps['\u0066\u0069\u006E\u0064'](m=>m['\u0069\u0064']===mapId);_0xf7e6a=987048^987052;if(!_0xdga3d)return;showSection("sliated".split("").reverse().join(""));const _0x44gf7e=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("sliated-relwarb".split("").reverse().join(""));_0x44gf7e['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
         <div class="map-details-wrapper">
 
             <div class="map-left">
@@ -998,7 +47,7 @@ function showMapDetails(mapId) {
                     text-shadow: 3px 3px 0 #000;
                     margin-bottom: 10px;
                 ">
-                    ${map.name}
+                    ${_0xdga3d['\u006E\u0061\u006D\u0065']}
                 </h1>
 
                 <p style="
@@ -1006,10 +55,10 @@ function showMapDetails(mapId) {
                     font-family: 'Lilita One';
                     margin-bottom: 15px;
                 ">
-                    Mode: ${map.mode}
+                    Mode: ${_0xdga3d['\u006D\u006F\u0064\u0065']}
                 </p>
 
-                <img src="${map.image}" style="
+                <img src="${_0xdga3d['\u0069\u006D\u0061\u0067\u0065']}" style="
                     width: 100%;
                     max-width: 300px;
                     border: 6px solid white;
@@ -1024,365 +73,88 @@ function showMapDetails(mapId) {
                     <h2 style="margin-top: 0;">Strategy & Info</h2>
 
                     <p style="color: #eee;">
-                        Explore the best meta picks and strategy for ${map.name}.
+                        Explore the best meta picks and strategy for ${_0xdga3d['\u006E\u0061\u006D\u0065']}.
                     </p>
 
                     <div class="map-grid">
 
                         <div style="background: rgba(255,203,5,0.1); padding: 10px; border-radius: 15px; border: 1px solid var(--bs-yellow);">
                             <h4 style="color: var(--bs-yellow); margin: 0 0 10px 0;">⭐ BEST</h4>
-                            ${getBrawlerIcons(map.best)}
+                            ${getBrawlerIcons(_0xdga3d['\u0062\u0065\u0073\u0074'])}
                         </div>
 
                         <div style="background: rgba(76, 175, 80, 0.1); padding: 10px; border-radius: 15px; border: 1px solid #4CAF50;">
                             <h4 style="color: #4CAF50; margin: 0 0 10px 0;">🟢 FIRST</h4>
-                            ${getBrawlerIcons(map.firstPick)}
+                            ${getBrawlerIcons(_0xdga3d['\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B'])}
                         </div>
 
                         <div style="background: rgba(244, 67, 54, 0.1); padding: 10px; border-radius: 15px; border: 1px solid #F44336;">
                             <h4 style="color: #F44336; margin: 0 0 10px 0;">🔴 LAST</h4>
-                            ${getBrawlerIcons(map.lastPick)}
+                            ${getBrawlerIcons(_0xdga3d['\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B'])}
                         </div>
 
-                        ${map.worst ? `
+                        ${_0xdga3d['\u0077\u006F\u0072\u0073\u0074']?`
                         <div style="background: rgba(120,120,120,0.1); padding: 10px; border-radius: 15px; border: 1px solid #888;">
                             <h4 style="color: #bbb; margin: 0 0 10px 0;">💀 WORST</h4>
-                            ${getBrawlerIcons(map.worst)}
+                            ${getBrawlerIcons(_0xdga3d['\u0077\u006F\u0072\u0073\u0074'])}
                         </div>
-                        ` : ''}
+                        `:''}
 
                     </div>
                 </div>
 
-                <button onclick="window.open('${map.link}', '_blank')" class="action-btn" style="width: 100%;">
+                <button onclick="window.open('${_0xdga3d['\u006C\u0069\u006E\u006B']}', '_blank')" class="action-btn" style="width: 100%;">
                     MORE INFO (Brawlify)
                 </button>
 
             </div>
         </div>
-    `;
-
-    const backBtn = document.querySelector('.back-btn');
-    if (backBtn) {
-        backBtn.onclick = () => showSection('maps');
-        backBtn.innerText = "← Back to Maps";
-    }
-}
-
-// Логика контр-пиков по классам
-const matchups = {
-    "Damage Dealer": { strong: ["Tank", "Assassin"], weak: ["Marksman", "Artillery"] },
-    "Assassin": { strong: ["Marksman", "Artillery"], weak: ["Tank","Damage Dealers"] },
-    "Marksman": { strong: ["Damage Dealer", "Artillery"], weak: ["Assassin", "Artillery"] },
-    "Artillery": { strong: ["None"], weak: ["Tank", "Assassins"] },
-    "Tank": { strong: ["Assassin", "Support"], weak: ["Damage Dealer"] },
-    "Support": { strong: ["Damage Dealer", "Assassins", "Marksman"], weak: ["Tank"] },
-    "Controller": { strong: ["Tank", "Support"], weak: ["Marksman", "Assassin", "Artillery"] },
-    // Добавьте остальные по аналогии
-};
-
-// 2. Функции навигации
-function showSection(sectionId) {
-    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-    document.getElementById(`${sectionId}-section`).classList.remove('hidden');
-    if (sectionId === 'classes') renderClasses();
-    if (sectionId === 'maps') renderMaps();
-}
-
-function showSection(sectionId) {
-    // 1. Скрываем все секции
-    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-    
-    // 2. Показываем нужную
-    const activeSection = document.getElementById(`${sectionId}-section`);
-    if (activeSection) {
-        activeSection.classList.remove('hidden');
-    }
-
-    // 3. Запускаем рендер в зависимости от секции
-    if (sectionId === 'classes') renderClasses();
-    if (sectionId === 'meta') renderMeta(); 
-    if (sectionId === 'maps') displayMaps();
-    
-    // ДОБАВЛЯЕМ ЭТО: если открываем драфт, заполняем список карт
-    if (sectionId === 'draft') {
-        initDraftMapSelect();
-    }
-}
-
-function renderMeta() {
-    const container = document.getElementById('meta-section'); // Убедись, что такой ID есть в HTML
-    container.innerHTML = "<h1 style='color:white; text-align:center;'>Brawler Tier List (Meta)</h1>";
-
-    const tiers = ["S", "A", "B", "C", "D", "F"];
-    const tierColors = {
-        "S": "#ff7f7f", "A": "#ffbf7f", "B": "#ffff7f", 
-        "C": "#7fff7f", "D": "#7fbfff", "F": "#ff7fff"
-    };
-
-    tiers.forEach(tier => {
-        const row = document.createElement('div');
-        row.style.display = "flex";
-        row.style.alignItems = "stretch";
-        row.style.marginBottom = "10px";
-        row.style.background = "#1a1a1a";
-        row.style.border = "1px solid #333";
-        row.style.minHeight = "100px";
-
-        // Левая часть с буквой ранга
-        const label = document.createElement('div');
-        label.innerText = tier;
-        label.style.width = "80px";
-        label.style.display = "flex";
-        label.style.alignItems = "center";
-        label.style.justifyContent = "center";
-        label.style.fontSize = "32px";
-        label.style.fontWeight = "bold";
-        label.style.backgroundColor = tierColors[tier];
-        label.style.color = "#000";
-
-        // Правая часть с иконками бойцов
-        const items = document.createElement('div');
-        items.style.display = "flex";
-        items.style.flexWrap = "wrap";
-        items.style.padding = "10px";
-        items.style.gap = "10px";
-
-        const brawlerIds = metaData[tier] || [];
-        brawlerIds.forEach(id => {
-            const brawler = brawlers.find(b => b.id === id);
-            if (brawler) {
-                const img = document.createElement('img');
-                img.src = brawler.image;
-                img.style.width = "60px";
-                img.style.height = "60px";
-                img.style.cursor = "pointer";
-                img.style.borderRadius = "5px";
-                img.style.border = "2px solid transparent";
-                img.title = brawler.name;
-
-                // Переход к деталям при клике
-                img.onclick = () => showBrawlerDetails(brawler.id);
-                
-                // Эффект при наведении
-                img.onmouseenter = () => img.style.borderColor = "white";
-                img.onmouseleave = () => img.style.borderColor = "transparent";
-                
-                items.appendChild(img);
-            }
-        });
-
-        row.appendChild(label);
-        row.appendChild(items);
-        container.appendChild(row);
-    });
-}
-
-function renderMaps(filter = "") {
-    const container = document.getElementById('maps-list');
-    container.innerHTML = ""; 
-
-    // Убираем горизонтальный скролл у главного контейнера
-    container.style.display = "block"; 
-    container.style.width = "100%";
-    container.style.overflowX = "hidden"; // Запрещаем скролл вправо
-    container.style.boxSizing = "border-box";
-
-    const filteredMaps = maps.filter(m => m.name.toLowerCase().includes(filter.toLowerCase()));
-    const modes = [...new Set(filteredMaps.map(m => m.mode))];
-
-    modes.forEach(modeName => {
-        const modeSection = document.createElement('div');
-        modeSection.style.width = "100%";
-        modeSection.style.boxSizing = "border-box";
-        modeSection.style.marginBottom = "40px"; 
-
-        modeSection.innerHTML = `
+    `;const _0x9b_0x203=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0062\u0061\u0063\u006B\u002D\u0062\u0074\u006E");_0xdd9d='\u0061\u0069\u0066\u0066\u006B\u0071';if(_0x9b_0x203){_0x9b_0x203['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>showSection("\u006D\u0061\u0070\u0073");_0x9b_0x203['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']="\u2190\u0020\u0042\u0061\u0063\u006B\u0020\u0074\u006F\u0020\u004D\u0061\u0070\u0073";}}var _0x3abe=(987267^987271)+(144030^144022);const matchups={"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072":{"strong":["\u0054\u0061\u006E\u006B","nissassA".split("").reverse().join("")],'\u0077\u0065\u0061\u006B':["namskraM".split("").reverse().join(""),"yrellitrA".split("").reverse().join("")]},"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E":{'\u0073\u0074\u0072\u006F\u006E\u0067':["\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","yrellitrA".split("").reverse().join("")],'\u0077\u0065\u0061\u006B':["knaT".split("").reverse().join(""),"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072\u0073"]},"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E":{"strong":["\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072","yrellitrA".split("").reverse().join("")],'\u0077\u0065\u0061\u006B':["\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079"]},"\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079":{'\u0073\u0074\u0072\u006F\u006E\u0067':["\u004E\u006F\u006E\u0065"],'\u0077\u0065\u0061\u006B':["\u0054\u0061\u006E\u006B","\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E\u0073"]},"\u0054\u0061\u006E\u006B":{'\u0073\u0074\u0072\u006F\u006E\u0067':["\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","\u0053\u0075\u0070\u0070\u006F\u0072\u0074"],'\u0077\u0065\u0061\u006B':["relaeD egamaD".split("").reverse().join("")]},"\u0053\u0075\u0070\u0070\u006F\u0072\u0074":{'\u0073\u0074\u0072\u006F\u006E\u0067':["relaeD egamaD".split("").reverse().join(""),"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E\u0073","namskraM".split("").reverse().join("")],"weak":["knaT".split("").reverse().join("")]},"\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072":{"strong":["knaT".split("").reverse().join(""),"\u0053\u0075\u0070\u0070\u006F\u0072\u0074"],"weak":["\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079"]}};_0x3abe="pdokdl".split("").reverse().join("");function showSection(sectionId){document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u0073\u0065\u0063\u0074\u0069\u006F\u006E")['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](s=>s['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0068\u0069\u0064\u0064\u0065\u006E"));document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`${sectionId}-section`)['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0068\u0069\u0064\u0064\u0065\u006E");if(sectionId==="\u0063\u006C\u0061\u0073\u0073\u0065\u0073")renderClasses();if(sectionId==="\u006D\u0061\u0070\u0073")renderMaps();}function showSection(sectionId){document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("noitces".split("").reverse().join(""))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](s=>s['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("neddih".split("").reverse().join("")));const _0xa60bfd=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`${sectionId}-section`);if(_0xa60bfd){_0xa60bfd['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("neddih".split("").reverse().join(""));}if(sectionId==="\u0063\u006C\u0061\u0073\u0073\u0065\u0073")renderClasses();if(sectionId==="\u006D\u0065\u0074\u0061")renderMeta();if(sectionId==="spam".split("").reverse().join(""))displayMaps();if(sectionId==="\u0064\u0072\u0061\u0066\u0074"){initDraftMapSelect();}}function renderMeta(_0xg02g){var _0x9a02c=(767440^767448)+(544419^544422);const _0xe54cc=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u0065\u0074\u0061\u002D\u0073\u0065\u0063\u0074\u0069\u006F\u006E");_0x9a02c='\u0066\u006F\u006D\u0066\u006B\u0070';_0xe54cc['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="\u003C\u0068\u0031\u0020\u0073\u0074\u0079\u006C\u0065\u003D\u0027\u0063\u006F\u006C\u006F\u0072\u003A\u0077\u0068\u0069\u0074\u0065\u003B\u0020\u0074\u0065\u0078\u0074\u002D\u0061\u006C\u0069\u0067\u006E\u003A\u0063\u0065\u006E\u0074\u0065\u0072\u003B\u0027\u003E\u0042\u0072\u0061\u0077\u006C\u0065\u0072\u0020\u0054\u0069\u0065\u0072\u0020\u004C\u0069\u0073\u0074\u0020\u0028\u004D\u0065\u0074\u0061\u0029\u003C\u002F\u0068\u0031\u003E";var _0xf12f=(349152^349152)+(673439^673439);const _0xad6e=["\u0053","\u0041","\u0042","\u0043","\u0044","\u0046"];_0xf12f=787501^787501;const _0xb5d4ce={"\u0053":"\u0023\u0066\u0066\u0037\u0066\u0037\u0066","\u0041":"\u0023\u0066\u0066\u0062\u0066\u0037\u0066","\u0042":"\u0023\u0066\u0066\u0066\u0066\u0037\u0066","\u0043":"\u0023\u0037\u0066\u0066\u0066\u0037\u0066","\u0044":"#7fbfff","\u0046":"\u0023\u0066\u0066\u0037\u0066\u0066\u0066"};_0xg02g=(423872^423879)+(428261^428261);_0xad6e['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](tier=>{const _0x624a1e=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0066\u006C\u0065\u0078";_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0073\u0074\u0072\u0065\u0074\u0063\u0068";_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u006D\u0061\u0072\u0067\u0069\u006E\u0042\u006F\u0074\u0074\u006F\u006D']="\u0031\u0030\u0070\u0078";_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0023\u0031\u0061\u0031\u0061\u0031\u0061";_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="333# dilos xp1".split("").reverse().join("");_0x624a1e['\u0073\u0074\u0079\u006C\u0065']['\u006D\u0069\u006E\u0048\u0065\u0069\u0067\u0068\u0074']="\u0031\u0030\u0030\u0070\u0078";let _0x3g_0xe79;const _0xe5726b=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0x3g_0xe79=(953502^953502)+(623279^623278);_0xe5726b['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']=tier;_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="\u0038\u0030\u0070\u0078";_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0066\u006C\u0065\u0078";_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0063\u0065\u006E\u0074\u0065\u0072";_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u006A\u0075\u0073\u0074\u0069\u0066\u0079\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0063\u0065\u006E\u0074\u0065\u0072";_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0066\u006F\u006E\u0074\u0053\u0069\u007A\u0065']="xp23".split("").reverse().join("");_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0066\u006F\u006E\u0074\u0057\u0065\u0069\u0067\u0068\u0074']="\u0062\u006F\u006C\u0064";_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064\u0043\u006F\u006C\u006F\u0072']=_0xb5d4ce[tier];_0xe5726b['\u0073\u0074\u0079\u006C\u0065']['\u0063\u006F\u006C\u006F\u0072']="\u0023\u0030\u0030\u0030";const _0x272ee=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0x272ee['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0066\u006C\u0065\u0078";_0x272ee['\u0073\u0074\u0079\u006C\u0065']['\u0066\u006C\u0065\u0078\u0057\u0072\u0061\u0070']="\u0077\u0072\u0061\u0070";_0x272ee['\u0073\u0074\u0079\u006C\u0065']['\u0070\u0061\u0064\u0064\u0069\u006E\u0067']="xp01".split("").reverse().join("");_0x272ee['\u0073\u0074\u0079\u006C\u0065']['\u0067\u0061\u0070']="xp01".split("").reverse().join("");var _0x1464a=(673020^673012)+(264404^264407);const _0x8ae3e=metaData[tier]||[];_0x1464a='\u0069\u0067\u006D\u0064\u0070\u006B';_0x8ae3e['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](id=>{const _0x4a2fc=brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']===id);if(_0x4a2fc){var _0xeec00c=(769057^769062)+(173678^173679);const _0xa7d=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0069\u006D\u0067");_0xeec00c=763448^763440;_0xa7d['\u0073\u0072\u0063']=_0x4a2fc['\u0069\u006D\u0061\u0067\u0065'];_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="\u0036\u0030\u0070\u0078";_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0068\u0065\u0069\u0067\u0068\u0074']="xp06".split("").reverse().join("");_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0063\u0075\u0072\u0073\u006F\u0072']="\u0070\u006F\u0069\u006E\u0074\u0065\u0072";_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0052\u0061\u0064\u0069\u0075\u0073']="\u0035\u0070\u0078";_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="tnerapsnart dilos xp2".split("").reverse().join("");_0xa7d['\u0074\u0069\u0074\u006C\u0065']=_0x4a2fc['\u006E\u0061\u006D\u0065'];_0xa7d['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>showBrawlerDetails(_0x4a2fc['\u0069\u0064']);_0xa7d['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0065\u006E\u0074\u0065\u0072']=()=>_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0043\u006F\u006C\u006F\u0072']="etihw".split("").reverse().join("");_0xa7d['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006C\u0065\u0061\u0076\u0065']=()=>_0xa7d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0043\u006F\u006C\u006F\u0072']="\u0074\u0072\u0061\u006E\u0073\u0070\u0061\u0072\u0065\u006E\u0074";_0x272ee['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xa7d);}});_0x624a1e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xe5726b);_0x624a1e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x272ee);_0xe54cc['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x624a1e);});}function renderMaps(filter=""){const _0xabbc7e=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tsil-spam".split("").reverse().join(""));_0xabbc7e['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";_0xabbc7e['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0062\u006C\u006F\u0063\u006B";_0xabbc7e['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="\u0031\u0030\u0030\u0025";_0xabbc7e['\u0073\u0074\u0079\u006C\u0065']['\u006F\u0076\u0065\u0072\u0066\u006C\u006F\u0077\u0058']="\u0068\u0069\u0064\u0064\u0065\u006E";_0xabbc7e['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0069\u007A\u0069\u006E\u0067']="xob-redrob".split("").reverse().join("");const _0xd57c=maps['\u0066\u0069\u006C\u0074\u0065\u0072'](m=>m['\u006E\u0061\u006D\u0065']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']()['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](filter['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']()));const _0x9e47e=[...new Set(_0xd57c['\u006D\u0061\u0070'](m=>m['\u006D\u006F\u0064\u0065']))];_0x9e47e['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](modeName=>{const _0xc19a=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xc19a['\u0073\u0074\u0079\u006C\u0065']['\u0077\u0069\u0064\u0074\u0068']="%001".split("").reverse().join("");_0xc19a['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0069\u007A\u0069\u006E\u0067']="\u0062\u006F\u0072\u0064\u0065\u0072\u002D\u0062\u006F\u0078";_0xc19a['\u0073\u0074\u0079\u006C\u0065']['\u006D\u0061\u0072\u0067\u0069\u006E\u0042\u006F\u0074\u0074\u006F\u006D']="xp04".split("").reverse().join("");_0xc19a['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
             <h2 style="color: #FFCC00; font-size: 24px; margin: 20px 10px; text-transform: uppercase; font-family: sans-serif;">
                 ${modeName}
             </h2>
-        `;
-
-        const grid = document.createElement('div');
-        grid.style.display = "grid";
-        // auto-fit и minmax(150px, 1fr) позволят картам сужаться, чтобы влезть в экран
-        grid.style.gridTemplateColumns = "repeat(auto-fill, minmax(160px, 1fr))";
-        grid.style.gap = "15px";
-        grid.style.padding = "10px";
-        grid.style.boxSizing = "border-box";
-
-        filteredMaps.filter(m => m.mode === modeName).forEach(map => {
-            const card = document.createElement('div');
-            card.className = "card";
-            card.style.padding = "0";
-            card.style.background = "#4B2C90";
-            card.style.borderRadius = "12px";
-            card.style.overflow = "hidden";
-            card.style.border = "2px solid white";
-            card.style.boxSizing = "border-box"; // Чтобы рамка не расширяла карту
-            card.style.transition = "transform 0.2s";
-
-            card.innerHTML = `
-                <img src="${map.image}" style="width: 100%; height: auto; display: block; object-fit: contain;" alt="${map.name}">
+        `;let _0x1f_0xcda;const _0x244dcd=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x1f_0xcda=(916756^916753)+(333285^333281);_0x244dcd['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="dirg".split("").reverse().join("");_0x244dcd['\u0073\u0074\u0079\u006C\u0065']['\u0067\u0072\u0069\u0064\u0054\u0065\u006D\u0070\u006C\u0061\u0074\u0065\u0043\u006F\u006C\u0075\u006D\u006E\u0073']="\u0072\u0065\u0070\u0065\u0061\u0074\u0028\u0061\u0075\u0074\u006F\u002D\u0066\u0069\u006C\u006C\u002C\u0020\u006D\u0069\u006E\u006D\u0061\u0078\u0028\u0031\u0036\u0030\u0070\u0078\u002C\u0020\u0031\u0066\u0072\u0029\u0029";_0x244dcd['\u0073\u0074\u0079\u006C\u0065']['\u0067\u0061\u0070']="xp51".split("").reverse().join("");_0x244dcd['\u0073\u0074\u0079\u006C\u0065']['\u0070\u0061\u0064\u0064\u0069\u006E\u0067']="\u0031\u0030\u0070\u0078";_0x244dcd['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0069\u007A\u0069\u006E\u0067']="\u0062\u006F\u0072\u0064\u0065\u0072\u002D\u0062\u006F\u0078";_0xd57c['\u0066\u0069\u006C\u0074\u0065\u0072'](m=>m['\u006D\u006F\u0064\u0065']===modeName)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](map=>{const _0xd3481d=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xd3481d['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0063\u0061\u0072\u0064";_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0070\u0061\u0064\u0064\u0069\u006E\u0067']="\u0030";_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="09C2B4#".split("").reverse().join("");_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0052\u0061\u0064\u0069\u0075\u0073']="xp21".split("").reverse().join("");_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u006F\u0076\u0065\u0072\u0066\u006C\u006F\u0077']="\u0068\u0069\u0064\u0064\u0065\u006E";_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0032\u0070\u0078\u0020\u0073\u006F\u006C\u0069\u0064\u0020\u0077\u0068\u0069\u0074\u0065";_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0069\u007A\u0069\u006E\u0067']="\u0062\u006F\u0072\u0064\u0065\u0072\u002D\u0062\u006F\u0078";_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0069\u0074\u0069\u006F\u006E']="s2.0 mrofsnart".split("").reverse().join("");_0xd3481d['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                <img src="${map['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: auto; display: block; object-fit: contain;" alt="${map['\u006E\u0061\u006D\u0065']}">
                 <div style="padding: 10px; text-align: center; color: white;">
-                    <h3 style="margin: 0; font-size: 1rem; word-wrap: break-word;">${map.name}</h3>
-                    <p style="margin: 5px 0 0; opacity: 0.7; font-size: 0.8rem;">${map.mode}</p>
+                    <h3 style="margin: 0; font-size: 1rem; word-wrap: break-word;">${map['\u006E\u0061\u006D\u0065']}</h3>
+                    <p style="margin: 5px 0 0; opacity: 0.7; font-size: 0.8rem;">${map['\u006D\u006F\u0064\u0065']}</p>
                 </div>
-            `;
-            
-            card.onmouseenter = () => card.style.transform = "scale(1.03)";
-            card.onmouseleave = () => card.style.transform = "scale(1)";
-            card.onclick = () => window.open(map.link, '_blank');
-            grid.appendChild(card);
-        });
-
-        modeSection.appendChild(grid);
-        container.appendChild(modeSection);
-    });
-}
-
-function searchMaps() {
-    const query = document.getElementById('mapSearch').value.toLowerCase();
-    
-    // Фильтруем массив maps по названию
-    const filtered = maps.filter(map => 
-        map.name.toLowerCase().includes(query)
-    );
-
-    // ВАЖНО: Вызываем новую функцию отрисовки, которую мы делали!
-    // Чтобы дизайн не менялся и ссылки не появлялись
-    displayMaps(filtered); 
-}
-
-// 4. Рендер Бойцов
-function renderClasses() {
-    const container = document.getElementById('brawlers-by-class');
-    container.innerHTML = "";
-    
-    // Получаем список уникальных классов
-    const classes = [...new Set(brawlers.map(b => b.class))];
-    
-    classes.forEach(className => {
-        // Создаем обертку для каждого класса
-        const classSection = document.createElement('div');
-        classSection.className = "class-group"; // Добавили класс для CSS
-        
-        // Создаем красивый заголовок
-        const title = document.createElement('h2');
-        title.className = "class-title";
-        title.innerText = className;
-        
-        const grid = document.createElement('div');
-        grid.className = "grid-container";
-        
-        // Фильтруем бойцов по классу
-        brawlers.filter(b => b.class === className).forEach(b => {
-            const card = document.createElement('div');
-            card.className = "card";
-            
-            let videoHTML = "";
-            if (b.color === "rainbow") {
-                card.classList.add("rainbow-card");
-                videoHTML = `<video class="bg-video" autoplay loop muted playsinline>
+            `;_0xd3481d['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0065\u006E\u0074\u0065\u0072']=()=>_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']=")30.1(elacs".split("").reverse().join("");_0xd3481d['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006C\u0065\u0061\u0076\u0065']=()=>_0xd3481d['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u0029";_0xd3481d['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>window['\u006F\u0070\u0065\u006E'](map['\u006C\u0069\u006E\u006B'],"\u005F\u0062\u006C\u0061\u006E\u006B");_0x244dcd['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xd3481d);});_0xc19a['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x244dcd);_0xabbc7e['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xc19a);});}function searchMaps(_0x79bbb){const _0x1bb=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u0061\u0070\u0053\u0065\u0061\u0072\u0063\u0068")['\u0076\u0061\u006C\u0075\u0065']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']();_0x79bbb='\u0061\u0064\u0068\u0065\u0066\u0061';var _0x53e5ca=(244470^244467)+(348627^348627);const _0xad6bf=maps['\u0066\u0069\u006C\u0074\u0065\u0072'](map=>map['\u006E\u0061\u006D\u0065']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']()['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x1bb));_0x53e5ca=(644209^644211)+(743922^743931);displayMaps(_0xad6bf);}function renderClasses(){var _0xb3aea=(462313^462315)+(555824^555826);const _0xadb=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002D\u0062\u0079\u002D\u0063\u006C\u0061\u0073\u0073");_0xb3aea='\u006E\u0064\u0061\u006A\u006E\u0069';_0xadb['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";const _0xf278ef=[...new Set(brawlers['\u006D\u0061\u0070'](b=>b['\u0063\u006C\u0061\u0073\u0073']))];_0xf278ef['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](className=>{const _0x7300b=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x7300b['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="puorg-ssalc".split("").reverse().join("");let _0xbefc4g;const _0x539a1c=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("2h".split("").reverse().join(""));_0xbefc4g="lfidbg".split("").reverse().join("");_0x539a1c['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0063\u006C\u0061\u0073\u0073\u002D\u0074\u0069\u0074\u006C\u0065";_0x539a1c['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']=className;const _0xd_0x575=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0xd_0x575['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0067\u0072\u0069\u0064\u002D\u0063\u006F\u006E\u0074\u0061\u0069\u006E\u0065\u0072";brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](b=>b['\u0063\u006C\u0061\u0073\u0073']===className)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](b=>{const _0xac84f=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0xac84f['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="drac".split("").reverse().join("");var _0xaf_0x1ea=(291052^291045)+(552360^552363);let _0x9171cc="";_0xaf_0x1ea=(465923^465922)+(442259^442263);if(b['\u0063\u006F\u006C\u006F\u0072']==="\u0072\u0061\u0069\u006E\u0062\u006F\u0077"){_0xac84f['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("drac-wobniar".split("").reverse().join(""));_0x9171cc=`<video class="bg-video" autoplay loop muted playsinline>
                                 <source src="https://preview.redd.it/srdmhkerhaxe1.gif?width=640&format=mp4&s=9e8614e4b3bdafd81aaf0f6f36b4af8f13540253" type="video/mp4">
-                             </video>`;
-            } else {
-                card.style.background = b.color || 'var(--bs-purple)';
-            }
-            
-            card.innerHTML = `
-                ${videoHTML}
-                <img src="${b.image}">
-                <p>${b.name}</p>
-                <span>ID: ${b.id}</span>
-            `;
-            card.onclick = () => showBrawlerDetails(b);
-            grid.appendChild(card);
-        });
-        
-        classSection.appendChild(title);
-        classSection.appendChild(grid);
-        container.appendChild(classSection);
-    });
-}
-
-function showBrawlerDetails(data) {
-    showSection('details');
-    
-    let brawler;
-    if (typeof data === 'object' && data !== null) {
-        brawler = data;
-    } else {
-        brawler = brawlers.find(b => b.id == data);
-    }
-
-    if (!brawler) return;
-
-    const m = matchups[brawler.class] || { strong: [], weak: [] };
-    const tierWeights = { "S": 0, "A": 1, "B": 2, "C": 3, "D": 4, "F": 5 };
-
-    const getBrawlerTier = (bId) => {
-        for (const [tier, ids] of Object.entries(metaData)) {
-            if (ids.includes(bId)) return tier;
-        }
-        return null; 
-    };
-
-    // НОВАЯ ФУНКЦИЯ ДЛЯ ГЕНЕРАЦИИ ИКОНОК
-    const getBrawlerIconsByClasses = (classList) => {
-        if (!classList || classList.length === 0) return `<span style="color: #666;">No targets</span>`;
-        
-        const filtered = brawlers.filter(b => classList.includes(b.class));
-        
-        // Сортируем по тиру перед отрисовкой
-        const sorted = filtered.sort((a, b) => {
-            const tierA = getBrawlerTier(a.id) || "Z";
-            const tierB = getBrawlerTier(b.id) || "Z";
-            return (tierWeights[tierA] ?? 10) - (tierWeights[tierB] ?? 10);
-        });
-
-        return `
+                             </video>`;}else{_0xac84f['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=b['\u0063\u006F\u006C\u006F\u0072']||"\u0076\u0061\u0072\u0028\u002D\u002D\u0062\u0073\u002D\u0070\u0075\u0072\u0070\u006C\u0065\u0029";}_0xac84f['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                ${_0x9171cc}
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}">
+                <p>${b['\u006E\u0061\u006D\u0065']}</p>
+                <span>ID: ${b['\u0069\u0064']}</span>
+            `;_0xac84f['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>showBrawlerDetails(b);_0xd_0x575['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xac84f);});_0x7300b['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x539a1c);_0x7300b['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xd_0x575);_0xadb['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x7300b);});}function showBrawlerDetails(data,_0x13158a,_0x29cg8b,_0xfa824e){showSection("\u0064\u0065\u0074\u0061\u0069\u006C\u0073");_0x13158a=(639411^639411)+(198308^198307);if(typeof data==="\u006F\u0062\u006A\u0065\u0063\u0074"&&data!==null){_0x29cg8b=data;}else{_0x29cg8b=brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']==data);}if(!_0x29cg8b)return;var _0xa9eaf=(119399^119396)+(894039^894038);const m=matchups[_0x29cg8b['\u0063\u006C\u0061\u0073\u0073']]||{'\u0073\u0074\u0072\u006F\u006E\u0067':[],"weak":[]};_0xa9eaf=274457^274463;const _0x5abc1d={"\u0053":0,"\u0041":1,"\u0042":2,"\u0043":3,"\u0044":4,"\u0046":5};var _0x6d8dbc=(200177^200178)+(372915^372917);const _0xdee94e=bId=>{for(const[tier,ids]of Object['\u0065\u006E\u0074\u0072\u0069\u0065\u0073'](metaData)){if(ids['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](bId))return tier;}return null;};_0x6d8dbc=(105523^105526)+(329961^329953);var _0x724a=(626142^626137)+(641066^641058);const _0xg3c=classList=>{if(!classList||classList['\u006C\u0065\u006E\u0067\u0074\u0068']===(848386^848386))return`<span style="color: #666;">No targets</span>`;const _0x8d27ec=brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](b=>classList['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']));const _0x0c86af=_0x8d27ec['\u0073\u006F\u0072\u0074']((a,b)=>{let _0x5d3aeb;const _0xd9bdee=_0xdee94e(a['\u0069\u0064'])||"\u005A";_0x5d3aeb=(406565^406562)+(412890^412890);const _0x92edgf=_0xdee94e(b['\u0069\u0064'])||"\u005A";return(_0x5abc1d[_0xd9bdee]??505507^505513)-(_0x5abc1d[_0x92edgf]??142800^142810);});return`
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px;">
-                ${sorted.map(b => {
-                    const tier = getBrawlerTier(b.id);
-                    return `
-                        <div style="position: relative; width: 50px; height: 50px; cursor: pointer;" onclick="event.stopPropagation(); showBrawlerDetails(${b.id})">
-                            <img src="${b.image}" title="${b.name}" style="
+                ${_0x0c86af['\u006D\u0061\u0070'](b=>{const _0xb589gd=_0xdee94e(b['\u0069\u0064']);return`
+                        <div style="position: relative; width: 50px; height: 50px; cursor: pointer;" onclick="event.stopPropagation(); showBrawlerDetails(${b['\u0069\u0064']})">
+                            <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" title="${b['\u006E\u0061\u006D\u0065']}" style="
                                 width: 100%; height: 100%; object-fit: cover; 
                                 border-radius: 8px; border: 2px solid rgba(255,255,255,0.2);
                                 background: #222;
                             ">
-                            ${tier ? `<div style="
+                            ${_0xb589gd?`<div style="
                                 position: absolute; bottom: -2px; right: -2px; 
                                 background: #ffcb05; color: black; font-weight: bold; 
                                 font-size: 10px; padding: 1px 4px; border-radius: 4px;
                                 border: 1px solid black; font-family: 'Lilita One';
-                            ">${tier}</div>` : ''}
+                            ">${_0xb589gd}</div>`:''}
                         </div>
-                    `;
-                }).join('')}
+                    `;})['\u006A\u006F\u0069\u006E']('')}
             </div>
-        `;
-    };
-
-    const isFromMaps = !document.getElementById('maps-section').classList.contains('hidden');
-    const backTarget = isFromMaps ? 'maps' : 'classes';
-    const backText = isFromMaps ? '← Back to Maps' : '← Back to Brawlers';
-
-    const detailsContainer = document.getElementById('brawler-details');
-    if (!detailsContainer) return;
-
-    detailsContainer.innerHTML = `
+        `;};_0x724a=(429604^429613)+(244813^244812);const _0xf8de1d=!document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("noitces-spam".split("").reverse().join(""))['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0063\u006F\u006E\u0074\u0061\u0069\u006E\u0073']("\u0068\u0069\u0064\u0064\u0065\u006E");const _0xa319g=_0xf8de1d?"\u006D\u0061\u0070\u0073":"\u0063\u006C\u0061\u0073\u0073\u0065\u0073";const _0x266gb=_0xf8de1d?"\u2190\u0020\u0042\u0061\u0063\u006B\u0020\u0074\u006F\u0020\u004D\u0061\u0070\u0073":"\u2190\u0020\u0042\u0061\u0063\u006B\u0020\u0074\u006F\u0020\u0042\u0072\u0061\u0077\u006C\u0065\u0072\u0073";const _0x34d=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u002D\u0064\u0065\u0074\u0061\u0069\u006C\u0073");_0xfa824e=782606^782603;if(!_0x34d)return;_0x34d['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
         <div class="map-details-wrapper" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding: 10px; gap: 20px;">
             
             <div class="map-left" style="flex: 0 0 240px; text-align: center;">
                 <h1 style="font-size: 2rem; color: #ffcb05; text-shadow: 2px 2px 0 #000; margin: 0;">
-                    ${brawler.name}
+                    ${_0x29cg8b['\u006E\u0061\u006D\u0065']}
                 </h1>
                 <p style="font-family: 'Lilita One'; font-size: 1rem; margin-bottom: 10px; color: #bbb; text-transform: uppercase;">
-                    ${brawler.class}
+                    ${_0x29cg8b['\u0063\u006C\u0061\u0073\u0073']}
                 </p>
-                <img src="${brawler.image}" style="
+                <img src="${_0x29cg8b['\u0069\u006D\u0061\u0067\u0065']}" style="
                     width: 100%; max-height: 280px; object-fit: contain; 
                     border-radius: 20px; border: 4px solid white;
                     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
@@ -1395,247 +167,38 @@ function showBrawlerDetails(data) {
                     <h4 style="margin: 0 0 10px 0; font-family: 'Lilita One'; color: #4CAF50; font-size: 1.2rem; text-transform: uppercase;">
                         🔥 Strong Against:
                     </h4>
-                    ${getBrawlerIconsByClasses(m.strong)}
+                    ${_0xg3c(m['\u0073\u0074\u0072\u006F\u006E\u0067'])}
                 </div>
 
                 <div style="background: rgba(244, 67, 54, 0.1); padding: 15px; border-radius: 15px; border: 1px solid #F44336;">
                     <h4 style="margin: 0 0 10px 0; font-family: 'Lilita One'; color: #F44336; font-size: 1.2rem; text-transform: uppercase;">
                         💀 Weak Against:
                     </h4>
-                    ${getBrawlerIconsByClasses(m.weak)}
+                    ${_0xg3c(m['\u0077\u0065\u0061\u006B'])}
                 </div>
 
-                <button class="action-btn" onclick="showSection('${backTarget}')" style="width: 100%; padding: 12px; font-size: 1.1rem; margin-top: 5px;">
-                    ${backText}
+                <button class="action-btn" onclick="showSection('${_0xa319g}')" style="width: 100%; padding: 12px; font-size: 1.1rem; margin-top: 5px;">
+                    ${_0x266gb}
                 </button>
             </div>
         </div>
-    `;
-
-    const oldBackBtn = document.querySelector('.back-btn');
-    if (oldBackBtn) oldBackBtn.style.display = 'none'; 
-}
-
-// --- СИСТЕМА ДРАФТА ---
-
-let draftData = {
-    selectedMap: null,
-    firstSide: 'blue', 
-    currentTurn: 0,    
-    picks: {
-        blue: [],
-        red: []
-    },
-    bans: []
-};
-
-let suggestionOffset = 0;
-
-function shuffleSuggestions() {
-    // 1. ПРОВЕРКА: Если карта не выбрана — блокируем логику
-    if (!draftData.selectedMap) {
-        // Опционально: трясем кнопку shuffle, если у нее есть ID
-        const shuffleBtn = document.getElementById('shuffle-btn'); 
-        if (shuffleBtn) {
-            shuffleBtn.classList.add('shaking-slot');
-            setTimeout(() => shuffleBtn.classList.remove('shaking-slot'), 400);
-        }
-        
-        // Или просто выводим сообщение (на твой вкус)
-        console.warn("Select map first to shuffle suggestions!");
-        return; 
-    }
-
-    // 2. ОСНОВНАЯ ЛОГИКА (сработает только если карта есть)
-    // Увеличиваем сдвиг, чтобы брать следующих по силе бравлеров
-    suggestionOffset += 10;
-    
-    // Если ушли слишком далеко (дальше топ-40), сбрасываем в ноль
-    if (suggestionOffset > 30) {
-        suggestionOffset = 0;
-    }
-    
-    // 3. Перерисовываем предложения
-    updateDraftSuggestions();
-}
-
-let isBanMode = false;
-
-function toggleBanMode() {
-    isBanMode = !isBanMode;
-    
-    const slider = document.getElementById('mode-slider');
-    const container = document.getElementById('ban-mode-container');
-    
-    // Если элементов нет в DOM, выходим, чтобы не было ошибок
-    if (!slider || !container) return;
-
-    if (isBanMode) {
-        // --- РЕЖИМ БАНА ---
-        // Передвигаем ползунок вправо (на 50% ширины)
-        slider.style.left = 'calc(50%)'; 
-        slider.style.background = '#ff4b2b'; // Красный цвет (BAN)
-        
-        // Подсвечиваем рамку контейнера красным
-        container.style.borderColor = '#ff4b2b';
-        container.style.boxShadow = "0 0 15px rgba(255, 75, 43, 0.3)";
-    } else {
-        // --- РЕЖИМ ПИКА ---
-        // Возвращаем ползунок влево (отступ 4px)
-        slider.style.left = '4px'; 
-        slider.style.background = '#007bff'; // Синий цвет (PICK)
-        
-        // Возвращаем рамку в спокойное состояние или синий
-        container.style.borderColor = '#007bff';
-        container.style.boxShadow = "none";
-    }
-
-    // Добавляем микро-эффект "отдачи" при клике (кнопка слегка сжимается)
-    container.style.transform = 'scale(0.96)';
-    setTimeout(() => {
-        container.style.transform = 'scale(1)';
-    }, 100);
-}
-
-function renderBans() {
-    const banSlotsContainer = document.getElementById('ban-slots');
-    if (!banSlotsContainer) return;
-
-    const slots = banSlotsContainer.children;
-    
-    for (let i = 0; i < 6; i++) {
-        slots[i].innerHTML = "";
-        slots[i].style.background = "rgba(255,255,255,0.05)";
-        slots[i].style.border = "1px solid #333";
-        slots[i].onclick = null; // Сбрасываем старые клики
-    }
-
-    draftData.bans.forEach((id, index) => {
-        const brawler = brawlers.find(b => b.id == id);
-        if (brawler && slots[index]) {
-            slots[index].style.position = "relative";
-            slots[index].style.border = "1px solid #ff4b2b";
-            slots[index].style.cursor = "pointer";
-            
-            slots[index].innerHTML = `
-                <img src="${brawler.image}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; filter: grayscale(1); opacity: 0.7;">
+    `;const _0x7ccd1a=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0062\u0061\u0063\u006B\u002D\u0062\u0074\u006E");if(_0x7ccd1a)_0x7ccd1a['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u006E\u006F\u006E\u0065";}let draftData={"selectedMap":null,"firstSide":"\u0062\u006C\u0075\u0065",'\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E':0,'\u0070\u0069\u0063\u006B\u0073':{'\u0062\u006C\u0075\u0065':[],"red":[]},'\u0062\u0061\u006E\u0073':[]};let suggestionOffset=488132^488132;function shuffleSuggestions(){if(!draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']){var _0x8a85c=(479687^479680)+(846173^846173);const _0xg75df=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0073\u0068\u0075\u0066\u0066\u006C\u0065\u002D\u0062\u0074\u006E");_0x8a85c=784803^784801;if(_0xg75df){_0xg75df['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0073\u0068\u0061\u006B\u0069\u006E\u0067\u002D\u0073\u006C\u006F\u0074");setTimeout(()=>_0xg75df['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0073\u0068\u0061\u006B\u0069\u006E\u0067\u002D\u0073\u006C\u006F\u0074"),433337^433449);}console['\u0077\u0061\u0072\u006E']("\u0053\u0065\u006C\u0065\u0063\u0074\u0020\u006D\u0061\u0070\u0020\u0066\u0069\u0072\u0073\u0074\u0020\u0074\u006F\u0020\u0073\u0068\u0075\u0066\u0066\u006C\u0065\u0020\u0073\u0075\u0067\u0067\u0065\u0073\u0074\u0069\u006F\u006E\u0073\u0021");return;}suggestionOffset+=733863^733869;if(suggestionOffset>(835380^835370)){suggestionOffset=552938^552938;}updateDraftSuggestions();}var _0x79d1f=(580286^580280)+(684664^684664);let isBanMode=false;_0x79d1f=(468217^468219)+(388223^388216);function toggleBanMode(_0x6g9f){isBanMode=!isBanMode;const _0x10e7f=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u006F\u0064\u0065\u002D\u0073\u006C\u0069\u0064\u0065\u0072");const _0x9d_0x6f3=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0061\u006E\u002D\u006D\u006F\u0064\u0065\u002D\u0063\u006F\u006E\u0074\u0061\u0069\u006E\u0065\u0072");_0x6g9f=879457^879460;if(!_0x10e7f||!_0x9d_0x6f3)return;if(isBanMode){_0x10e7f['\u0073\u0074\u0079\u006C\u0065']['\u006C\u0065\u0066\u0074']=")%05(clac".split("").reverse().join("");_0x10e7f['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="b2b4ff#".split("").reverse().join("");_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0043\u006F\u006C\u006F\u0072']="\u0023\u0066\u0066\u0034\u0062\u0032\u0062";_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="\u0030\u0020\u0030\u0020\u0031\u0035\u0070\u0078\u0020\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0037\u0035\u002C\u0020\u0034\u0033\u002C\u0020\u0030\u002E\u0033\u0029";}else{_0x10e7f['\u0073\u0074\u0079\u006C\u0065']['\u006C\u0065\u0066\u0074']="\u0034\u0070\u0078";_0x10e7f['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="ffb700#".split("").reverse().join("");_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072\u0043\u006F\u006C\u006F\u0072']="\u0023\u0030\u0030\u0037\u0062\u0066\u0066";_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="\u006E\u006F\u006E\u0065";}_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0030\u002E\u0039\u0036\u0029";setTimeout(()=>{_0x9d_0x6f3['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']=")1(elacs".split("").reverse().join("");},602491^602399);}function renderBans(){const _0x179fgb=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0061\u006E\u002D\u0073\u006C\u006F\u0074\u0073");if(!_0x179fgb)return;const _0xa8d01d=_0x179fgb['\u0063\u0068\u0069\u006C\u0064\u0072\u0065\u006E'];for(let i=794661^794661;i<(605374^605368);i++){_0xa8d01d[i]['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";_0xa8d01d[i]['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0030\u002E\u0030\u0035\u0029";_0xa8d01d[i]['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0031\u0070\u0078\u0020\u0073\u006F\u006C\u0069\u0064\u0020\u0023\u0033\u0033\u0033";_0xa8d01d[i]['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=null;}draftData['\u0062\u0061\u006E\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068']((id,index)=>{var _0x3gg=(598338^598341)+(293379^293387);const _0x0b8aab=brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']==id);_0x3gg=559803^559805;if(_0x0b8aab&&_0xa8d01d[index]){_0xa8d01d[index]['\u0073\u0074\u0079\u006C\u0065']['\u0070\u006F\u0073\u0069\u0074\u0069\u006F\u006E']="\u0072\u0065\u006C\u0061\u0074\u0069\u0076\u0065";_0xa8d01d[index]['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0031\u0070\u0078\u0020\u0073\u006F\u006C\u0069\u0064\u0020\u0023\u0066\u0066\u0034\u0062\u0032\u0062";_0xa8d01d[index]['\u0073\u0074\u0079\u006C\u0065']['\u0063\u0075\u0072\u0073\u006F\u0072']="retniop".split("").reverse().join("");_0xa8d01d[index]['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                <img src="${_0x0b8aab['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; filter: grayscale(1); opacity: 0.7;">
                 <div style="position: absolute; color: red; font-weight: bold; font-size: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">✕</div>
-            `;
-            
-            // ДОБАВЛЯЕМ КЛИК ДЛЯ РАЗБАНА ПРЯМО В СЛОТЕ
-            slots[index].onclick = () => toggleBan(id);
-        }
-    });
-}
-
-// 1. Переключение стороны (Blue/Red)
-// 1. Создаем функцию инициализации (выполнится один раз)
-function initButtonAnimations() {
-    const btn = document.getElementById('side-toggle');
-    if (!btn) return;
-
-    btn.style.transition = 'transform 0.15s ease-out, background 0.3s ease, box-shadow 0.15s ease';
-    
-    // Вешаем события сразу
-    btn.onmouseover = () => btn.style.transform = 'scale(1.05)';
-    btn.onmouseout = () => btn.style.transform = 'scale(1)';
-    btn.onmousedown = () => btn.style.transform = 'scale(0.95)';
-    btn.onmouseup = () => btn.style.transform = 'scale(1.05)';
-}
-
-// 2. Запускаем её (добавь эту строку в конец своего скрипта или после объявления функции)
-initButtonAnimations();
-
-// 3. Твоя основная функция (очищенная от лишнего)
-function toggleFirstSide() {
-    const btn = document.getElementById('side-toggle');
-    const isPicksStarted = draftData.picks.blue.length > 0 || draftData.picks.red.length > 0;
-
-    if (isPicksStarted) {
-        const allSlots = document.querySelectorAll('.draft-slot');
-        allSlots.forEach(slot => {
-            slot.classList.add('shaking-slot');
-            setTimeout(() => slot.classList.remove('shaking-slot'), 400);
-        });
-        return; 
-    }
-
-    // ЛОГИКА СМЕНЫ СТОРОНЫ
-    if (draftData.firstSide === 'blue') {
-        draftData.firstSide = 'red';
-        btn.innerText = 'RED SIDE FIRST';
-        btn.style.background = '#ff4b2b';
-        btn.style.boxShadow = '0 4px 0 #b32d16';
-    } else {
-        draftData.firstSide = 'blue';
-        btn.innerText = 'BLUE SIDE FIRST';
-        btn.style.background = '#007bff';
-        btn.style.boxShadow = '0 4px 0 #0056b3';
-    }
-}
-
-function selectDraftMap() {
-    const select = document.getElementById('draft-map-select');
-    const display = document.getElementById('draft-map-display');
-    const mapId = select.value;
-
-    if (!mapId) return;
-
-    const mapData = maps.find(m => m.id == mapId);
-    if (mapData) {
-        draftData.selectedMap = mapData;
-        
-        // 1. Определяем название и цвет для каждого типа карты
-        const typeInfo = {
-            1: { name: "FULL OPEN", color: "#4da6ff" }, // Голубой для открытых
-            2: { name: "SEMI OPEN", color: "#ffcc00" }, // Желтый для полуоткрытых
-            3: { name: "CLOSED", color: "#ff4b2b" }    // Красный для закрытых
-        };
-
-        const currentType = typeInfo[mapData.mapType] || { name: "STANDARD", color: "#eee" };
-
-        // 2. Обновляем отображение (картинка + текст типа)
-        display.innerHTML = `
+            `;_0xa8d01d[index]['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>toggleBan(id);}});}function initButtonAnimations(_0xc_0xa9f){const _0x9a442b=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0073\u0069\u0064\u0065\u002D\u0074\u006F\u0067\u0067\u006C\u0065");_0xc_0xa9f='\u006F\u0070\u0064\u006D\u0068\u006A';if(!_0x9a442b)return;_0x9a442b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0069\u0074\u0069\u006F\u006E']="esae s51.0 wodahs-xob ,esae s3.0 dnuorgkcab ,tuo-esae s51.0 mrofsnart".split("").reverse().join("");_0x9a442b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006F\u0076\u0065\u0072']=()=>_0x9a442b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u002E\u0030\u0035\u0029";_0x9a442b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006F\u0075\u0074']=()=>_0x9a442b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u0029";_0x9a442b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0064\u006F\u0077\u006E']=()=>_0x9a442b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0030\u002E\u0039\u0035\u0029";_0x9a442b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0075\u0070']=()=>_0x9a442b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']=")50.1(elacs".split("").reverse().join("");}initButtonAnimations();function toggleFirstSide(){const _0x6g2bdg=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0073\u0069\u0064\u0065\u002D\u0074\u006F\u0067\u0067\u006C\u0065");var _0xf1cffe=(488759^488755)+(761482^761486);const _0x4cea=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u006C\u0065\u006E\u0067\u0074\u0068']>(524276^524276)||draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006C\u0065\u006E\u0067\u0074\u0068']>(595631^595631);_0xf1cffe=(927594^927592)+(615054^615053);if(_0x4cea){var _0x280f=(143061^143068)+(943715^943719);const _0x8_0xaab=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u002E\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u006C\u006F\u0074");_0x280f='\u0065\u0065\u0062\u0068\u006F\u0071';_0x8_0xaab['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](slot=>{slot['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0073\u0068\u0061\u006B\u0069\u006E\u0067\u002D\u0073\u006C\u006F\u0074");setTimeout(()=>slot['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0073\u0068\u0061\u006B\u0069\u006E\u0067\u002D\u0073\u006C\u006F\u0074"),595048^595448);});return;}if(draftData['\u0066\u0069\u0072\u0073\u0074\u0053\u0069\u0064\u0065']==="eulb".split("").reverse().join("")){draftData['\u0066\u0069\u0072\u0073\u0074\u0053\u0069\u0064\u0065']="\u0072\u0065\u0064";_0x6g2bdg['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']="\u0052\u0045\u0044\u0020\u0053\u0049\u0044\u0045\u0020\u0046\u0049\u0052\u0053\u0054";_0x6g2bdg['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="b2b4ff#".split("").reverse().join("");_0x6g2bdg['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="61d23b# 0 xp4 0".split("").reverse().join("");}else{draftData['\u0066\u0069\u0072\u0073\u0074\u0053\u0069\u0064\u0065']="eulb".split("").reverse().join("");_0x6g2bdg['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']="\u0042\u004C\u0055\u0045\u0020\u0053\u0049\u0044\u0045\u0020\u0046\u0049\u0052\u0053\u0054";_0x6g2bdg['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0023\u0030\u0030\u0037\u0062\u0066\u0066";_0x6g2bdg['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="3b6500# 0 xp4 0".split("").reverse().join("");}}function selectDraftMap(_0x88c,_0x3278a){var _0xdbceba=(452963^452960)+(173156^173164);const _0xe9df=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tceles-pam-tfard".split("").reverse().join(""));_0xdbceba=(623737^623729)+(564737^564740);const _0x3cd4ec=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("yalpsid-pam-tfard".split("").reverse().join(""));_0x88c=562015^562006;const _0xfee30b=_0xe9df['\u0076\u0061\u006C\u0075\u0065'];if(!_0xfee30b)return;const _0x9_0x1be=maps['\u0066\u0069\u006E\u0064'](m=>m['\u0069\u0064']==_0xfee30b);_0x3278a=(923699^923696)+(892672^892674);if(_0x9_0x1be){draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']=_0x9_0x1be;let _0x64be8e;const _0xaga3c={1:{'\u006E\u0061\u006D\u0065':"\u0046\u0055\u004C\u004C\u0020\u004F\u0050\u0045\u004E",'\u0063\u006F\u006C\u006F\u0072':"\u0023\u0034\u0064\u0061\u0036\u0066\u0066"},2:{'\u006E\u0061\u006D\u0065':"SEMI OPEN","color":"\u0023\u0066\u0066\u0063\u0063\u0030\u0030"},3:{'\u006E\u0061\u006D\u0065':"CLOSED",'\u0063\u006F\u006C\u006F\u0072':"#ff4b2b"}};_0x64be8e=611625^611629;const _0x5e494d=_0xaga3c[_0x9_0x1be['\u006D\u0061\u0070\u0054\u0079\u0070\u0065']]||{'\u006E\u0061\u006D\u0065':"\u0053\u0054\u0041\u004E\u0044\u0041\u0052\u0044","color":"\u0023\u0065\u0065\u0065"};_0x3cd4ec['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
             <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                <img src="${mapData.image}" alt="${mapData.name}" 
+                <img src="${_0x9_0x1be['\u0069\u006D\u0061\u0067\u0065']}" alt="${_0x9_0x1be['\u006E\u0061\u006D\u0065']}" 
                      style="width: 85%; height: 85%; object-fit: contain; display: block; 
                             padding: 5px; box-sizing: border-box; margin-left: 20px;">
                 
                 <div style="margin-top: 10px; padding: 4px 12px; border-radius: 8px; 
-                            background: rgba(0,0,0,0.3); border: 1px solid ${currentType.color};
-                            color: ${currentType.color}; font-family: 'Lilita One'; font-size: 14px;
-                            letter-spacing: 1px; text-shadow: 0 0 5px ${currentType.color}44;">
-                    TYPE: ${currentType.name}
+                            background: rgba(0,0,0,0.3); border: 1px solid ${_0x5e494d['\u0063\u006F\u006C\u006F\u0072']};
+                            color: ${_0x5e494d['\u0063\u006F\u006C\u006F\u0072']}; font-family: 'Lilita One'; font-size: 14px;
+                            letter-spacing: 1px; text-shadow: 0 0 5px ${_0x5e494d['\u0063\u006F\u006C\u006F\u0072']}44;">
+                    TYPE: ${_0x5e494d['\u006E\u0061\u006D\u0065']}
                 </div>
             </div>
-        `;
-        
-        updateDraftSuggestions();
-        renderAllDraftBrawlers();
-    }
-}
-
-// 3. Обновление списка ТОП-10
-function updateDraftSuggestions() {
-    const container = document.getElementById('draft-suggestions');
-    if (!container || !draftData.selectedMap) return;
-
-    container.innerHTML = ""; 
-
-    const taken = [...draftData.picks.blue, ...draftData.picks.red, ...draftData.bans];
-    const totalPicks = draftData.picks.blue.length + draftData.picks.red.length;
-    const isLastPick = (totalPicks === 5);
-
-    if (totalPicks >= 6) {
-    const rightSide = document.querySelector('.draft-right-side');
-    const allBrawlersSection = document.querySelector('.all-brawlers-section');
-    const searchBar = document.querySelector('#draft-search');
-
-    if (allBrawlersSection) allBrawlersSection.style.display = 'none';
-    if (searchBar) searchBar.style.display = 'none';
-
-    if (rightSide) {
-        rightSide.innerHTML = `
+        `;updateDraftSuggestions();renderAllDraftBrawlers();}}function updateDraftSuggestions(_0xfcg18d,_0x684efe,_0xd83abd){const _0x4f1aeg=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("snoitseggus-tfard".split("").reverse().join(""));_0xfcg18d=(278097^278098)+(507626^507624);if(!_0x4f1aeg||!draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070'])return;_0x4f1aeg['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";const taken=[...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065'],...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064'],...draftData['\u0062\u0061\u006E\u0073']];const _0x10eff=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u006C\u0065\u006E\u0067\u0074\u0068']+draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006C\u0065\u006E\u0067\u0074\u0068'];const _0xb422f=_0x10eff===(980929^980932);_0x684efe=(680651^680650)+(581754^581758);if(_0x10eff>=(526558^526552)){var _0xdg_0xb67=(271443^271440)+(569755^569757);const _0x3f_0xa2c=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0064\u0072\u0061\u0066\u0074\u002D\u0072\u0069\u0067\u0068\u0074\u002D\u0073\u0069\u0064\u0065");_0xdg_0xb67='\u0065\u0070\u0062\u0062\u006E\u006A';var _0xd5efec=(707758^707750)+(330798^330790);const _0xf_0xd1b=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("noitces-srelwarb-lla.".split("").reverse().join(""));_0xd5efec=523375^523372;const _0x938gef=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068");if(_0xf_0xd1b)_0xf_0xd1b['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="enon".split("").reverse().join("");if(_0x938gef)_0x938gef['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u006E\u006F\u006E\u0065";if(_0x3f_0xa2c){_0x3f_0xa2c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
             <div style="background: rgba(10, 10, 20, 0.4); padding: 20px; border-radius: 20px; text-align: center;">
                 <h4 style="color: #ffcc00; font-size: 1.8rem; margin-bottom: 20px; font-family: 'Lilita One'; text-shadow: 2px 2px 0 #000;">
                     DRAFT COMPLETED
@@ -1667,648 +230,84 @@ function updateDraftSuggestions() {
                     NEW ANALYTICS
                 </button>
             </div>
-        `;
-        
-        rightSide.style.background = "rgba(255, 204, 0, 0.1)";
-        rightSide.style.boxShadow = "0 0 30px rgba(255, 204, 0, 0.1)";
-    }
-    return; 
-} else {
-        container.style.display = "grid";
-        container.style.gridTemplateColumns = "repeat(5, 1fr)";
-        container.style.gap = "15px";
-    }
-
-    const enemyBrawlers = draftData.picks.red.map(id => brawlers.find(x => x.id == id)).filter(Boolean);
-    const myTeamBrawlers = draftData.picks.blue.map(id => brawlers.find(x => x.id == id)).filter(Boolean);
-
-    let scoredBrawlers = brawlers
-        .filter(b => !taken.includes(b.id))
-        .map(b => {
-            let score = 0;
-            let counterList = []; 
-            let weakList = [];
-            let currentTier = "F";
-
-            // 1. ОПРЕДЕЛЕНИЕ ТИРА
-            for (const [tier, ids] of Object.entries(metaData)) {
-                if (ids.includes(b.id)) { currentTier = tier; break; }
-            }
-
-            // 2. ДИНАМИЧЕСКИЙ ВЕС ТИРА И ФИЛЬТР "МУСОРА"
-            const baseTierWeights = { "S": 50, "A": 30, "B": 15, "C": 0, "D": -30, "F": -60 }; // Увеличили штраф для D и F
-            const tierDecay = 1 - (totalPicks * 0.1); 
-            score += (baseTierWeights[currentTier] || -60) * tierDecay;
-
-            // --- НОВАЯ ЛОГИКА РЕДКОСТИ ДЛЯ D И F ---
-            // Если персонаж в тире D, его итоговый балл режется на 30%
-            // Если в тире F, то на 60%
-            let tierMultiplier = 1.0;
-            if (currentTier === "D") tierMultiplier = 0.7;
-            if (currentTier === "F") tierMultiplier = 0.4;
-
-            // 3. СИНЕРГИЯ И БАЛАНС КЛАССОВ
-            // Считаем, сколько бойцов такого же класса, как у b, уже есть в команде (blue)
-            const sameClassCount = myTeamBrawlers.filter(mate => mate.class === b.class).length;
-
-            // Применяем штраф в зависимости от количества
-            if (sameClassCount === 1) {
-                // В команде уже есть один такой класс. Второй брать нежелательно (штраф -45)
-                score -= 45; 
-            } else if (sameClassCount >= 2) {
-                // В команде уже двое таких. Третий — это почти всегда плохой пик (штраф -120)
-                score -= 120;
-            }
-
-            // Классические связки (синергия) — бонусы остаются
-            myTeamBrawlers.forEach(mate => {
-                if (b.class === "Support" && mate.class === "Tank") score += 25;
-                if (b.class === "Tank" && mate.class === "Healer") score += 25;
-                if (b.class === "Assassin" && mate.class === "Tank") score += 15;
-                // Анти-синергия: два метателя на одной линии часто мешают друг другу
-                if (b.class === "Artillery" && mate.class === "Artillery") score -= 20;
-            });
-
-            // 4. КАРТА (Бонус из массива best/worst/first/last)
-            if (draftData.selectedMap.best?.includes(b.id)) score += 40;
-            if (draftData.selectedMap.worst?.includes(b.id)) score -= 60;
-            
-            // Новинка: Бонус за стадию пика из данных карты
-            if (totalPicks < 2 && draftData.selectedMap.firstPick?.includes(b.id)) score += 30;
-            if (totalPicks >= 4 && draftData.selectedMap.lastPick?.includes(b.id)) score += 30;
-
-            // 4.1 ЛОГИКА ТИПА КАРТЫ (MapType) — ВСТАВЛЯТЬ СЮДА
-            const mType = draftData.selectedMap.mapType;
-            if (mType === 1) { // FULL OPEN (Открытая)
-                if (b.class === "Marksman") score += 50;
-                if (b.class === "Controller") score += 20;
-                if (["Damage Dealer", "Assassin"].includes(b.class)) score += 10;
-                if (["Tank", "Artillery", "Support"].includes(b.class)) score -= 60;
-            } 
-            else if (mType === 2) { // SEMI OPEN (Полуоткрытая)
-                if (["Controller", "Assassin", "Damage Dealer"].includes(b.class)) score += 50;
-                if (["Tank", "Marksman", "Artillery", "Support"].includes(b.class)) score += 15;
-            } 
-            else if (mType === 3) { // CLOSED (Закрытая)
-                if (["Tank", "Damage Dealer", "Support", "Assassin", "Artillery"].includes(b.class)) score += 180;
-                if (["Controller", "Marksman"].includes(b.class)) score -= 40;
-            }
-
-            // 5. ЛОГИКА КОНТР-ПИКОВ (УСИЛЕННАЯ)
-            const myMatchup = matchups[b.class];
-            if (myMatchup && enemyBrawlers.length > 0) {
-                let strongCount = 0;
-                let weakCount = 0;
-
-               enemyBrawlers.forEach(enemy => {
-    // старая логика
-    if (myMatchup.strong.includes(enemy.class)) {
-        strongCount++;
-        counterList.push({ name: enemy.name, type: "normal" });
-    }
-
-    if (myMatchup.weak.includes(enemy.class)) {
-        weakCount++;
-        weakList.push(enemy.name);
-    }
-
-    // --- HARD COUNTERS ---
-    const counters = hardCounters[enemy.id];
-
-    if (counters) {
-        counters.forEach(c => {
-            if (c.id === b.id) {
-                score += c.weight;
-
-                counterList.push({
-                    name: enemy.name,
-                    type: "hard",
-                    tip: c.tip
-                });
-            }
-        });
-    }
-});
-
-                // Бонус за контру растет в прогрессии
-                // 1 враг = +40, 2 врага = +90, 3 врага = +150
-                score += (strongCount * 40) + (strongCount > 1 ? strongCount * 20 : 0);
-
-                // Огромный штраф, если тебя контрят
-                score -= (weakCount * 50);
-
-                // Статус "HARD COUNTER" если ты бьешь двоих и тебя никто не бьет
-                if (strongCount >= 2 && weakCount === 0) score += 60;
-            }
-
-            if (draftData.bans.length > 0 && myMatchup) {
-                draftData.bans.forEach(banId => {
-                    const bannedBrawler = brawlers.find(x => x.id == banId);
-                    if (bannedBrawler && myMatchup.weak.includes(bannedBrawler.class)) {
-                        // Главная угроза в бане! Даем бонус
-                        score += 30; 
-                        
-                        // Если это S или A тир, который "освободился", накидываем еще
-                        if (["S", "A"].includes(currentTier)) score += 15;
-                    }
-                });
-            }
-
-            if (currentTier === "D") score *= 0.7; 
-            if (currentTier === "F") score *= 0.4;
-
-            if (mType === 1 && ["Tank", "Assassin"].includes(b.class) && !draftData.selectedMap.best?.includes(b.id)) {
-                score -= 50; 
-            }
-            // --- СТРАТЕГИЧЕСКАЯ ЛОГИКА С УЧЕТОМ ТИПА КАРТЫ ---
-            let threatsList = []; 
-            let risksList = [];   
-            let isSafeNow = false;
-
-            // Считаем общее кол-во пиков, чтобы понять, началась ли игра
-            const currentTotalPicks = draftData.picks.blue.length + draftData.picks.red.length;
-            // Собираем всех, кто уже не в игре (баны + пики обеих команд)
-            const allOccupied = [...draftData.picks.blue, ...draftData.picks.red, ...draftData.bans];
-
-            if (myMatchup) {
-                // 1. Ищем всех "убийц" нашего бравлера среди S и A тиров
-                const primaryThreats = brawlers.filter(enemy => 
-                    myMatchup.weak.includes(enemy.class) && 
-                    (metaData.S.includes(enemy.id) || metaData.A.includes(enemy.id))
-                );
-
-                // 2. ФИЛЬТРАЦИЯ ПО ТИПУ КАРТЫ
-                const filteredThreats = primaryThreats.filter(threat => {
-                    if (mType === 1) { // Open map
-                        if (b.class === "Marksman" && (threat.class === "Assassin" || threat.class === "Tank")) return false; 
-                    }
-                    if (mType === 3) { // Closed map
-                        if (b.class === "Marksman" && (threat.class === "Assassin" || threat.class === "Tank")) return true; 
-                    }
-                    return true;
-                });
-
-                // 3. ПРОВЕРКА АКТИВНЫХ УГРОЗ
-                if (filteredThreats.length > 0) {
-                    // Оставляем только тех, кто еще СВОБОДЕН (не пикнут и не забанен)
-                    const activeThreats = filteredThreats.filter(t => !allOccupied.includes(Number(t.id)));
-                    
-                    if (activeThreats.length === 0) {
-                        isSafeNow = true; 
-                    } else {
-                        const threatNames = activeThreats.slice(0, 3).map(t => t.name);
-
-                        // ЛОГИКА: Если пиков еще нет и есть слоты для банов — пишем в BAN
-                        // Если хотя бы один пик сделан ИЛИ баны кончились — пишем в RISK
-                        if (currentTotalPicks === 0 && draftData.bans.length < 6) {
-                            threatsList = threatNames;
-                        } else {
-                            risksList = threatNames;
-                        }
-                    }
-                } else {
-                    isSafeNow = true;
-                }
-            }
-            // Возвращаем объект для дальнейшего рендера
-            return { brawler: b, score, tier: currentTier, counters: counterList, weakness: weakList, isSafeNow, threatsList, risksList, mType };
-        });
-
-    // Сортируем и выводим ТОП-10
-    scoredBrawlers.sort((a, b) => b.score - a.score);
-
-    scoredBrawlers.slice(suggestionOffset, suggestionOffset + 10).forEach(item => {
-        const b = item.brawler;
-        const div = document.createElement('div');
-        const tierColors = { "S": "#ff4d4d", "A": "#ff944d", "B": "#ffdb4d", "C": "#4dff4d", "D": "#4da6ff", "F": "#b34dff" };
-        
-        let borderColor = "rgba(255,255,255,0.1)";
-        let shadow = "none";
-        let specialLabel = "";
-
-        // Визуализация "Идеального выбора"
-        if (item.score > 80 && item.weakness.length === 0) {
-            borderColor = "#00ff88"; 
-            shadow = "0 0 20px rgba(0,255,136,0.5)";
-            specialLabel = `<div style="position: absolute; top: -10px; background: #00ff88; color: #000; font-size: 10px; padding: 2px 10px; border-radius: 10px; font-weight: bold; z-index: 11; box-shadow: 0 2px 5px rgba(0,0,0,0.5);">PERFECT PICK</div>`;
-        } else if (item.weakness.length > 1) {
-            borderColor = "#ff4b2b"; // Опасно
-        }
-
-        div.style = `
+        `;_0x3f_0xa2c['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0032\u0030\u0034\u002C\u0020\u0030\u002C\u0020\u0030\u002E\u0031\u0029";_0x3f_0xa2c['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']=")1.0 ,0 ,402 ,552(abgr xp03 0 0".split("").reverse().join("");}return;}else{_0x4f1aeg['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0067\u0072\u0069\u0064";_0x4f1aeg['\u0073\u0074\u0079\u006C\u0065']['\u0067\u0072\u0069\u0064\u0054\u0065\u006D\u0070\u006C\u0061\u0074\u0065\u0043\u006F\u006C\u0075\u006D\u006E\u0073']=")rf1 ,5(taeper".split("").reverse().join("");_0x4f1aeg['\u0073\u0074\u0079\u006C\u0065']['\u0067\u0061\u0070']="xp51".split("").reverse().join("");}const enemyBrawlers=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006D\u0061\u0070'](id=>brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==id))['\u0066\u0069\u006C\u0074\u0065\u0072'](Boolean);const _0xe494ec=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u006D\u0061\u0070'](id=>brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==id))['\u0066\u0069\u006C\u0074\u0065\u0072'](Boolean);let _0x8fb2a=brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](b=>!taken['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']))['\u006D\u0061\u0070'](b=>{let _0x10_0xdee=420471^420471;var _0x16c7b=(284080^284082)+(318203^318207);let _0xb610a=[];_0x16c7b="kemglf".split("").reverse().join("");let _0x99156e=[];var _0xedef5b=(544285^544286)+(812990^812988);let currentTier="\u0046";_0xedef5b=(853713^853718)+(591563^591563);for(const[tier,ids]of Object['\u0065\u006E\u0074\u0072\u0069\u0065\u0073'](metaData)){if(ids['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064'])){currentTier=tier;break;}}var _0xf26d=(281112^281105)+(981852^981854);const _0x5875g={"\u0053":50,"\u0041":30,"\u0042":15,"\u0043":0,"\u0044":-(619190^619176),"\u0046":-(984486^984474)};_0xf26d='\u0061\u0070\u006A\u0068\u0069\u006A';const _0x930da=(186803^186802)-_0x10eff*0.1;_0x10_0xdee+=(_0x5875g[currentTier]||-(683155^683183))*_0x930da;let _0xb1fd=961612^961613;if(currentTier==="\u0044")_0xb1fd=0.7;if(currentTier==="\u0046")_0xb1fd=0.4;const _0x91a8e=_0xe494ec['\u0066\u0069\u006C\u0074\u0065\u0072'](mate=>mate['\u0063\u006C\u0061\u0073\u0073']===b['\u0063\u006C\u0061\u0073\u0073'])['\u006C\u0065\u006E\u0067\u0074\u0068'];if(_0x91a8e===(453280^453281)){_0x10_0xdee-=704618^704583;}else if(_0x91a8e>=(871686^871684)){_0x10_0xdee-=867257^867265;}_0xe494ec['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](mate=>{if(b['\u0063\u006C\u0061\u0073\u0073']==="\u0053\u0075\u0070\u0070\u006F\u0072\u0074"&&mate['\u0063\u006C\u0061\u0073\u0073']==="knaT".split("").reverse().join(""))_0x10_0xdee+=713956^713981;if(b['\u0063\u006C\u0061\u0073\u0073']==="\u0054\u0061\u006E\u006B"&&mate['\u0063\u006C\u0061\u0073\u0073']==="\u0048\u0065\u0061\u006C\u0065\u0072")_0x10_0xdee+=210830^210839;if(b['\u0063\u006C\u0061\u0073\u0073']==="\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E"&&mate['\u0063\u006C\u0061\u0073\u0073']==="knaT".split("").reverse().join(""))_0x10_0xdee+=182218^182213;if(b['\u0063\u006C\u0061\u0073\u0073']==="yrellitrA".split("").reverse().join("")&&mate['\u0063\u006C\u0061\u0073\u0073']==="\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079")_0x10_0xdee-=307517^307497;});if(draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u0062\u0065\u0073\u0074']?.includes(b['\u0069\u0064']))_0x10_0xdee+=959655^959631;if(draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u0077\u006F\u0072\u0073\u0074']?.includes(b['\u0069\u0064']))_0x10_0xdee-=287313^287341;if(_0x10eff<(483351^483349)&&draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u0066\u0069\u0072\u0073\u0074\u0050\u0069\u0063\u006B']?.includes(b['\u0069\u0064']))_0x10_0xdee+=469878^469864;if(_0x10eff>=(895756^895752)&&draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u006C\u0061\u0073\u0074\u0050\u0069\u0063\u006B']?.includes(b['\u0069\u0064']))_0x10_0xdee+=264614^264632;const _0x53286f=draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u006D\u0061\u0070\u0054\u0079\u0070\u0065'];if(_0x53286f===(115073^115072)){if(b['\u0063\u006C\u0061\u0073\u0073']==="\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E")_0x10_0xdee+=539925^539943;if(b['\u0063\u006C\u0061\u0073\u0073']==="\u0043\u006F\u006E\u0074\u0072\u006F\u006C\u006C\u0065\u0072")_0x10_0xdee+=163967^163947;if(["relaeD egamaD".split("").reverse().join(""),"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E"]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee+=509138^509144;if(["knaT".split("").reverse().join(""),"yrellitrA".split("").reverse().join(""),"troppuS".split("").reverse().join("")]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee-=300591^300563;}else if(_0x53286f===(889412^889414)){if(["rellortnoC".split("").reverse().join(""),"nissassA".split("").reverse().join(""),"\u0044\u0061\u006D\u0061\u0067\u0065\u0020\u0044\u0065\u0061\u006C\u0065\u0072"]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee+=136205^136255;if(["knaT".split("").reverse().join(""),"\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E","yrellitrA".split("").reverse().join(""),"troppuS".split("").reverse().join("")]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee+=266386^266397;}else if(_0x53286f===(759751^759748)){if(["\u0054\u0061\u006E\u006B","relaeD egamaD".split("").reverse().join(""),"troppuS".split("").reverse().join(""),"\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E","\u0041\u0072\u0074\u0069\u006C\u006C\u0065\u0072\u0079"]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee+=426901^426785;if(["rellortnoC".split("").reverse().join(""),"namskraM".split("").reverse().join("")]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073']))_0x10_0xdee-=973080^973104;}let _0x6bfged;const myMatchup=matchups[b['\u0063\u006C\u0061\u0073\u0073']];_0x6bfged=688001^688006;if(myMatchup&&enemyBrawlers['\u006C\u0065\u006E\u0067\u0074\u0068']>(412007^412007)){let _0xfacg=576425^576425;let _0x3c6c8c;let _0xfc6c=483269^483269;_0x3c6c8c=(941829^941827)+(484247^484247);enemyBrawlers['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](enemy=>{if(myMatchup['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0xfacg++;_0xb610a['\u0070\u0075\u0073\u0068']({'\u006E\u0061\u006D\u0065':enemy['\u006E\u0061\u006D\u0065'],'\u0074\u0079\u0070\u0065':"\u006E\u006F\u0072\u006D\u0061\u006C"});}if(myMatchup['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0xfc6c++;_0x99156e['\u0070\u0075\u0073\u0068'](enemy['\u006E\u0061\u006D\u0065']);}const _0x303c3a=hardCounters[enemy['\u0069\u0064']];if(_0x303c3a){_0x303c3a['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](c=>{if(c['\u0069\u0064']===b['\u0069\u0064']){_0x10_0xdee+=c['\u0077\u0065\u0069\u0067\u0068\u0074'];_0xb610a['\u0070\u0075\u0073\u0068']({'\u006E\u0061\u006D\u0065':enemy['\u006E\u0061\u006D\u0065'],'\u0074\u0079\u0070\u0065':"\u0068\u0061\u0072\u0064",'\u0074\u0069\u0070':c['\u0074\u0069\u0070']});}});}});_0x10_0xdee+=_0xfacg*(801582^801542)+(_0xfacg>(917114^917115)?_0xfacg*(154751^154731):493103^493103);_0x10_0xdee-=_0xfc6c*(141407^141421);if(_0xfacg>=(950102^950100)&&_0xfc6c===(650701^650701))_0x10_0xdee+=692833^692829;}if(draftData['\u0062\u0061\u006E\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>(605783^605783)&&myMatchup){draftData['\u0062\u0061\u006E\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](banId=>{const _0xf31c=brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==banId);if(_0xf31c&&myMatchup['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0xf31c['\u0063\u006C\u0061\u0073\u0073'])){_0x10_0xdee+=129368^129350;if(["\u0053","\u0041"]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](currentTier))_0x10_0xdee+=391838^391825;}});}if(currentTier==="\u0044")_0x10_0xdee*=0.7;if(currentTier==="\u0046")_0x10_0xdee*=0.4;if(_0x53286f===(494067^494066)&&["\u0054\u0061\u006E\u006B","nissassA".split("").reverse().join("")]['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073'])&&!draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u0062\u0065\u0073\u0074']?.includes(b['\u0069\u0064'])){_0x10_0xdee-=484750^484796;}let _0x87451d=[];let _0x1b34g=[];let _0x11_0x160=false;const _0xd97daf=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u006C\u0065\u006E\u0067\u0074\u0068']+draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006C\u0065\u006E\u0067\u0074\u0068'];let _0xa413a;const _0x4b2dg=[...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065'],...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064'],...draftData['\u0062\u0061\u006E\u0073']];_0xa413a=729254^729255;if(myMatchup){let _0xca6db;const _0x641d=brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](enemy=>myMatchup['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])&&(metaData['\u0053']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0069\u0064'])||metaData['\u0041']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0069\u0064'])));_0xca6db=448653^448649;const _0xede6gc=_0x641d['\u0066\u0069\u006C\u0074\u0065\u0072'](threat=>{if(_0x53286f===(734560^734561)){if(b['\u0063\u006C\u0061\u0073\u0073']==="\u004D\u0061\u0072\u006B\u0073\u006D\u0061\u006E"&&(threat['\u0063\u006C\u0061\u0073\u0073']==="\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E"||threat['\u0063\u006C\u0061\u0073\u0073']==="\u0054\u0061\u006E\u006B"))return false;}if(_0x53286f===(980676^980679)){if(b['\u0063\u006C\u0061\u0073\u0073']==="namskraM".split("").reverse().join("")&&(threat['\u0063\u006C\u0061\u0073\u0073']==="\u0041\u0073\u0073\u0061\u0073\u0073\u0069\u006E"||threat['\u0063\u006C\u0061\u0073\u0073']==="\u0054\u0061\u006E\u006B"))return!![];}return!![];});if(_0xede6gc['\u006C\u0065\u006E\u0067\u0074\u0068']>(480141^480141)){const activeThreats=_0xede6gc['\u0066\u0069\u006C\u0074\u0065\u0072'](t=>!_0x4b2dg['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](Number(t['\u0069\u0064'])));if(activeThreats['\u006C\u0065\u006E\u0067\u0074\u0068']===(156187^156187)){_0x11_0x160=!![];}else{var _0xcec=(226712^226717)+(250774^250774);const _0x20e14g=activeThreats['\u0073\u006C\u0069\u0063\u0065'](578730^578730,363577^363578)['\u006D\u0061\u0070'](t=>t['\u006E\u0061\u006D\u0065']);_0xcec='\u0070\u0065\u0063\u0071\u006B\u0063';if(_0xd97daf===(939300^939300)&&draftData['\u0062\u0061\u006E\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']<(198199^198193)){_0x87451d=_0x20e14g;}else{_0x1b34g=_0x20e14g;}}}else{_0x11_0x160=!![];}}return{"brawler":b,'\u0073\u0063\u006F\u0072\u0065':_0x10_0xdee,'\u0074\u0069\u0065\u0072':currentTier,'\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0073':_0xb610a,'\u0077\u0065\u0061\u006B\u006E\u0065\u0073\u0073':_0x99156e,"isSafeNow":_0x11_0x160,'\u0074\u0068\u0072\u0065\u0061\u0074\u0073\u004C\u0069\u0073\u0074':_0x87451d,'\u0072\u0069\u0073\u006B\u0073\u004C\u0069\u0073\u0074':_0x1b34g,"mType":_0x53286f};});_0xd83abd=298455^298453;_0x8fb2a['\u0073\u006F\u0072\u0074']((a,b)=>b['\u0073\u0063\u006F\u0072\u0065']-a['\u0073\u0063\u006F\u0072\u0065']);_0x8fb2a['\u0073\u006C\u0069\u0063\u0065'](suggestionOffset,suggestionOffset+(830648^830642))['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](item=>{var _0x3b3c8c=(692298^692290)+(661702^661698);const b=item['\u0062\u0072\u0061\u0077\u006C\u0065\u0072'];_0x3b3c8c='\u006D\u006E\u006C\u0066\u0064\u0071';const _0x82c1a=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");var _0x35d=(669356^669349)+(812067^812070);const _0xa922af={"\u0053":"\u0023\u0066\u0066\u0034\u0064\u0034\u0064","\u0041":"\u0023\u0066\u0066\u0039\u0034\u0034\u0064","\u0042":"#ffdb4d","\u0043":"\u0023\u0034\u0064\u0066\u0066\u0034\u0064","\u0044":"\u0023\u0034\u0064\u0061\u0036\u0066\u0066","\u0046":"#b34dff"};_0x35d='\u0070\u0065\u0065\u0070\u0062\u0063';let borderColor=")1.0,552,552,552(abgr".split("").reverse().join("");var _0x3e_0x1f5=(485142^485150)+(538992^538997);let _0xbabc="enon".split("").reverse().join("");_0x3e_0x1f5=(419122^419122)+(970891^970882);let _0x4daaef;let _0x53dd9d="";_0x4daaef=(169354^169355)+(338970^338972);if(item['\u0073\u0063\u006F\u0072\u0065']>(699326^699374)&&item['\u0077\u0065\u0061\u006B\u006E\u0065\u0073\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']===(653089^653089)){borderColor="\u0023\u0030\u0030\u0066\u0066\u0038\u0038";_0xbabc=")5.0,631,552,0(abgr xp02 0 0".split("").reverse().join("");_0x53dd9d=`<div style="position: absolute; top: -10px; background: #00ff88; color: #000; font-size: 10px; padding: 2px 10px; border-radius: 10px; font-weight: bold; z-index: 11; box-shadow: 0 2px 5px rgba(0,0,0,0.5);">PERFECT PICK</div>`;}else if(item['\u0077\u0065\u0061\u006B\u006E\u0065\u0073\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>(319234^319235)){borderColor="\u0023\u0066\u0066\u0034\u0062\u0032\u0062";}_0x82c1a['\u0073\u0074\u0079\u006C\u0065']=`
             display: flex; flex-direction: column; align-items: center; 
             background: linear-gradient(180deg, rgba(35,35,50,0.95) 0%, rgba(15,15,25,0.98) 100%); 
             padding: 12px 8px; border-radius: 20px; 
-            cursor: pointer; border: 2px solid ${borderColor}; box-shadow: ${shadow};
+            cursor: pointer; border: 2px solid ${borderColor}; box-shadow: ${_0xbabc};
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
             text-align: center; height: 210px; box-sizing: border-box;
-        `;
-
-        // Пример логики внутри рендера карточки:
-let analysisHTML = "";
-const takenIds = [...draftData.picks.blue, ...draftData.picks.red, ...draftData.bans];
-
-// Функция для обрезки длинных списков (чтобы не вылезало за края)
-const shortList = (list) => {
-    if (list.length <= 2) return list.join(", ").toUpperCase();
-    return list.slice(0, 2).join(", ").toUpperCase() + "...";
-};
-
-if (isLastPick) {
-    analysisHTML += `<div style="color: #ffcc00; font-size: 11px; font-weight: 900; margin-bottom: 2px; text-shadow: 0 0 8px rgba(255,204,0,0.4);">🔥 ULTIMATE OUTPICK</div>`;
-} else if (item.isSafeNow) {
-    analysisHTML += `<div style="color: #00ff88; font-size: 11px; font-weight: 900; margin-bottom: 2px;">✅ READY TO PICK</div>`;
-} 
-else if (item.threatsList.length > 0) {
-    const activeThreats = item.threatsList.filter(name => {
-        const b = brawlers.find(br => br.name.toUpperCase() === name.toUpperCase());
-        return b && !takenIds.includes(b.id);
-    });
-    if (activeThreats.length > 0) {
-        analysisHTML += `<div style="color: #ffcc00; font-size: 10px; font-weight: 900; line-height: 1;">🚫 BAN: <span style="color: #fff;">${shortList(activeThreats)}</span></div>`;
-    }
-} 
-else if (item.risksList.length > 0) {
-    const activeRisks = item.risksList.filter(name => {
-        const b = brawlers.find(br => br.name.toUpperCase() === name.toUpperCase());
-        return b && !takenIds.includes(b.id);
-    });
-    if (activeRisks.length > 0) {
-        analysisHTML += `<div style="color: #ff4b2b; font-size: 10px; font-weight: 900; line-height: 1;">⚠️ RISK: <span style="color: #fff;">${shortList(activeRisks)}</span></div>`;
-    }
-}
-
-// Списки контры и слабостей — делаем компактнее
-if (item.counters.length > 0) {
-
-    const seen = new Set();
-
-    const formatted = item.counters
-        // убираем дубли по имени + приоритет HARD
-        .filter(c => {
-            const name = typeof c === "string" ? c : c.name;
-
-            if (seen.has(name)) return false;
-            seen.add(name);
-            return true;
-        })
-        .map(c => {
-            if (typeof c === "string") return c.toUpperCase();
-
-            if (c.type === "hard") {
-                return `${c.name.toUpperCase()} 🔥`;
-            }
-
-            return c.name.toUpperCase();
-        })
-        .join(", ");
-
-    analysisHTML += `
+        `;let _0x23gbf;let _0xf2_0xcg8="";_0x23gbf=(381136^381139)+(127663^127657);var _0x5443cg=(500024^500016)+(548534^548543);const _0x8dc5cb=[...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065'],...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064'],...draftData['\u0062\u0061\u006E\u0073']];_0x5443cg=(998892^998891)+(201927^201934);let _0xc772g;const _0x52fg2d=list=>{if(list['\u006C\u0065\u006E\u0067\u0074\u0068']<=(108200^108202))return list['\u006A\u006F\u0069\u006E']("\u002C\u0020")['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']();return list['\u0073\u006C\u0069\u0063\u0065'](548328^548328,221813^221815)['\u006A\u006F\u0069\u006E'](" ,".split("").reverse().join(""))['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()+"...".split("").reverse().join("");};_0xc772g=(841724^841717)+(443344^443350);if(_0xb422f){_0xf2_0xcg8+=`<div style="color: #ffcc00; font-size: 11px; font-weight: 900; margin-bottom: 2px; text-shadow: 0 0 8px rgba(255,204,0,0.4);">🔥 ULTIMATE OUTPICK</div>`;}else if(item['\u0069\u0073\u0053\u0061\u0066\u0065\u004E\u006F\u0077']){_0xf2_0xcg8+=`<div style="color: #00ff88; font-size: 11px; font-weight: 900; margin-bottom: 2px;">✅ READY TO PICK</div>`;}else if(item['\u0074\u0068\u0072\u0065\u0061\u0074\u0073\u004C\u0069\u0073\u0074']['\u006C\u0065\u006E\u0067\u0074\u0068']>(514504^514504)){var _0xd47cc=(554771^554771)+(513093^513095);const activeThreats=item['\u0074\u0068\u0072\u0065\u0061\u0074\u0073\u004C\u0069\u0073\u0074']['\u0066\u0069\u006C\u0074\u0065\u0072'](name=>{let _0xe2b;const b=brawlers['\u0066\u0069\u006E\u0064'](br=>br['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()===name['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']());_0xe2b=(809887^809883)+(126232^126224);return b&&!_0x8dc5cb['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']);});_0xd47cc=(493108^493104)+(357669^357667);if(activeThreats['\u006C\u0065\u006E\u0067\u0074\u0068']>(927220^927220)){_0xf2_0xcg8+=`<div style="color: #ffcc00; font-size: 10px; font-weight: 900; line-height: 1;">🚫 BAN: <span style="color: #fff;">${_0x52fg2d(activeThreats)}</span></div>`;}}else if(item['\u0072\u0069\u0073\u006B\u0073\u004C\u0069\u0073\u0074']['\u006C\u0065\u006E\u0067\u0074\u0068']>(697073^697073)){var _0x7c9g=(186134^186142)+(249640^249647);const _0x41c=item['\u0072\u0069\u0073\u006B\u0073\u004C\u0069\u0073\u0074']['\u0066\u0069\u006C\u0074\u0065\u0072'](name=>{let _0x90ea;const b=brawlers['\u0066\u0069\u006E\u0064'](br=>br['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()===name['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']());_0x90ea=347276^347276;return b&&!_0x8dc5cb['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']);});_0x7c9g="kecndh".split("").reverse().join("");if(_0x41c['\u006C\u0065\u006E\u0067\u0074\u0068']>(454451^454451)){_0xf2_0xcg8+=`<div style="color: #ff4b2b; font-size: 10px; font-weight: 900; line-height: 1;">⚠️ RISK: <span style="color: #fff;">${_0x52fg2d(_0x41c)}</span></div>`;}}if(item['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>(414207^414207)){let _0x4ea38a;const _0x493df=new Set();_0x4ea38a=616581^616582;var _0x0e1da=(760641^760648)+(124289^124293);const _0xb43f7d=item['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0073']['\u0066\u0069\u006C\u0074\u0065\u0072'](c=>{const _0xd429cc=typeof c==="\u0073\u0074\u0072\u0069\u006E\u0067"?c:c['\u006E\u0061\u006D\u0065'];if(_0x493df['\u0068\u0061\u0073'](_0xd429cc))return false;_0x493df['\u0061\u0064\u0064'](_0xd429cc);return!![];})['\u006D\u0061\u0070'](c=>{if(typeof c==="gnirts".split("").reverse().join(""))return c['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']();if(c['\u0074\u0079\u0070\u0065']==="\u0068\u0061\u0072\u0064"){return`${c['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()} 🔥`;}return c['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']();})['\u006A\u006F\u0069\u006E']("\u002C\u0020");_0x0e1da=813653^813649;_0xf2_0xcg8+=`
         <div style="color: #00ff88; font-size: 10px; font-weight: 900; margin-top: 4px;">
-            ⚔️ VS: <span style="color: #fff; font-weight: normal;">${formatted}</span>
+            ⚔️ VS: <span style="color: #fff; font-weight: normal;">${_0xb43f7d}</span>
         </div>
-    `;
-}
-
-const tips = item.counters
-    .filter(c => typeof c !== "string" && c.type === "hard" && c.tip)
-    .map(c => `• vs ${c.name}: ${c.tip}`);
-
-if (tips.length > 0) {
-    analysisHTML += `
+    `;}let _0xb_0x412;const _0x7f9bcc=item['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0073']['\u0066\u0069\u006C\u0074\u0065\u0072'](c=>typeof c!=="\u0073\u0074\u0072\u0069\u006E\u0067"&&c['\u0074\u0079\u0070\u0065']==="\u0068\u0061\u0072\u0064"&&c['\u0074\u0069\u0070'])['\u006D\u0061\u0070'](c=>`• vs ${c['\u006E\u0061\u006D\u0065']}: ${c['\u0074\u0069\u0070']}`);_0xb_0x412=(292527^292524)+(490715^490713);if(_0x7f9bcc['\u006C\u0065\u006E\u0067\u0074\u0068']>(299231^299231)){_0xf2_0xcg8+=`
         <div style="color:#ffcc00; font-size:9px; margin-top:4px; line-height:1.2;">
-            ${tips.join("<br>")}
+            ${_0x7f9bcc['\u006A\u006F\u0069\u006E']("\u003C\u0062\u0072\u003E")}
         </div>
-    `;
-}
-
-if (item.weakness.length > 0) {
-    analysisHTML += `<div style="color: #ff4b2b; font-size: 10px; font-weight: 900; margin-top: 4px; line-height: 1;">⚠️ WEAK: <span style="color: #fff; font-weight: normal;">${shortList(item.weakness)}</span></div>`;
-}
-        div.innerHTML = `
-            ${specialLabel}
+    `;}if(item['\u0077\u0065\u0061\u006B\u006E\u0065\u0073\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>(134050^134050)){_0xf2_0xcg8+=`<div style="color: #ff4b2b; font-size: 10px; font-weight: 900; margin-top: 4px; line-height: 1;">⚠️ WEAK: <span style="color: #fff; font-weight: normal;">${_0x52fg2d(item['\u0077\u0065\u0061\u006B\u006E\u0065\u0073\u0073'])}</span></div>`;}_0x82c1a['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+            ${_0x53dd9d}
             <div style="position: relative; width: 65px; height: 65px; margin-bottom: 8px;">
-                <img src="${b.image}" style="width: 100%; height: 100%; border-radius: 18px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover;">
-                <span style="position: absolute; top: -8px; right: -8px; background: ${tierColors[item.tier]}; color: #000; font-size: 11px; font-weight: 900; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #111;">
-                    ${item.tier}
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: 100%; border-radius: 18px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover;">
+                <span style="position: absolute; top: -8px; right: -8px; background: ${_0xa922af[item['\u0074\u0069\u0065\u0072']]}; color: #000; font-size: 11px; font-weight: 900; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #111;">
+                    ${item['\u0074\u0069\u0065\u0072']}
                 </span>
             </div>
             <div style="width: 100%; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
-                    <div style="font-family: 'Lilita One'; font-size: 14px; color: white; margin-bottom: 2px;">${b.name.toUpperCase()}</div>
-                    <div style="font-size: 9px; color: #aaa; text-transform: uppercase; letter-spacing: 1px;">${b.class}</div>
+                    <div style="font-family: 'Lilita One'; font-size: 14px; color: white; margin-bottom: 2px;">${b['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()}</div>
+                    <div style="font-size: 9px; color: #aaa; text-transform: uppercase; letter-spacing: 1px;">${b['\u0063\u006C\u0061\u0073\u0073']}</div>
                 </div>
                 <div style="background: rgba(0,0,0,0.4); border-radius: 12px; padding: 8px; min-height: 70px; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgba(255,255,255,0.05);">
-                    ${analysisHTML || '<div style="color:#666; font-size:9px;">STABLE PICK</div>'}
+                    ${_0xf2_0xcg8||">vid/<KCIP ELBATS>\";xp9:ezis-tnof ;666#:roloc\"=elyts vid<".split("").reverse().join("")}
                 </div>
             </div>
-        `;
-        
-        div.onmouseenter = () => { div.style.transform = "scale(1.05) translateY(-5px)"; div.style.zIndex = "10"; };
-        div.onmouseleave = () => { div.style.transform = "scale(1) translateY(0)"; div.style.zIndex = "1"; };
-        div.onclick = () => makePick(b.id);
-        container.appendChild(div);
-    });
-    // --- 1. Получаем элементы панели ---
-    const banListUI = document.getElementById('ban-icons-list');
-    const counterUI = document.getElementById('best-counter-icon');
-
-    if (banListUI && counterUI) {
-        banListUI.innerHTML = ""; 
-        counterUI.innerHTML = "";
-
-        // --- 2. ФИКСИРОВАННАЯ ЛОГИКА БАНОВ (5 персонажей) ---
-        const staticBans = brawlers
-            .map(b => {
-                let priority = 0;
-                if (draftData.selectedMap.best?.includes(b.id)) priority += 150;
-                if (metaData.S.includes(b.id)) priority += 100;
-                if (metaData.A.includes(b.id)) priority += 50;
-                return { ...b, priority };
-            })
-            .sort((a, b) => b.priority - a.priority)
-            .slice(0, 5);
-
-        staticBans.forEach(b => {
-            // Берем ID как число для надежности
-            const bId = Number(b.id);
-            const isBanned = draftData.bans.includes(bId);
-            
-            const banDiv = document.createElement('div');
-            
-            // УБИРАЕМ лишние проверки. Просто вызываем toggleBan.
-            // Она сама решит: если есть в массиве — удалит, если нет — добавит.
-            banDiv.onclick = (e) => {
-                e.stopPropagation(); 
-                toggleBan(bId); 
-            };
-
-            // Граница: зеленая для бана
-            let borderColor = isBanned ? '#00ff88' : 'rgba(255,204,0,0.3)';
-            
-            // Курсор pointer теперь всегда, чтобы можно было и банить, и разбанивать отсюда
-            banDiv.style = `position: relative; width: 34px; height: 34px; border-radius: 8px; border: 2px solid ${borderColor}; overflow: hidden; background: #000; transition: all 0.3s; cursor: pointer;`;
-            
-            let overlay = "";
-            if (isBanned) {
-                overlay = `<div style="position: absolute; inset: 0; background: rgba(0,255,136,0.2); display: flex; align-items: center; justify-content: center; color: #00ff88; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;">✓</div>`;
-            }
-
-            const finalOpacity = isBanned ? '0.4' : '1';
-
-            banDiv.innerHTML = `
-                <img src="${b.image}" style="width: 100%; height: 100%; object-fit: cover; opacity: ${finalOpacity};">
-                ${overlay}
-            `;
-            banListUI.appendChild(banDiv);
-        });
-
-        // Здесь дальше идет твой код с "3. УЛЬТИМАТИВНАЯ ЛОГИКА POWER COUNTER"
-
-        // --- 3. ЛОГИКА "БЕЗОПАСНЫЙ КОНТР-ПИК" (АНТИ-РИСК) ---
-        const redPicksCount = draftData.picks.red.length;
-        const taken = [...draftData.picks.blue, ...draftData.picks.red, ...draftData.bans];
-
-        if (redPicksCount === 0) {
-            counterUI.innerHTML = `
+        `;_0x82c1a['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0065\u006E\u0074\u0065\u0072']=()=>{_0x82c1a['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u002E\u0030\u0035\u0029\u0020\u0074\u0072\u0061\u006E\u0073\u006C\u0061\u0074\u0065\u0059\u0028\u002D\u0035\u0070\u0078\u0029";_0x82c1a['\u0073\u0074\u0079\u006C\u0065']['\u007A\u0049\u006E\u0064\u0065\u0078']="01".split("").reverse().join("");};_0x82c1a['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006C\u0065\u0061\u0076\u0065']=()=>{_0x82c1a['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u0029\u0020\u0074\u0072\u0061\u006E\u0073\u006C\u0061\u0074\u0065\u0059\u0028\u0030\u0029";_0x82c1a['\u0073\u0074\u0079\u006C\u0065']['\u007A\u0049\u006E\u0064\u0065\u0078']="\u0031";};_0x82c1a['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>makePick(b['\u0069\u0064']);_0x4f1aeg['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x82c1a);});const _0x3c69ce=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0062\u0061\u006E\u002D\u0069\u0063\u006F\u006E\u0073\u002D\u006C\u0069\u0073\u0074");const _0xg82c=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("noci-retnuoc-tseb".split("").reverse().join(""));if(_0x3c69ce&&_0xg82c){_0x3c69ce['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";_0xg82c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";var _0xd8g=(945613^945611)+(788573^788571);const _0x11d=brawlers['\u006D\u0061\u0070'](b=>{let _0xc3ff;let _0x9d2=452131^452131;_0xc3ff=(619664^619667)+(339220^339223);if(draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']['\u0062\u0065\u0073\u0074']?.includes(b['\u0069\u0064']))_0x9d2+=391313^391175;if(metaData['\u0053']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']))_0x9d2+=790961^790997;if(metaData['\u0041']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']))_0x9d2+=358555^358569;return{...b,"priority":_0x9d2};})['\u0073\u006F\u0072\u0074']((a,b)=>b['\u0070\u0072\u0069\u006F\u0072\u0069\u0074\u0079']-a['\u0070\u0072\u0069\u006F\u0072\u0069\u0074\u0079'])['\u0073\u006C\u0069\u0063\u0065'](766158^766158,815340^815337);_0xd8g=(371304^371305)+(969334^969333);_0x11d['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](b=>{var _0xf3bb=(286489^286495)+(643159^643158);const _0xb2d=Number(b['\u0069\u0064']);_0xf3bb=(331952^331957)+(728020^728018);let _0xd1a48a;const _0x2geae=draftData['\u0062\u0061\u006E\u0073']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0xb2d);_0xd1a48a='\u006B\u006D\u0065\u0065\u0061\u006D';let _0xcb95d;const _0x571ag=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0xcb95d=(914674^914675)+(452927^452922);_0x571ag['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=e=>{e['\u0073\u0074\u006F\u0070\u0050\u0072\u006F\u0070\u0061\u0067\u0061\u0074\u0069\u006F\u006E']();toggleBan(_0xb2d);};let borderColor=_0x2geae?"88ff00#".split("").reverse().join(""):")3.0,0,402,552(abgr".split("").reverse().join("");_0x571ag['\u0073\u0074\u0079\u006C\u0065']=`position: relative; width: 34px; height: 34px; border-radius: 8px; border: 2px solid ${borderColor}; overflow: hidden; background: #000; transition: all 0.3s; cursor: pointer;`;let _0x63253g="";if(_0x2geae){_0x63253g=`<div style="position: absolute; inset: 0; background: rgba(0,255,136,0.2); display: flex; align-items: center; justify-content: center; color: #00ff88; font-size: 18px; font-weight: bold; text-shadow: 0 0 5px #000;">✓</div>`;}var _0x4g3e4e=(695970^695969)+(373888^373897);const _0x4ce=_0x2geae?"\u0030\u002E\u0034":"\u0031";_0x4g3e4e=519273^519278;_0x571ag['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: 100%; object-fit: cover; opacity: ${_0x4ce};">
+                ${_0x63253g}
+            `;_0x3c69ce['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x571ag);});const _0xba3e=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006C\u0065\u006E\u0067\u0074\u0068'];const taken=[...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065'],...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064'],...draftData['\u0062\u0061\u006E\u0073']];if(_0xba3e===(502068^502068)){_0xg82c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
                 <div style="display: flex; align-items: center; justify-content: center; height: 38px;">
                     <span style="color: #555; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Waiting for enemy targets...</span>
                 </div>
-            `;
-        } else {
-            const enemyBrawlers = draftData.picks.red.map(id => brawlers.find(b => b.id == id)).filter(Boolean);
-
-            // 1. Собираем глубокую аналитику
-let intelligence = brawlers
-    .filter(b => !taken.includes(Number(b.id))) // Принудительно в число
-    .map(b => {
-        const myMatchup = matchups[b.class];
-        let currentCounterScore = 0;
-        let targets = [];
-        
-        // А) Кого МЫ контрим из уже выбранных врагов (Красных)
-        if (myMatchup) {
-            enemyBrawlers.forEach(enemy => {
-                if (myMatchup.strong && myMatchup.strong.includes(enemy.class)) {
-                    currentCounterScore += 5; // Увеличили вес контры
-                    targets.push(enemy.name);
-                }
-            });
-        }
-
-        // Б) АНАЛИЗ БУДУЩЕГО РИСКА
-let futureThreatsCount = 0;
-
-if (isLastPick) {
-    // На последнем пике риска НЕТ, враг больше не выбирает!
-    futureThreatsCount = 0;
-} else {
-    brawlers.forEach(potentialEnemy => {
-        if (!taken.includes(Number(potentialEnemy.id))) {
-            const enemyMatchup = matchups[potentialEnemy.class];
-            if (enemyMatchup && enemyMatchup.strong && enemyMatchup.strong.includes(b.class)) {
-                futureThreatsCount++;
-            }
-        }
-    });
-}
-
-        // Берем готовый score из основного цикла (scoredBrawlers уже должен быть рассчитан выше)
-        const mainAnalysis = scoredBrawlers.find(s => s.brawler.id === b.id);
-        const baseScore = mainAnalysis ? mainAnalysis.score : 0;
-        const currentTier = mainAnalysis ? mainAnalysis.tier : 'C';
-
-        return {
-            brawler: b,
-            counterScore: currentCounterScore,
-            targets: targets,
-            riskLevel: futureThreatsCount,
-            baseScore: baseScore,
-            tier: currentTier
-        };
-    });
-
-// 2. ФИЛЬТРАЦИЯ И СОРТИРОВКА
-// Сначала ищем тех, кто реально контрит врага (counterScore > 0)
-// А среди них уже выбираем тех, у кого меньше риск
-intelligence.sort((a, b) => {
-    if (b.counterScore !== a.counterScore) return b.counterScore - a.counterScore; // Кто сильнее бьет врага
-    if (a.riskLevel !== b.riskLevel) return a.riskLevel - b.riskLevel; // У кого меньше риск
-    return b.baseScore - a.baseScore; // У кого выше балл на карте
-});
-
-const powerPick = intelligence[0];
-
-            if (powerPick) {
-                const isUltraSafe = powerPick.riskLevel <= 3; // Почти нет контры в пуле
-                const accentColor = isUltraSafe ? '#00ffff' : '#00ff88';
-                const statusText = isUltraSafe ? 'NO RISK PICK' : 'STABLE COUNTER';
-
-                counterUI.innerHTML = `
-                    <div onclick="makePick(${powerPick.brawler.id})" style="display: flex; align-items: center; gap: 8px; background: rgba(0,255,136,0.05); padding: 4px 12px; border-radius: 12px; border: 1px solid ${accentColor}; box-shadow: 0 0 15px ${accentColor}22; cursor: pointer;">
+            `;}else{var _0x9d50e=(819187^819187)+(752569^752561);const enemyBrawlers=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006D\u0061\u0070'](id=>brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']==id))['\u0066\u0069\u006C\u0074\u0065\u0072'](Boolean);_0x9d50e=163111^163111;let _0x5511a=brawlers['\u0066\u0069\u006C\u0074\u0065\u0072'](b=>!taken['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](Number(b['\u0069\u0064'])))['\u006D\u0061\u0070'](b=>{const myMatchup=matchups[b['\u0063\u006C\u0061\u0073\u0073']];let _0xg6752d=281041^281041;let _0xb8125e;let _0xc4a=[];_0xb8125e=(984017^984019)+(745151^745151);if(myMatchup){enemyBrawlers['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](enemy=>{if(myMatchup['\u0073\u0074\u0072\u006F\u006E\u0067']&&myMatchup['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073'])){_0xg6752d+=451220^451217;_0xc4a['\u0070\u0075\u0073\u0068'](enemy['\u006E\u0061\u006D\u0065']);}});}var _0xea_0xb49=(552310^552306)+(117362^117364);let _0x77af=198771^198771;_0xea_0xb49=(338694^338692)+(926533^926530);if(_0xb422f){_0x77af=451084^451084;}else{brawlers['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](potentialEnemy=>{if(!taken['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](Number(potentialEnemy['\u0069\u0064']))){var _0xdc5e7c=(665368^665371)+(455825^455825);const _0x619d=matchups[potentialEnemy['\u0063\u006C\u0061\u0073\u0073']];_0xdc5e7c=(444681^444684)+(992867^992870);if(_0x619d&&_0x619d['\u0073\u0074\u0072\u006F\u006E\u0067']&&_0x619d['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0063\u006C\u0061\u0073\u0073'])){_0x77af++;}}});}const _0xb54caf=_0x8fb2a['\u0066\u0069\u006E\u0064'](s=>s['\u0062\u0072\u0061\u0077\u006C\u0065\u0072']['\u0069\u0064']===b['\u0069\u0064']);const _0x1b5d=_0xb54caf?_0xb54caf['\u0073\u0063\u006F\u0072\u0065']:596009^596009;const currentTier=_0xb54caf?_0xb54caf['\u0074\u0069\u0065\u0072']:"\u0043";return{'\u0062\u0072\u0061\u0077\u006C\u0065\u0072':b,"counterScore":_0xg6752d,"targets":_0xc4a,'\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C':_0x77af,'\u0062\u0061\u0073\u0065\u0053\u0063\u006F\u0072\u0065':_0x1b5d,"tier":currentTier};});_0x5511a['\u0073\u006F\u0072\u0074']((a,b)=>{if(b['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0053\u0063\u006F\u0072\u0065']!==a['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0053\u0063\u006F\u0072\u0065'])return b['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0053\u0063\u006F\u0072\u0065']-a['\u0063\u006F\u0075\u006E\u0074\u0065\u0072\u0053\u0063\u006F\u0072\u0065'];if(a['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C']!==b['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C'])return a['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C']-b['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C'];return b['\u0062\u0061\u0073\u0065\u0053\u0063\u006F\u0072\u0065']-a['\u0062\u0061\u0073\u0065\u0053\u0063\u006F\u0072\u0065'];});var _0xab2gea=(173682^173685)+(307851^307853);const _0xc72b=_0x5511a[233791^233791];_0xab2gea="gekilb".split("").reverse().join("");if(_0xc72b){const _0xa9ec=_0xc72b['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C']<=(744554^744553);const _0x0g71f=_0xa9ec?"\u0023\u0030\u0030\u0066\u0066\u0066\u0066":"88ff00#".split("").reverse().join("");var _0x7aa=(769961^769952)+(691756^691754);const _0x5078c=_0xa9ec?"\u004E\u004F\u0020\u0052\u0049\u0053\u004B\u0020\u0050\u0049\u0043\u004B":"\u0053\u0054\u0041\u0042\u004C\u0045\u0020\u0043\u004F\u0055\u004E\u0054\u0045\u0052";_0x7aa=522525^522517;_0xg82c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+                    <div onclick="makePick(${_0xc72b['\u0062\u0072\u0061\u0077\u006C\u0065\u0072']['\u0069\u0064']})" style="display: flex; align-items: center; gap: 8px; background: rgba(0,255,136,0.05); padding: 4px 12px; border-radius: 12px; border: 1px solid ${_0x0g71f}; box-shadow: 0 0 15px ${_0x0g71f}22; cursor: pointer;">
                         <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <span style="color: ${accentColor}; font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">${statusText}</span>
+                            <span style="color: ${_0x0g71f}; font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">${_0x5078c}</span>
                             <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="color: white; font-size: 11px; font-weight: bold; font-family: 'Lilita One';">${powerPick.brawler.name.toUpperCase()}</span>
-                                <span style="color: rgba(255,255,255,0.4); font-size: 9px;">${powerPick.tier} (Risk: ${powerPick.riskLevel})</span>
+                                <span style="color: white; font-size: 11px; font-weight: bold; font-family: 'Lilita One';">${_0xc72b['\u0062\u0072\u0061\u0077\u006C\u0065\u0072']['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()}</span>
+                                <span style="color: rgba(255,255,255,0.4); font-size: 9px;">${_0xc72b['\u0074\u0069\u0065\u0072']} (Risk: ${_0xc72b['\u0072\u0069\u0073\u006B\u004C\u0065\u0076\u0065\u006C']})</span>
                             </div>
                         </div>
-                        <img src="${powerPick.brawler.image}" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid ${accentColor}; object-fit: cover;">
+                        <img src="${_0xc72b['\u0062\u0072\u0061\u0077\u006C\u0065\u0072']['\u0069\u006D\u0061\u0067\u0065']}" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid ${_0x0g71f}; object-fit: cover;">
                     </div>
-                `;
-            } else {
-                counterUI.innerHTML = `<span style="color: #666; font-size: 10px;">NO SAFE OPTIONS</span>`;
-            }
-        }
-    }
-}
-
-// ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ДЛЯ ОТЧЕТА ПОСЛЕ 6 ПИКОВ
-function generateFinalReport() {
-    const blueTeam = draftData.picks.blue.map(id => brawlers.find(x => x.id == id)).filter(Boolean);
-    const redTeam = draftData.picks.red.map(id => brawlers.find(x => x.id == id)).filter(Boolean);
-    let report = "";
-
-    blueTeam.forEach(my => {
-        const myMatch = matchups[my.class];
-        if (!myMatch) return;
-
-        // Фильтруем врагов
-        const iCounter = redTeam.filter(enemy => myMatch.strong.includes(enemy.class));
-        const iAmWeak = redTeam.filter(enemy => myMatch.weak.includes(enemy.class));
-
-        // Если у бравлера есть хоть какие-то связи, рисуем блок
-        if (iCounter.length > 0 || iAmWeak.length > 0) {
-            report += `
+                `;}else{_0xg82c['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`<span style="color: #666; font-size: 10px;">NO SAFE OPTIONS</span>`;}}}}function generateFinalReport(_0x613fc,_0x23771c){const _0x579e=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u006D\u0061\u0070'](id=>brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==id))['\u0066\u0069\u006C\u0074\u0065\u0072'](Boolean);_0x613fc=281753^281754;var _0x5b_0x9fg=(876884^876881)+(395051^395042);const _0x7fdcb=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u006D\u0061\u0070'](id=>brawlers['\u0066\u0069\u006E\u0064'](x=>x['\u0069\u0064']==id))['\u0066\u0069\u006C\u0074\u0065\u0072'](Boolean);_0x5b_0x9fg='\u0062\u006F\u006B\u006C\u006D\u0066';_0x23771c="";_0x579e['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](my=>{var _0xg0c0c=(361255^361251)+(494867^494874);const _0xb8617d=matchups[my['\u0063\u006C\u0061\u0073\u0073']];_0xg0c0c=(714518^714514)+(839831^839831);if(!_0xb8617d)return;let _0x99d;const _0xada29e=_0x7fdcb['\u0066\u0069\u006C\u0074\u0065\u0072'](enemy=>_0xb8617d['\u0073\u0074\u0072\u006F\u006E\u0067']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073']));_0x99d=(438018^438018)+(632945^632951);var _0x2c18fb=(304499^304497)+(521599^521595);const _0xa83cbb=_0x7fdcb['\u0066\u0069\u006C\u0074\u0065\u0072'](enemy=>_0xb8617d['\u0077\u0065\u0061\u006B']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](enemy['\u0063\u006C\u0061\u0073\u0073']));_0x2c18fb=(179882^179883)+(285770^285773);if(_0xada29e['\u006C\u0065\u006E\u0067\u0074\u0068']>(941951^941951)||_0xa83cbb['\u006C\u0065\u006E\u0067\u0074\u0068']>(308701^308701)){_0x23771c+=`
             <div style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 12px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 8px;">
                 
                 <div style="display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px;">
-                    <img src="${my.image}" style="width: 40px; height: 40px; border-radius: 10px; border: 2px solid #fff;">
-                    <span style="color: #fff; font-size: 16px; font-weight: bold; font-family: 'Lilita One';">${my.name.toUpperCase()}</span>
+                    <img src="${my['\u0069\u006D\u0061\u0067\u0065']}" style="width: 40px; height: 40px; border-radius: 10px; border: 2px solid #fff;">
+                    <span style="color: #fff; font-size: 16px; font-weight: bold; font-family: 'Lilita One';">${my['\u006E\u0061\u006D\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()}</span>
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 6px;">
                     
-                    ${iCounter.length > 0 ? `
+                    ${_0xada29e['\u006C\u0065\u006E\u0067\u0074\u0068']>(440293^440293)?`
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span style="color: #00ff88; font-size: 12px; font-weight: 900; min-width: 70px;">COUNTERS:</span>
                         <div style="display: flex; gap: 4px;">
-                            ${iCounter.map(e => `<img src="${e.image}" style="width: 30px; height: 30px; border-radius: 6px; border: 1px solid #00ff88;">`).join('')}
+                            ${_0xada29e['\u006D\u0061\u0070'](e=>`<img src="${e['\u0069\u006D\u0061\u0067\u0065']}" style="width: 30px; height: 30px; border-radius: 6px; border: 1px solid #00ff88;">`)['\u006A\u006F\u0069\u006E']('')}
                         </div>
-                    </div>` : ''}
+                    </div>`:''}
 
-                    ${iAmWeak.length > 0 ? `
+                    ${_0xa83cbb['\u006C\u0065\u006E\u0067\u0074\u0068']>(378571^378571)?`
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span style="color: #ff4b2b; font-size: 12px; font-weight: 900; min-width: 70px;">WEAK VS:</span>
                         <div style="display: flex; gap: 4px;">
-                            ${iAmWeak.map(e => `<img src="${e.image}" style="width: 30px; height: 30px; border-radius: 6px; border: 1px solid #ff4b2b;">`).join('')}
+                            ${_0xa83cbb['\u006D\u0061\u0070'](e=>`<img src="${e['\u0069\u006D\u0061\u0067\u0065']}" style="width: 30px; height: 30px; border-radius: 6px; border: 1px solid #ff4b2b;">`)['\u006A\u006F\u0069\u006E']('')}
                         </div>
-                    </div>` : ''}
+                    </div>`:''}
 
                 </div>
-            </div>`;
-        }
-    });
-
-    return report || `<div style="color: #777; padding: 20px;">No specific counters found.</div>`;
-}
-
-// 4. Логика совершения пика
-function getDraftOrder() {
-    return draftData.firstSide === 'blue' 
-        ? ['blue', 'red', 'red', 'blue', 'blue', 'red'] 
-        : ['red', 'blue', 'blue', 'red', 'red', 'blue'];
-}
-
-function toggleBan(brawlerId) {
-    const id = Number(brawlerId); // Принудительно в число
-    const index = draftData.bans.findIndex(banId => Number(banId) === id);
-    
-    if (index > -1) {
-        // РАЗБАН
-        draftData.bans.splice(index, 1);
-    } else {
-        // БАН
-        if (draftData.bans.length >= 6) {
-            alert("All 6 bans are used!");
-            return;
-        }
-        const isTaken = draftData.picks.blue.includes(id) || draftData.picks.red.includes(id);
-        if (isTaken) return alert("Already picked!");
-        
-        draftData.bans.push(id);
-    }
-    
-    // Синхронно обновляем всё
-    renderBans(); 
-    updateDraftSuggestions();
-    if (typeof renderAllDraftBrawlers === 'function') renderAllDraftBrawlers();
-}
-
-// 1. УНИВЕРСАЛЬНАЯ ФУНКЦИЯ БАНА/РАЗБАНА
-function toggleBan(brawlerId) {
-    const index = draftData.bans.indexOf(brawlerId);
-    
-    if (index > -1) {
-        // Если уже в бане — УДАЛЯЕМ (разбаниваем)
-        draftData.bans.splice(index, 1);
-    } else {
-        // Если нет в бане — ДОБАВЛЯЕМ
-        if (draftData.bans.length >= 6) return alert("All 6 bans are used!");
-        
-        const isAlreadyPicked = draftData.picks.blue.includes(brawlerId) || draftData.picks.red.includes(brawlerId);
-        if (isAlreadyPicked) return alert("Brawler already picked!");
-
-        draftData.bans.push(brawlerId);
-    }
-    
-    // Обновляем всё визуально
-    renderBans(); 
-    updateDraftSuggestions();
-    renderAllDraftBrawlers();
-}
-
-function undoLastAction() {
-    // 1. Проверяем, есть ли что отменять
-    if (draftData.currentTurn === 0) return;
-
-    // 2. Определяем, кто ходил ПОСЛЕДНИМ
-    const lastTurnIdx = draftData.currentTurn - 1;
-    const side = getDraftOrder()[lastTurnIdx]; 
-    
-    // 3. Убираем ID из массива и уменьшаем счетчик
-    draftData.picks[side].pop();
-    draftData.currentTurn--;
-
-    // 4. ОЧИЩАЕМ СЛОТ ВИЗУАЛЬНО
-    const slotIdx = draftData.picks[side].length + 1; 
-    const slotElement = document.getElementById(`d-slot-${side}-${slotIdx}`);
-
-    if (slotElement) {
-        slotElement.innerHTML = "";
-        slotElement.style.background = "rgba(15, 15, 25, 0.4)";
-        slotElement.style.border = side === 'blue' ? '2px dashed rgba(79, 172, 254, 0.5)' : '2px dashed rgba(255, 75, 43, 0.5)';
-        slotElement.style.boxShadow = "none";
-    }
-
-    // 5. ВОССТАНОВЛЕНИЕ ИНТЕРФЕЙСА (если драфт был завершен)
-    const allBrawlersSection = document.querySelector('.all-brawlers-section');
-    const searchBar = document.getElementById('draft-search');
-    const rightSide = document.querySelector('.draft-right-side');
-
-    if (allBrawlersSection) allBrawlersSection.style.display = 'block';
-    if (searchBar) {
-        searchBar.style.display = 'block';
-        searchBar.value = ""; // Очищаем поиск для удобства
-    }
-
-    // КЛЮЧЕВОЙ МОМЕНТ: Если мы отменили финальный ход, нужно вернуть структуру аналитики
-    if (lastTurnIdx === 5 && rightSide) {
-        // Проверяем, нет ли уже заголовка TOP 10, чтобы не перезаписывать лишний раз
-        if (!rightSide.querySelector('h3') || rightSide.querySelector('h3').innerText !== "TOP 10 ANALYTICS") {
-            // Возвращаем стандартный фон и верстку
-            rightSide.style.background = "rgba(255, 204, 0, 0.05)"; 
-            rightSide.innerHTML = `
+            </div>`;}});return _0x23771c||`<div style="color: #777; padding: 20px;">No specific counters found.</div>`;}function getDraftOrder(){return draftData['\u0066\u0069\u0072\u0073\u0074\u0053\u0069\u0064\u0065']==="\u0062\u006C\u0075\u0065"?["eulb".split("").reverse().join(""),"der".split("").reverse().join(""),"der".split("").reverse().join(""),"\u0062\u006C\u0075\u0065","eulb".split("").reverse().join(""),"der".split("").reverse().join("")]:["\u0072\u0065\u0064","\u0062\u006C\u0075\u0065","eulb".split("").reverse().join(""),"\u0072\u0065\u0064","der".split("").reverse().join(""),"eulb".split("").reverse().join("")];}function toggleBan(brawlerId,_0x3_0x19c){const _0x3c_0x28d=Number(brawlerId);_0x3_0x19c=(418305^418310)+(728679^728686);var _0x334f9f=(941600^941607)+(970946^970949);const _0x0975aa=draftData['\u0062\u0061\u006E\u0073']['\u0066\u0069\u006E\u0064\u0049\u006E\u0064\u0065\u0078'](banId=>Number(banId)===_0x3c_0x28d);_0x334f9f=(961044^961041)+(822327^822323);if(_0x0975aa>-(500615^500614)){draftData['\u0062\u0061\u006E\u0073']['\u0073\u0070\u006C\u0069\u0063\u0065'](_0x0975aa,462557^462556);}else{if(draftData['\u0062\u0061\u006E\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>=(744895^744889)){alert("!desu era snab 6 llA".split("").reverse().join(""));return;}const _0xf9372f=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x3c_0x28d)||draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x3c_0x28d);if(_0xf9372f)return alert("!dekcip ydaerlA".split("").reverse().join(""));draftData['\u0062\u0061\u006E\u0073']['\u0070\u0075\u0073\u0068'](_0x3c_0x28d);}renderBans();updateDraftSuggestions();if(typeof renderAllDraftBrawlers==="noitcnuf".split("").reverse().join(""))renderAllDraftBrawlers();}function toggleBan(brawlerId){const _0xd6d2d=draftData['\u0062\u0061\u006E\u0073']['\u0069\u006E\u0064\u0065\u0078\u004F\u0066'](brawlerId);if(_0xd6d2d>-(858745^858744)){draftData['\u0062\u0061\u006E\u0073']['\u0073\u0070\u006C\u0069\u0063\u0065'](_0xd6d2d,999912^999913);}else{if(draftData['\u0062\u0061\u006E\u0073']['\u006C\u0065\u006E\u0067\u0074\u0068']>=(698239^698233))return alert("\u0041\u006C\u006C\u0020\u0036\u0020\u0062\u0061\u006E\u0073\u0020\u0061\u0072\u0065\u0020\u0075\u0073\u0065\u0064\u0021");let _0x6bf38g;const _0x25ccbc=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](brawlerId)||draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](brawlerId);_0x6bf38g=(774160^774167)+(332023^332023);if(_0x25ccbc)return alert("\u0042\u0072\u0061\u0077\u006C\u0065\u0072\u0020\u0061\u006C\u0072\u0065\u0061\u0064\u0079\u0020\u0070\u0069\u0063\u006B\u0065\u0064\u0021");draftData['\u0062\u0061\u006E\u0073']['\u0070\u0075\u0073\u0068'](brawlerId);}renderBans();updateDraftSuggestions();renderAllDraftBrawlers();}function undoLastAction(_0x0c467e,_0x66faa,_0x030b5b){if(draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']===(774205^774205))return;const _0xc1540e=draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']-(222908^222909);const _0x62c3a=getDraftOrder()[_0xc1540e];_0x0c467e=(414363^414366)+(110869^110876);draftData['\u0070\u0069\u0063\u006B\u0073'][_0x62c3a]['\u0070\u006F\u0070']();draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']--;const _0x1da=draftData['\u0070\u0069\u0063\u006B\u0073'][_0x62c3a]['\u006C\u0065\u006E\u0067\u0074\u0068']+(571461^571460);const _0x1e_0x315=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`d-slot-${_0x62c3a}-${_0x1da}`);_0x66faa='\u0070\u0061\u0066\u0066\u0061\u0066';if(_0x1e_0x315){_0x1e_0x315['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";_0x1e_0x315['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=")4.0 ,52 ,51 ,51(abgr".split("").reverse().join("");_0x1e_0x315['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']=_0x62c3a==="eulb".split("").reverse().join("")?"\u0032\u0070\u0078\u0020\u0064\u0061\u0073\u0068\u0065\u0064\u0020\u0072\u0067\u0062\u0061\u0028\u0037\u0039\u002C\u0020\u0031\u0037\u0032\u002C\u0020\u0032\u0035\u0034\u002C\u0020\u0030\u002E\u0035\u0029":"\u0032\u0070\u0078\u0020\u0064\u0061\u0073\u0068\u0065\u0064\u0020\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0037\u0035\u002C\u0020\u0034\u0033\u002C\u0020\u0030\u002E\u0035\u0029";_0x1e_0x315['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="enon".split("").reverse().join("");}const _0x1e0e4g=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("noitces-srelwarb-lla.".split("").reverse().join(""));_0x030b5b=(386672^386674)+(548951^548949);const _0x1963ag=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068");const _0xf655cf=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0064\u0072\u0061\u0066\u0074\u002D\u0072\u0069\u0067\u0068\u0074\u002D\u0073\u0069\u0064\u0065");if(_0x1e0e4g)_0x1e0e4g['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0062\u006C\u006F\u0063\u006B";if(_0x1963ag){_0x1963ag['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0062\u006C\u006F\u0063\u006B";_0x1963ag['\u0076\u0061\u006C\u0075\u0065']="";}if(_0xc1540e===(291157^291152)&&_0xf655cf){if(!_0xf655cf['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("3h".split("").reverse().join(""))||_0xf655cf['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("3h".split("").reverse().join(""))['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']!=="\u0054\u004F\u0050\u0020\u0031\u0030\u0020\u0041\u004E\u0041\u004C\u0059\u0054\u0049\u0043\u0053"){_0xf655cf['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0032\u0030\u0034\u002C\u0020\u0030\u002C\u0020\u0030\u002E\u0030\u0035\u0029";_0xf655cf['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
                 <div style="position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                     <h3 style="color: #ffcc00; text-align: center; margin: 0; font-size: 1.6rem; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOP 10 ANALYTICS</h3>
                     <button onclick="shuffleSuggestions()" 
@@ -2327,110 +326,19 @@ function undoLastAction() {
                     </div>
                 </div>
                 <div id="draft-suggestions" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;"></div>
-            `;
-        }
-    }
-
-    // 6. ОБНОВЛЯЕМ ДАННЫЕ
-    updateDraftSuggestions(); 
-    renderAllDraftBrawlers();
-}
-
-// 2. ОБНОВЛЕННАЯ ФУНКЦИЯ ПИКА
-function makePick(brawlerId) {
-    if (!draftData.selectedMap) return alert("Select map first!");
-
-    // --- ЛОГИКА БАНА (теперь короткая и работает в обе стороны) ---
-    if (isBanMode) {
-        toggleBan(brawlerId); 
-        return; 
-    }
-
-    // --- ОБЫЧНАЯ ЛОГИКА ПИКА ---
-    if (draftData.currentTurn >= 6) return alert("Draft is finished!");
-    if (draftData.bans.includes(brawlerId)) return alert("This brawler is BANNED!");
-
-    const isTaken = draftData.picks.blue.includes(brawlerId) || draftData.picks.red.includes(brawlerId);
-    if (isTaken) return;
-
-    const brawler = brawlers.find(b => b.id == brawlerId);
-    if (!brawler) return;
-
-    const side = getDraftOrder()[draftData.currentTurn]; 
-    draftData.picks[side].push(brawlerId);
-    
-    const slotIdx = draftData.picks[side].length;
-    const slotElement = document.getElementById(`d-slot-${side}-${slotIdx}`);
-
-    if (slotElement) {
-        // Твой код отрисовки слота...
-        slotElement.style.position = "relative";
-        slotElement.style.overflow = "hidden";
-        slotElement.style.display = "flex";
-        slotElement.style.alignItems = "flex-end";
-        slotElement.style.justifyContent = "center";
-        slotElement.style.border = "2px solid #ffcc00"; 
-        
-        slotElement.style.background = side === 'blue' 
-            ? 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)' 
-            : 'linear-gradient(135deg, #7f1d1d 0%, #dc2626 100%)';
-
-        slotElement.innerHTML = `
+            `;}}updateDraftSuggestions();renderAllDraftBrawlers();}function makePick(brawlerId){if(!draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070'])return alert("\u0053\u0065\u006C\u0065\u0063\u0074\u0020\u006D\u0061\u0070\u0020\u0066\u0069\u0072\u0073\u0074\u0021");if(isBanMode){toggleBan(brawlerId);return;}if(draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']>=(188831^188825))return alert("!dehsinif si tfarD".split("").reverse().join(""));if(draftData['\u0062\u0061\u006E\u0073']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](brawlerId))return alert("\u0054\u0068\u0069\u0073\u0020\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0020\u0069\u0073\u0020\u0042\u0041\u004E\u004E\u0045\u0044\u0021");const _0x3b9f=draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](brawlerId)||draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](brawlerId);if(_0x3b9f)return;var _0x4_0x344=(287331^287334)+(185557^185564);const _0x5a8d=brawlers['\u0066\u0069\u006E\u0064'](b=>b['\u0069\u0064']==brawlerId);_0x4_0x344='\u006D\u0065\u006B\u006B\u006A\u0071';if(!_0x5a8d)return;const _0x4fbf4b=getDraftOrder()[draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']];draftData['\u0070\u0069\u0063\u006B\u0073'][_0x4fbf4b]['\u0070\u0075\u0073\u0068'](brawlerId);const _0xec3a4e=draftData['\u0070\u0069\u0063\u006B\u0073'][_0x4fbf4b]['\u006C\u0065\u006E\u0067\u0074\u0068'];var _0xacc=(394952^394955)+(988581^988580);const _0x66bcag=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064'](`d-slot-${_0x4fbf4b}-${_0xec3a4e}`);_0xacc=(883947^883938)+(849961^849953);if(_0x66bcag){_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u0070\u006F\u0073\u0069\u0074\u0069\u006F\u006E']="evitaler".split("").reverse().join("");_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u006F\u0076\u0065\u0072\u0066\u006C\u006F\u0077']="\u0068\u0069\u0064\u0064\u0065\u006E";_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="xelf".split("").reverse().join("");_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0066\u006C\u0065\u0078\u002D\u0065\u006E\u0064";_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u006A\u0075\u0073\u0074\u0069\u0066\u0079\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0063\u0065\u006E\u0074\u0065\u0072";_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0032\u0070\u0078\u0020\u0073\u006F\u006C\u0069\u0064\u0020\u0023\u0066\u0066\u0063\u0063\u0030\u0030";_0x66bcag['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=_0x4fbf4b==="eulb".split("").reverse().join("")?"\u006C\u0069\u006E\u0065\u0061\u0072\u002D\u0067\u0072\u0061\u0064\u0069\u0065\u006E\u0074\u0028\u0031\u0033\u0035\u0064\u0065\u0067\u002C\u0020\u0023\u0031\u0065\u0033\u0061\u0038\u0061\u0020\u0030\u0025\u002C\u0020\u0023\u0033\u0062\u0038\u0032\u0066\u0036\u0020\u0031\u0030\u0030\u0025\u0029":"\u006C\u0069\u006E\u0065\u0061\u0072\u002D\u0067\u0072\u0061\u0064\u0069\u0065\u006E\u0074\u0028\u0031\u0033\u0035\u0064\u0065\u0067\u002C\u0020\u0023\u0037\u0066\u0031\u0064\u0031\u0064\u0020\u0030\u0025\u002C\u0020\u0023\u0064\u0063\u0032\u0036\u0032\u0036\u0020\u0031\u0030\u0030\u0025\u0029";_0x66bcag['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-                <img src="${brawler.image}" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="${_0x5a8d['\u0069\u006D\u0061\u0067\u0065']}" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div style="position: relative; z-index: 2; width: 100%; padding-bottom: 5px; 
                         background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); 
                         display: flex; justify-content: center;">
                 <span style="font-family: 'Lilita One'; font-size: 0.9rem; color: white; 
                              text-transform: uppercase; text-align: center; text-shadow: 1px 1px 2px #000;">
-                    ${brawler.name}
+                    ${_0x5a8d['\u006E\u0061\u006D\u0065']}
                 </span>
             </div>
-        `;
-    }
-
-    draftData.currentTurn++;
-    renderAllDraftBrawlers(); 
-    updateDraftSuggestions();
-}
-
-// 5. Полный сброс
-function resetDraft() {
-    draftData.currentTurn = 0;
-    draftData.picks = { blue: [], red: [] };
-    draftData.bans = []; 
-    
-    isBanMode = false; 
-    const btn = document.getElementById('ban-mode-btn');
-    if (btn) {
-        btn.innerText = 'BAN MODE: OFF';
-        btn.style.background = '#444';
-    }
-
-    // --- ВОССТАНОВЛЕНИЕ ИНТЕРФЕЙСА ПОСЛЕ DRAFT COMPLETED ---
-
-    // 1. Показываем каталог бравлеров, если он был скрыт
-    const allBrawlersSection = document.querySelector('.all-brawlers-section');
-    if (allBrawlersSection) {
-        allBrawlersSection.style.display = 'block';
-    }
-
-    const searchBar = document.getElementById('draft-search');
-    if (searchBar) {
-        searchBar.style.display = 'block';
-        searchBar.value = ""; // Чистим текст поиска
-    }
-
-    // 2. Восстанавливаем правую панель (структуру ТОП 10 ANALYTICS)
-    const rightSide = document.querySelector('.draft-right-side');
-    if (rightSide) {
-        // Возвращаем стандартный фон
-        rightSide.style.background = "rgba(255, 204, 0, 0.05)"; 
-        rightSide.style.boxShadow = "inset 0 0 20px rgba(255, 204, 0, 0.05)";
-        
-        // Переписываем содержимое в исходный вид
-       rightSide.innerHTML = `
+        `;}draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']++;renderAllDraftBrawlers();updateDraftSuggestions();}function resetDraft(_0xf76ad,_0x588b){draftData['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0054\u0075\u0072\u006E']=589348^589348;draftData['\u0070\u0069\u0063\u006B\u0073']={"blue":[],'\u0072\u0065\u0064':[]};draftData['\u0062\u0061\u006E\u0073']=[];isBanMode=false;const _0xc4e81d=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ntb-edom-nab".split("").reverse().join(""));_0xf76ad=(283041^283044)+(559074^559073);if(_0xc4e81d){_0xc4e81d['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']="\u0042\u0041\u004E\u0020\u004D\u004F\u0044\u0045\u003A\u0020\u004F\u0046\u0046";_0xc4e81d['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0023\u0034\u0034\u0034";}const _0xbe65g=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("noitces-srelwarb-lla.".split("").reverse().join(""));if(_0xbe65g){_0xbe65g['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="kcolb".split("").reverse().join("");}const _0xfb8gd=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068");_0x588b=(227512^227514)+(797816^797821);if(_0xfb8gd){_0xfb8gd['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="kcolb".split("").reverse().join("");_0xfb8gd['\u0076\u0061\u006C\u0075\u0065']="";}const _0x70923a=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("edis-thgir-tfard.".split("").reverse().join(""));if(_0x70923a){_0x70923a['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0032\u0030\u0034\u002C\u0020\u0030\u002C\u0020\u0030\u002E\u0030\u0035\u0029";_0x70923a['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="\u0069\u006E\u0073\u0065\u0074\u0020\u0030\u0020\u0030\u0020\u0032\u0030\u0070\u0078\u0020\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0032\u0030\u0034\u002C\u0020\u0030\u002C\u0020\u0030\u002E\u0030\u0035\u0029";_0x70923a['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
             <div style="position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                 <h3 style="color: #ffcc00; text-align: center; margin: 0; font-size: 1.6rem; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">TOP 10 ANALYTICS</h3>
                 
@@ -2455,224 +363,18 @@ function resetDraft() {
             </div>
 
             <div id="draft-suggestions" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 5px;"></div>
-        `;
-    }
-
-    // --- ОЧИСТКА СЛОТОВ ---
-
-    renderBans(); 
-    
-    // Ищем все возможные слоты (и по классу, и те, что начинаются на d-slot)
-    // --- ОЧИСТКА СЛОТОВ ---
-    const allSlots = document.querySelectorAll('.draft-slot, [id^="d-slot-"], [id^="slot-"]');
-    allSlots.forEach(slot => {
-        slot.innerHTML = ""; 
-        slot.style.backgroundImage = "none"; // ПРИНУДИТЕЛЬНО УДАЛЯЕМ ФОН
-        slot.style.background = "rgba(15, 15, 25, 0.4)"; 
-        
-        if (slot.id.includes('blue')) {
-            slot.style.border = '2px dashed rgba(79, 172, 254, 0.5)';
-        } else {
-            slot.style.border = '2px dashed rgba(255, 75, 43, 0.5)';
-        }
-    });
-
-    // --- ОЧИСТКА ПОИСКА ---
-    const searchInput = document.getElementById('draft-search');
-    if (searchInput) {
-        searchInput.value = "";
-    }
-
-    // --- ПЕРЕЗАПУСК АНАЛИТИКИ ---
-    updateDraftSuggestions();
-    renderAllDraftBrawlers(); // Это обновит список бравлеров (вернет прозрачность тем, кто был выбран)
-}
-
-function initDraftMapSelect() {
-    const dl = document.getElementById('map-list');
-    const input = document.getElementById('draft-search-map'); // ID твоего инпута для выбора карты
-    if (!dl) return;
-
-    // 1. НАПОЛНЕНИЕ СПИСКА КАРТ
-    const allowedMapIds = [1, 6, 7, 15, 30, 33, 37, 39, 46, 47, 48, 54, 67, 68, 69, 77, 86, 87, 88, 91, 101, 102, 105, 107, 113, 118]; 
-
-    dl.innerHTML = ''; 
-
-    if (typeof maps !== 'undefined' && maps.length > 0) {
-        const filteredAndSorted = maps
-            .filter(map => allowedMapIds.includes(map.id))
-            .sort((a, b) => a.mode.localeCompare(b.mode));
-
-        filteredAndSorted.forEach(map => {
-            const opt = document.createElement('option');
-            // Используем строку [РЕЖИМ] Название
-            opt.value = `[${map.mode.toUpperCase()}] ${map.name}`;
-            opt.dataset.id = map.id;
-            dl.appendChild(opt);
-        });
-    }
-
-    // 2. ЛОГИКА СБРОСА ПРИ СМЕНЕ (Если инпут существует)
-    if (input) {
-        // Убираем старые слушатели, если они были
-        input.oninput = function() {
-            const val = this.value;
-            const options = document.getElementById('map-list').options;
-            
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].value === val) {
-                    const mapId = options[i].dataset.id;
-                    const foundMap = maps.find(m => m.id == mapId);
-                    
-                    if (foundMap) {
-                        // 1. Сначала полностью очищаем старые данные
-                        resetDraft(); 
-                        
-                        // 2. Устанавливаем новую карту
-                        draftData.selectedMap = foundMap;
-                        
-                        // 3. Обнуляем оффсет шаффла
-                        if (window.suggestionOffset !== undefined) suggestionOffset = 0;
-
-                        // 4. Даем браузеру 50мс "продышаться" перед отрисовкой советов
-                        setTimeout(() => {
-                            updateDraftSuggestions();
-                            renderAllDraftBrawlers(); 
-                        }, 50);
-
-                        this.blur();
-                    }
-                    break;
-                }
-            }
-        };
-    }
-}
-
-function handleMapInput(inputElement) {
-    const val = inputElement.value;
-    const dl = document.getElementById('map-list');
-    if (!dl) return;
-    
-    const options = dl.options;
-    let foundId = null;
-
-    for (let i = 0; i < options.length; i++) {
-        if (options[i].value === val) {
-            foundId = options[i].dataset.id;
-            break;
-        }
-    }
-
-    if (foundId) {
-        const mapData = maps.find(m => m.id == foundId);
-        if (mapData) {
-            // 1. ПОЛНЫЙ СБРОС (очистит массивы picks, bans и вернет currentTurn к 0)
-            resetDraft(); 
-            
-            // 2. УСТАНОВКА НОВОЙ КАРТЫ
-            draftData.selectedMap = mapData;
-            
-            // 3. ОТРИСОВКА
-const display = document.getElementById('draft-map-display');
-display.style.display = "flex";          // Центрируем по горизонтали
-display.style.alignItems = "center";     // Центрируем по вертикали
-display.style.justifyContent = "center"; 
-
-display.innerHTML = `
-    <img src="${mapData.image}" 
-         alt="${mapData.name}" 
+        `;}renderBans();const _0x5d05ab=document['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072\u0041\u006C\u006C']("\u002E\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u006C\u006F\u0074\u002C\u0020\u005B\u0069\u0064\u005E\u003D\u0022\u0064\u002D\u0073\u006C\u006F\u0074\u002D\u0022\u005D\u002C\u0020\u005B\u0069\u0064\u005E\u003D\u0022\u0073\u006C\u006F\u0074\u002D\u0022\u005D");_0x5d05ab['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](slot=>{slot['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";slot['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064\u0049\u006D\u0061\u0067\u0065']="\u006E\u006F\u006E\u0065";slot['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=")4.0 ,52 ,51 ,51(abgr".split("").reverse().join("");if(slot['\u0069\u0064']['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073']("\u0062\u006C\u0075\u0065")){slot['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0032\u0070\u0078\u0020\u0064\u0061\u0073\u0068\u0065\u0064\u0020\u0072\u0067\u0062\u0061\u0028\u0037\u0039\u002C\u0020\u0031\u0037\u0032\u002C\u0020\u0032\u0035\u0034\u002C\u0020\u0030\u002E\u0035\u0029";}else{slot['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0072\u0064\u0065\u0072']="\u0032\u0070\u0078\u0020\u0064\u0061\u0073\u0068\u0065\u0064\u0020\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0020\u0037\u0035\u002C\u0020\u0034\u0033\u002C\u0020\u0030\u002E\u0035\u0029";}});var _0x9f_0x184=(127731^127734)+(630679^630686);const _0xf94bf=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068");_0x9f_0x184="iclloa".split("").reverse().join("");if(_0xf94bf){_0xf94bf['\u0076\u0061\u006C\u0075\u0065']="";}updateDraftSuggestions();renderAllDraftBrawlers();}function initDraftMapSelect(_0x71415f){var _0x3cd83c=(939883^939881)+(953788^953786);const _0x9a_0x7ea=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u0061\u0070\u002D\u006C\u0069\u0073\u0074");_0x3cd83c=(697602^697603)+(704726^704720);const _0x798f=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068\u002D\u006D\u0061\u0070");_0x71415f=(343303^343311)+(584887^584883);if(!_0x9a_0x7ea)return;const _0x385ca=[645961^645960,215668^215666,722068^722067,185034^185029,923323^923301,945227^945258,957845^957872,344297^344270,387844^387882,359555^359596,773687^773639,711040^711094,969292^969231,435266^435206,207517^207576,997086^997011,793142^793184,397569^397654,815300^815260,142990^143061,523698^523735,869011^869109,991917^991940,545284^545391,906768^906849,676772^676818];_0x9a_0x7ea['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']='';if(typeof maps!=="denifednu".split("").reverse().join("")&&maps['\u006C\u0065\u006E\u0067\u0074\u0068']>(769240^769240)){const _0x7e3a=maps['\u0066\u0069\u006C\u0074\u0065\u0072'](map=>_0x385ca['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](map['\u0069\u0064']))['\u0073\u006F\u0072\u0074']((a,b)=>a['\u006D\u006F\u0064\u0065']['\u006C\u006F\u0063\u0061\u006C\u0065\u0043\u006F\u006D\u0070\u0061\u0072\u0065'](b['\u006D\u006F\u0064\u0065']));_0x7e3a['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](map=>{const _0xg2_0x8d4=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u006F\u0070\u0074\u0069\u006F\u006E");_0xg2_0x8d4['\u0076\u0061\u006C\u0075\u0065']=`[${map['\u006D\u006F\u0064\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()}] ${map['\u006E\u0061\u006D\u0065']}`;_0xg2_0x8d4['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u0069\u0064']=map['\u0069\u0064'];_0x9a_0x7ea['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xg2_0x8d4);});}if(_0x798f){_0x798f['\u006F\u006E\u0069\u006E\u0070\u0075\u0074']=function(_0xbe_0x2g8){const _0xf3_0x9g1=this['\u0076\u0061\u006C\u0075\u0065'];_0xbe_0x2g8='\u0064\u0070\u0061\u006B\u006B\u0067';const _0xffbg8a=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tsil-pam".split("").reverse().join(""))['\u006F\u0070\u0074\u0069\u006F\u006E\u0073'];for(let i=159431^159431;i<_0xffbg8a['\u006C\u0065\u006E\u0067\u0074\u0068'];i++){if(_0xffbg8a[i]['\u0076\u0061\u006C\u0075\u0065']===_0xf3_0x9g1){var _0xabb=(439901^439900)+(464092^464094);const _0x111d4f=_0xffbg8a[i]['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u0069\u0064'];_0xabb=(426035^426035)+(135523^135527);let _0xg_0x9de;const _0xcae2=maps['\u0066\u0069\u006E\u0064'](m=>m['\u0069\u0064']==_0x111d4f);_0xg_0x9de=986220^986212;if(_0xcae2){resetDraft();draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']=_0xcae2;if(window['\u0073\u0075\u0067\u0067\u0065\u0073\u0074\u0069\u006F\u006E\u004F\u0066\u0066\u0073\u0065\u0074']!==undefined)suggestionOffset=341851^341851;setTimeout(()=>{updateDraftSuggestions();renderAllDraftBrawlers();},636420^636470);this['\u0062\u006C\u0075\u0072']();}break;}}};}}function handleMapInput(inputElement){const _0x328db=inputElement['\u0076\u0061\u006C\u0075\u0065'];const _0x48540b=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tsil-pam".split("").reverse().join(""));if(!_0x48540b)return;const _0x6bb23c=_0x48540b['\u006F\u0070\u0074\u0069\u006F\u006E\u0073'];var _0x9gfcb=(488349^488346)+(241467^241471);let _0xd6292c=null;_0x9gfcb=971779^971786;for(let i=149513^149513;i<_0x6bb23c['\u006C\u0065\u006E\u0067\u0074\u0068'];i++){if(_0x6bb23c[i]['\u0076\u0061\u006C\u0075\u0065']===_0x328db){_0xd6292c=_0x6bb23c[i]['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u0069\u0064'];break;}}if(_0xd6292c){let _0x8886da;const _0xf2671d=maps['\u0066\u0069\u006E\u0064'](m=>m['\u0069\u0064']==_0xd6292c);_0x8886da='\u0061\u0064\u0071\u006B\u0062\u006D';if(_0xf2671d){resetDraft();draftData['\u0073\u0065\u006C\u0065\u0063\u0074\u0065\u0064\u004D\u0061\u0070']=_0xf2671d;const _0x28c3d=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("yalpsid-pam-tfard".split("").reverse().join(""));_0x28c3d['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u0066\u006C\u0065\u0078";_0x28c3d['\u0073\u0074\u0079\u006C\u0065']['\u0061\u006C\u0069\u0067\u006E\u0049\u0074\u0065\u006D\u0073']="\u0063\u0065\u006E\u0074\u0065\u0072";_0x28c3d['\u0073\u0074\u0079\u006C\u0065']['\u006A\u0075\u0073\u0074\u0069\u0066\u0079\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0063\u0065\u006E\u0074\u0065\u0072";_0x28c3d['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+    <img src="${_0xf2671d['\u0069\u006D\u0061\u0067\u0065']}" 
+         alt="${_0xf2671d['\u006E\u0061\u006D\u0065']}" 
          style="width: 85%; height: 85%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-`;
-            
-            // 4. ОБНОВЛЕНИЕ ИНТЕРФЕЙСА
-            updateDraftSuggestions();
-            renderAllDraftBrawlers();
-            
-            // Если у тебя есть функция отрисовки иконок банов в верху экрана
-            if (typeof renderBans === "function") renderBans(); 
-            
-            // Убираем фокус и чистим поле ввода (по желанию)
-            inputElement.blur();
-        }
-    }
-}
-// Функция отрисовки всех бойцов для ручного выбора
-function renderAllDraftBrawlers() {
-    const grid = document.getElementById('all-brawlers-grid');
-    if (!grid) return;
-    
-    grid.innerHTML = "";
-    
-    // СОРТИРОВКА: теперь по ID (как в твоем массиве brawlers)
-    const sorted = [...brawlers].sort((a, b) => a.id - b.id);
-    
-    const taken = [...draftData.picks.blue, ...draftData.picks.red, ...draftData.bans];
-
-    sorted.forEach(b => {
-        const isTaken = taken.includes(b.id);
-        
-        const div = document.createElement('div');
-        // Добавляем класс для поиска
-        div.className = "all-brawler-card";
-        
-        // СТИЛИ: 
-        // 1. Добавили margin: 5px чтобы при увеличении (scale) они не толкали соседей
-        // 2. transform-origin: center чтобы увеличивался из центра
-        // 3. z-index при наведении чтобы карточка была НАД остальными
-        div.style = `
-            text-align: center; cursor: ${isTaken ? 'default' : 'pointer'}; 
-            opacity: ${isTaken ? '0.3' : '1'}; transition: all 0.2s ease;
+`;updateDraftSuggestions();renderAllDraftBrawlers();if(typeof renderBans==="noitcnuf".split("").reverse().join(""))renderBans();inputElement['\u0062\u006C\u0075\u0072']();}}}function renderAllDraftBrawlers(_0xed406e){const _0xedaab=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0061\u006C\u006C\u002D\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u0073\u002D\u0067\u0072\u0069\u0064");_0xed406e="bbhioj".split("").reverse().join("");if(!_0xedaab)return;_0xedaab['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']="";const _0xe2aeb=[...brawlers]['\u0073\u006F\u0072\u0074']((a,b)=>a['\u0069\u0064']-b['\u0069\u0064']);var _0xg9ee8a=(480228^480231)+(142293^142288);const _0xac7a3e=[...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0062\u006C\u0075\u0065'],...draftData['\u0070\u0069\u0063\u006B\u0073']['\u0072\u0065\u0064'],...draftData['\u0062\u0061\u006E\u0073']];_0xg9ee8a='\u006B\u0068\u006A\u0067\u006D\u0069';_0xe2aeb['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](b=>{var _0x98b=(285544^285551)+(838459^838456);const _0x46f=_0xac7a3e['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](b['\u0069\u0064']);_0x98b='\u006E\u0062\u0069\u0067\u006F\u006B';const _0x95b=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x95b['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u0061\u006C\u006C\u002D\u0062\u0072\u0061\u0077\u006C\u0065\u0072\u002D\u0063\u0061\u0072\u0064";_0x95b['\u0073\u0074\u0079\u006C\u0065']=`
+            text-align: center; cursor: ${_0x46f?"\u0064\u0065\u0066\u0061\u0075\u006C\u0074":"retniop".split("").reverse().join("")}; 
+            opacity: ${_0x46f?"3.0".split("").reverse().join(""):"\u0031"}; transition: all 0.2s ease;
             background: rgba(255,255,255,0.03); padding: 10px; border-radius: 15px;
             border: 1px solid rgba(255,255,255,0.1);
             position: relative; z-index: 1; margin: 5px;
             display: flex; flex-direction: column; align-items: center;
-        `;
-        
-        if (!isTaken) {
-            div.onmouseenter = () => { 
-                div.style.background = "rgba(255,255,255,0.1)"; 
-                div.style.transform = "scale(1.15)"; // Чуть сильнее увеличиваем
-                div.style.zIndex = "10"; // Выводим на передний план, чтобы не перекрывали соседи
-                div.style.boxShadow = "0 10px 20px rgba(0,0,0,0.5)";
-            };
-            div.onmouseleave = () => { 
-                div.style.background = "rgba(255,255,255,0.03)"; 
-                div.style.transform = "scale(1)"; 
-                div.style.zIndex = "1";
-                div.style.boxShadow = "none";
-            };
-            div.onclick = () => {
-                makePick(b.id);
-            };
-        }
-
-        div.innerHTML = `
-            <img src="${b.image}" style="width: 60px; height: 60px; border-radius: 10px; margin-bottom: 5px; pointer-events: none;">
-            <div style="font-size: 11px; white-space: nowrap; pointer-events: none;">${b.name}</div>
-        `;
-        
-        grid.appendChild(div);
-    });
-}
-
-// Поиск: теперь ищем по классу, чтобы не задеть лишние div
-function filterDraftBrawlers() {
-    const term = document.getElementById('draft-search').value.toLowerCase();
-    const items = document.getElementsByClassName('all-brawler-card');
-
-    for (let item of items) {
-        const name = item.innerText.toLowerCase();
-        // Используем flex, так как в стиле div выше он подразумевается для центровки
-        item.style.display = name.includes(term) ? "flex" : "none";
-    }
-}
-
-// ОБЯЗАТЕЛЬНО ОБНОВИ ФУНКЦИЮ makePick
-// Добавь renderAllDraftBrawlers() в самый конец функции makePick, 
-// чтобы список снизу обновлялся (затенялся), когда ты кого-то выбираешь.
-// Запускаем при загрузке
-initDraftMapSelect();
-renderAllDraftBrawlers();
-// Инициализация
-showSection('maps');
+        `;if(!_0x46f){_0x95b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u0065\u006E\u0074\u0065\u0072']=()=>{_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']="\u0072\u0067\u0062\u0061\u0028\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0032\u0035\u0035\u002C\u0030\u002E\u0031\u0029";_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u002E\u0031\u0035\u0029";_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u007A\u0049\u006E\u0064\u0065\u0078']="\u0031\u0030";_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="\u0030\u0020\u0031\u0030\u0070\u0078\u0020\u0032\u0030\u0070\u0078\u0020\u0072\u0067\u0062\u0061\u0028\u0030\u002C\u0030\u002C\u0030\u002C\u0030\u002E\u0035\u0029";};_0x95b['\u006F\u006E\u006D\u006F\u0075\u0073\u0065\u006C\u0065\u0061\u0076\u0065']=()=>{_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0062\u0061\u0063\u006B\u0067\u0072\u006F\u0075\u006E\u0064']=")30.0,552,552,552(abgr".split("").reverse().join("");_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0074\u0072\u0061\u006E\u0073\u0066\u006F\u0072\u006D']="\u0073\u0063\u0061\u006C\u0065\u0028\u0031\u0029";_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u007A\u0049\u006E\u0064\u0065\u0078']="\u0031";_0x95b['\u0073\u0074\u0079\u006C\u0065']['\u0062\u006F\u0078\u0053\u0068\u0061\u0064\u006F\u0077']="enon".split("").reverse().join("");};_0x95b['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{makePick(b['\u0069\u0064']);};}_0x95b['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=`
+            <img src="${b['\u0069\u006D\u0061\u0067\u0065']}" style="width: 60px; height: 60px; border-radius: 10px; margin-bottom: 5px; pointer-events: none;">
+            <div style="font-size: 11px; white-space: nowrap; pointer-events: none;">${b['\u006E\u0061\u006D\u0065']}</div>
+        `;_0xedaab['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x95b);});}function filterDraftBrawlers(_0x5_0xbc6){var _0x3c043g=(990213^990209)+(124540^124541);const _0x4f3ced=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0064\u0072\u0061\u0066\u0074\u002D\u0073\u0065\u0061\u0072\u0063\u0068")['\u0076\u0061\u006C\u0075\u0065']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']();_0x3c043g='\u0064\u006C\u006A\u006C\u006B\u0069';const _0x95f=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0073\u0042\u0079\u0043\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']("drac-relwarb-lla".split("").reverse().join(""));_0x5_0xbc6=(937892^937894)+(592486^592481);for(let _0xe6c6dg of _0x95f){var _0xgc7ae=(529211^529215)+(390877^390868);const _0xc28g=_0xe6c6dg['\u0069\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074']['\u0074\u006F\u004C\u006F\u0077\u0065\u0072\u0043\u0061\u0073\u0065']();_0xgc7ae=(771015^771010)+(857795^857796);_0xe6c6dg['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']=_0xc28g['\u0069\u006E\u0063\u006C\u0075\u0064\u0065\u0073'](_0x4f3ced)?"\u0066\u006C\u0065\u0078":"enon".split("").reverse().join("");}}initDraftMapSelect();renderAllDraftBrawlers();showSection("\u006D\u0061\u0070\u0073");
